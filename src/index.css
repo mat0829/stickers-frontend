@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Emilys+Candy&family=Salsa&family=Ultra&display=swap');
+
+body {
+  background: url(https://wallpapercave.com/wp/wp3430475.jpg) center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Salsa', cursive;
+}
+
+button {
+  font-family: 'Salsa', cursive;
+  font-size: 20px;
+}

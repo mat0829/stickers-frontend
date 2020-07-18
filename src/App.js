@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MainHeader from './components/MainHeader'
-import IndexNavBar from './components/IndexNavBar'
+import MainHeader from './components/app/MainHeader'
+import IndexNavBar from './components/app/IndexNavBar'
 
 class App extends Component {
   

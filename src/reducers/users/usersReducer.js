@@ -1,4 +1,4 @@
-export default function usersReducer(state = [], action) {
+export default function usersReducer(state = {users: []}, action) {
     return state
 }
 

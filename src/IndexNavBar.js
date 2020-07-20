@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink, Route} from 'react-router-dom';
+import AdultUsersContainer from "./containers/users/AdultUsersContainer";
 
 const navBarStyle = {
   display: 'flex',
@@ -19,12 +20,13 @@ const childBtnStyle = {
 const IndexNavBar = () => {
   return (
     <div className="index-navbar" style={navBarStyle}>
-      <NavLink to="/">
+      <NavLink to="/adults-homepage">
         <button style={adultBtnStyle} class="adultPageBtn" id="adultPageBtn">Parent's Page</button>
       </NavLink>
-      <NavLink to="/">
+      <NavLink to="/kids-homepage">
         <button style={childBtnStyle} class="childPageBtn" id="childPageBtn">Kid's Page</button>
       </NavLink>
+      <Route exact path='/adults-homepage' component={AdultUsersContainer}></Route>
     </div>
   );
 };

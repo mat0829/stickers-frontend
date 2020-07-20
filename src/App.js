@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MainHeader from './components/app/MainHeader'
-import IndexNavBar from './components/app/IndexNavBar'
+import MainHeader from './MainHeader'
+//import LandingPage from './LandingPage'
 
 class App extends Component {
   
@@ -8,7 +8,6 @@ class App extends Component {
     return (
       <div className="App">
         <MainHeader />
-        <IndexNavBar />
       </div>
     );
   }

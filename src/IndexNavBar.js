@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
 import AdultUsersContainer from './components/users/adultUsers/AdultUsersContainer';
+import ChildUsersContainer from './components/users/childUsers/ChildUsersContainer'
 
 const adultBtnStyle = {
   color: 'black',
@@ -26,6 +27,7 @@ const IndexNavBar = () => {
           id="childPageBtn">Kid's Page</button>
       </NavLink>
       <Route exact path='/adults-homepage' component={AdultUsersContainer}></Route>
+      <Route exact path='/kids-homepage' component={ChildUsersContainer}></Route>
     </div>
   );
 };

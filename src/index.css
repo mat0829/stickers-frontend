@@ -7,7 +7,27 @@ body {
   font-family: 'Salsa', cursive;
 }
 
+input {
+  font-family: 'Salsa', cursive;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+label {
+  font-family: 'Emilys Candy', cursive;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: default;
+}
+
 button {
   font-family: 'Salsa', cursive;
   font-size: 20px;
+  margin-left: 5px;
+}
+
+h2 {
+  font-family: 'Emilys Candy', cursive;
+  font-size: 30px;
+  text-align: center;
 }

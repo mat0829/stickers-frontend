@@ -1,8 +1,7 @@
 import React from 'react';
 
 const HeaderStyle = {
-  padding: '10px',
-  textAlign: 'center',
+  padding: '10px'
 }
 
 const HeaderImgStyle = {

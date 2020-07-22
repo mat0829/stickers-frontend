@@ -1,4 +1,4 @@
-function adultUserReducer(state = {users: []}, action) {
+export default function adultUserReducer(state = {users: []}, action) {
   switch (action.type) {
     case 'CREATE_ADULT_USER':
       return action.formData
@@ -7,5 +7,3 @@ function adultUserReducer(state = {users: []}, action) {
       return state
     }
 }
-
-export default adultUserReducer

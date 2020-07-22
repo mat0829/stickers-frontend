@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import ChildLoginform from './ChildLoginForm'
-import ChildSignupForm from './ChildSignupForm'
+import ChildLoginform from '../../components/users/childUsers/ChildLoginForm'
+import ChildSignupForm from '../../components/users/childUsers/ChildSignupForm'
 
 class ChildUsersContainer extends Component {
   render() {

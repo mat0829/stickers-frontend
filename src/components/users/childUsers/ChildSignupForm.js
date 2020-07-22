@@ -11,25 +11,25 @@ class ChildSignupForm extends Component {
       <div>
         <h2>New Child User:</h2>
         <form id="child-new-user-form" style={{paddingBottom: "2vw"}}>
-          <label for="child-new-user-name">Name:</label>
+          <label htmlFor="child-new-user-name">Name:</label>
           <input 
             id="child-new-user-name" 
             type="text" 
             name="name" 
             placeholder="Enter Your Name" 
-            autocomplete="off">
+            autoComplete="off">
           </input><br/><br/>
 
-          <label for="child-new-user-email">Email:</label>
+          <label htmlFor="child-new-user-email">Email:</label>
           <input 
             id="child-new-user-email" 
             type="text" 
             name="email" 
             placeholder="Enter Your Email Address" 
-            autocomplete="off">
+            autoComplete="off">
           </input><br/><br/>
 
-          <label for="child-new-user-password">Password:</label>
+          <label htmlFor="child-new-user-password">Password:</label>
           <input 
             id="child-new-user-password" 
             type="password" 
@@ -37,13 +37,13 @@ class ChildSignupForm extends Component {
             placeholder="Create a Password">
           </input><br/><br/>
 
-          <label for="child-new-user-avatar">Avatar Image URL:</label>
+          <label htmlFor="child-new-user-avatar">Avatar Image URL:</label>
           <input 
             id="child-new-user-avatar" 
             type="text" 
             name="avatar" 
             placeholder="Leave to Generate Avatar" 
-            autocomplete="off">
+            autoComplete="off">
           </input><br/><br/>
 
           <input

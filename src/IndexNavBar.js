@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
-import AdultUsersContainer from './components/users/adultUsers/AdultUsersContainer';
-import ChildUsersContainer from './components/users/childUsers/ChildUsersContainer'
+import AdultUsersContainer from './containers/users/AdultUsersContainer'
+import ChildUsersContainer from './containers/users/ChildUsersContainer'
 
 const adultBtnStyle = {
   color: 'black',

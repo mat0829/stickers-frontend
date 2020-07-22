@@ -16,7 +16,7 @@ class ChildLoginForm extends Component {
             type='text' 
             name='name' 
             placeholder="Name:" 
-            autocomplete="off">
+            autoComplete="off">
           </input>
 
           <input 
@@ -24,7 +24,7 @@ class ChildLoginForm extends Component {
             type="password" 
             name="password" 
             placeholder="Password:" 
-            autocomplete="off">
+            autoComplete="off">
           </input>
 
           <input 

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import Stickers from '../components/stickers/Stickers'
 import {connect} from 'react-redux'
 
+import Stickers from '../components/stickers/Stickers'
+import fetchStickers from '../actions/stickers/fetchStickers'
+
 class StickersContainer extends Component {
+
   render() {
     return (
       <div>
@@ -12,4 +15,10 @@ class StickersContainer extends Component {
   }
 }
 
-export default connect()(StickersContainer)
+const mapStateToProps = state => {
+  return {
+    stickers: state.stickers
+  }
+}
+
+export default connect(mapStateToProps, {fetchStickers})(StickersContainer)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MainHeader from './MainHeader'
 import IndexNavBar from './IndexNavBar'
-import StickersContainer from './containers/StickersContainer';
 
 const appStyle = {
   display: "block",
@@ -16,7 +15,6 @@ class App extends Component {
       <div className="App" style={appStyle}>
         <MainHeader />
         <IndexNavBar />
-        <StickersContainer />
       </div>
     );
   }

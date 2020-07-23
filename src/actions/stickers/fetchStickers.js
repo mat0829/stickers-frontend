@@ -1,8 +1,6 @@
-const { act } = require("react-dom/test-utils");
 
-
-export function fetchStickers(action) {
-
+function fetchStickers(action) {
   return action
-  
 }
+
+export default fetchStickers

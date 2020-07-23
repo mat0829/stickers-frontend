@@ -1,9 +1,13 @@
-export default function adultUserReducer(state = {users: []}, action) {
+
+const initialState = {
+  currentUser: {}
+}
+
+export default function adultUserReducer(state = initialState, action) {
   switch (action.type) {
-    case 'CREATE_ADULT_USER':
-      return action.formData
-  
+    case 'LOGIN_USER':
+      return {...state, currentUser: action.payload}
     default:
-      return state
-    }
+      return state;
+  }
 }

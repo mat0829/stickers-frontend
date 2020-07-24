@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import userPostFetch from '../../../actions/users/adultUsers/userPostFetch'
+import userPostFetch from '../../../actions/users/adultUsers/userSignupFetch'
 
 const submitBtnStyle = {
   color: 'white',

@@ -22,7 +22,7 @@ const IndexNavBar = () => {
           id="adultPageBtn">Parent's Page</button>
       </NavLink>
       <NavLink to="/kids-homepage">
-        <button 
+        <button
           style={childBtnStyle} 
           id="childPageBtn">Kid's Page</button>
       </NavLink>

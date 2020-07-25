@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+
+import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
 import MainHeader from './MainHeader'
 import IndexNavBar from './IndexNavBar'
 
@@ -11,13 +14,26 @@ const appStyle = {
 class App extends Component {
   
   render() {
-    return (
-      <div className="App" style={appStyle}>
+    const adultLoggedIn = this.props.adultLoggedIn
+    if (adultLoggedIn) {
+      return <div className="App" style={appStyle}>
         <MainHeader />
-        <IndexNavBar />
-      </div>
-    );
+        <AdultUserProfile />
+        </div>
+    }
+      return (
+        <div className="App" style={appStyle}>
+          <MainHeader />
+          <IndexNavBar />
+        </div>
+      )
   }
 }
 
-export default App;
+const mapStateToProps = function(state) {
+  return {
+    adultLoggedIn: state.adultUserReducer.currentUser.logged_in
+  }
+}
+
+export default connect(mapStateToProps)(App)

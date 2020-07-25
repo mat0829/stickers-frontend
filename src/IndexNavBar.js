@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+
 import {NavLink, Route} from 'react-router-dom';
 import AdultUsersContainer from './containers/users/AdultUsersContainer'
 import ChildUsersContainer from './containers/users/ChildUsersContainer'
@@ -26,10 +27,10 @@ const IndexNavBar = () => {
           style={childBtnStyle} 
           id="childPageBtn">Kid's Page</button>
       </NavLink>
-      <Route exact path='/adults-homepage' component={AdultUsersContainer}></Route>
+      <Route exact path='/adults-homepage' component={AdultUsersContainer }></Route>
       <Route exact path='/kids-homepage' component={ChildUsersContainer}></Route>
     </div>
-  );
-};
+  )
+}
 
-export default IndexNavBar;
+export default IndexNavBar

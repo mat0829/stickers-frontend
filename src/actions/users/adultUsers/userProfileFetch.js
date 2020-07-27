@@ -1,4 +1,4 @@
-export const getProfileFetch = () => {
+const userProfileFetch = () => {
   return dispatch => {
     const token = localStorage.token;
     if (token) {
@@ -23,3 +23,10 @@ export const getProfileFetch = () => {
     }
   }
 }
+
+const loginUser = userObj => ({
+  type: 'LOGIN_USER',
+  payload: userObj
+})
+
+export default userProfileFetch

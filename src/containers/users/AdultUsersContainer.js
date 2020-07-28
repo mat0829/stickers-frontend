@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import App from '../../App'
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
+import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
 
 class AdultUsersContainer extends Component {
   
   render() {
     const isLoggedIn = this.props.loggedIn
     if (isLoggedIn) {
-      return <div><App /></div>
+      return <div><AdultUserProfile /></div>
     } 
       return (
         <div>

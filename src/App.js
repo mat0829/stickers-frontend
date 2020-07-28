@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
-import userProfileFetch from './actions/users/adultUsers/userProfileFetch'
 import MainHeader from './MainHeader'
 import IndexNavBar from './IndexNavBar'
 import AdultNavBar from './components/users/adultUsers/AdultNavBar'
+import AdultUsersContainer from './containers/users/AdultUsersContainer'
 
 const appStyle = {
   display: "block",
@@ -21,7 +20,7 @@ class App extends Component {
       return <div className="App" style={appStyle}>
         <MainHeader />
         <AdultNavBar />
-        <AdultUserProfile />
+        <AdultUsersContainer />
         </div>
     }
       return (
@@ -39,8 +38,4 @@ const mapStateToProps = function(state) {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  userProfileFetch: () => dispatch(userProfileFetch())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps)(App)

@@ -10,9 +10,9 @@ const userLoginFetch = user => {
     })
     .then(resp => resp.json())
     .then(returnUserData => {
-      if (returnUserData.message !== undefined) {
-          console.log(returnUserData.message)
-          alert(returnUserData.message)
+      if (returnUserData.errors !== undefined) {
+          console.log(returnUserData.errors)
+          alert(returnUserData.errors)
         // Here you should have logic to handle invalid login credentials.
         // This assumes your Rails API will return a JSON object with a key of
         // 'message' if there is an error

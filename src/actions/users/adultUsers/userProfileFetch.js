@@ -1,6 +1,6 @@
 const userProfileFetch = () => {
   return dispatch => {
-    const token = localStorage.token;
+    const token = localStorage.token
     if (token) {
       return fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
@@ -12,7 +12,10 @@ const userProfileFetch = () => {
       })
       .then(resp => resp.json())
       .then(userData => {
-        if (userData.message) {
+        debugger
+        if (userData.errors !== undefined) {
+          console.log(userData.errors)
+          alert(userData.errors)
           // An error will occur if the token is invalid.
           // If this happens, you may want to remove the invalid token.
           localStorage.removeItem("token")

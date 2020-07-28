@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
+import AdultEditUserForm from './AdultEditUserForm'
+
 class AdultUserProfile extends Component {
+  
+  state = { showing: false }
+  
   render() {
+    const { showing } = this.state
+    
     let childNames = []
 
     if (this.props.children !== 0) {
@@ -25,13 +32,16 @@ class AdultUserProfile extends Component {
       <div>
         <h1>{this.props.currentUser.name}</h1>
         <img src={this.props.currentUser.avatar} alt='adult-avatar'></img><br />
-        <button> Edit User {this.props.currentUser.name}</button>
+        <button onClick={() => this.setState({ showing: !showing })}>Edit User {this.props.currentUser.name}</button>
+        {showing
+          ? <div><AdultEditUserForm /></div>
+          : null
+        }
         <button> Delete User {this.props.currentUser.name}</button><br /><br />
         <button> Save Current Avatar </button>
-            
         <h1>Children:</h1>
         <li>{childNames}</li><br /><br />
-        <button class="top">Top of Page</button>
+        <button className="top">Top of Page</button>
       </div>
     )
   }

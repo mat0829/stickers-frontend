@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-//import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
+import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
 import userProfileFetch from './actions/users/adultUsers/userProfileFetch'
 import MainHeader from './MainHeader'
 import IndexNavBar from './IndexNavBar'
@@ -14,10 +14,6 @@ const appStyle = {
 }
 
 class App extends Component {
-
-  componentDidMount() {
-    this.props.userProfileFetch()
-  }
   
   render() {
     const adultLoggedIn = this.props.adultLoggedIn
@@ -25,6 +21,7 @@ class App extends Component {
       return <div className="App" style={appStyle}>
         <MainHeader />
         <AdultNavBar />
+        <AdultUserProfile />
         </div>
     }
       return (

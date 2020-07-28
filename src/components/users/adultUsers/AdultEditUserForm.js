@@ -1,20 +1,26 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import userSignupFetch from '../../../actions/users/adultUsers/userSignupFetch'
+import userUpdateFetch from '../../../actions/users/adultUsers/userUpdateFetch'
 
 const submitBtnStyle = {
-  color: 'white',
-  backgroundImage: 'linear-gradient(to right, #b827fc, #2c90fc, #b8fd33)'
-}
+    color: 'white',
+    backgroundImage: 'linear-gradient(to right, #b827fc, #2c90fc, #b8fd33)'
+  }
 
-class AdultSignupForm extends Component {
-  
+class AdultEditUserForm extends Component {
+
   state = {
+    id: '',
     name: '',
     email: '',
     password: '',
     avatar: 'https://robohash.org/Random-Robot-Avatar1.png'
+  } 
+
+  componentDidMount() {
+    const {id, name, email, avatar} = this.props.currentUser
+    this.setState({id, name, email, avatar})
   }
 
   handleChange = event => {
@@ -25,45 +31,42 @@ class AdultSignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.userSignupFetch(this.state)
+    this.props.userUpdateFetch(this.state)
   }
 
   render() {
     return (
       <div>
-        <h2>New Adult User:</h2>
+        <h2>Edit Adult User:</h2>
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
-          <label htmlFor="adult-new-user-name">Name:</label>
+          <label htmlFor="adult-edit-user-name">Name:</label>
           <input  
             name="name" 
-            placeholder="Enter Your Name"
             value={this.state.name}
             onChange={this.handleChange}
             autoComplete="off">
           </input><br/><br/>
 
-          <label htmlFor="adult-new-user-email">Email:</label>
+          <label htmlFor="adult-edit-user-email">Email:</label>
           <input 
             name="email" 
-            placeholder="Enter Your Email Address"
             value={this.state.email}
             onChange={this.handleChange}
             autoComplete="off">
           </input><br/><br/>
 
-          <label htmlFor="adult-new-user-password">Password:</label>
+          <label htmlFor="adult-edit-user-password">Password:</label>
           <input 
             type="password" 
             name="password" 
-            placeholder="Create a Password"
+            placeholder="Enter old or new password:"
             value={this.state.password}
             onChange={this.handleChange}>
           </input><br/><br/>
 
-          <label htmlFor="adult-new-user-avatar">Avatar Image URL:</label>
+          <label htmlFor="adult-edit-user-avatar">Avatar Image URL:</label>
           <input
             name="avatar" 
-            placeholder="Leave to Generate Avatar"
             value={this.state.avatar}
             onChange={this.handleChange}
             autoComplete="off">
@@ -72,7 +75,7 @@ class AdultSignupForm extends Component {
           <input
             style={submitBtnStyle}
             type="submit" 
-            value="Create User">
+            value="Update User">
           </input>
         </form>
       </div>
@@ -80,8 +83,14 @@ class AdultSignupForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.adultUserReducer.currentUser
+  }
+}
+
 const mapDispatchToProps = dispatch => ({
-  userSignupFetch: userInfo => dispatch(userSignupFetch(userInfo))
+  userUpdateFetch: userInfo => dispatch(userUpdateFetch(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(AdultSignupForm)
+export default connect(mapStateToProps, mapDispatchToProps)(AdultEditUserForm)

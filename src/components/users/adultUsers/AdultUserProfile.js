@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import userProfileFetch from '../../../actions/users/adultUsers/userProfileFetch'
-//import AdultEditUserForm from './AdultEditUserForm'
 import AdultUserInfo from './AdultUserInfo'
 
 class AdultUserProfile extends Component {
@@ -12,7 +11,6 @@ class AdultUserProfile extends Component {
   }
   
   render() {
-
     return (
       <div>
         <AdultUserInfo />

@@ -12,7 +12,6 @@ const userProfileFetch = () => {
       })
       .then(resp => resp.json())
       .then(userData => {
-        debugger
         if (userData.errors !== undefined) {
           console.log(userData.errors)
           alert(userData.errors)

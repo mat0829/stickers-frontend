@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import AdultEditUserForm from './AdultEditUserForm'
+import userDeleteFetch from '../../../actions/users/adultUsers/userDeleteFetch'
 
 class AdultUserInfo extends Component{
   state = {
@@ -21,7 +22,9 @@ class AdultUserInfo extends Component{
                 onClick={() => this.setState({showingUserProfile: !showingUserProfile, 
                 showingEditForm: !showingEditForm })}>Edit User {this.props.currentUser.name}
               </button>
-              <button> Delete User {this.props.currentUser.name}</button><br /><br />
+              <button onClick={() => this.props.userDeleteFetch(this.props.currentUser.id)}> 
+                      Delete User {this.props.currentUser.name}
+              </button><br /><br />
               <button> Save Current Avatar </button>
             </div>
           : null
@@ -38,10 +41,12 @@ class AdultUserInfo extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.adultUserReducer.currentUser,
-    parentTasks: state.adultUserReducer.currentUser.parent_tasks,
-    children: state.adultUserReducer.currentUser.children
+    currentUser: state.adultUserReducer.currentUser
   }
 }
 
-export default connect(mapStateToProps)(AdultUserInfo)
+const mapDispatchToProps = dispatch => ({
+  userDeleteFetch: userId => dispatch(userDeleteFetch(userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdultUserInfo)

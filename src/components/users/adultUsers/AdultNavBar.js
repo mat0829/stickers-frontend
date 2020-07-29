@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import {Switch, NavLink, Route} from 'react-router-dom'
 
 import AdultUserProfile from './AdultUserProfile'
@@ -33,37 +34,56 @@ const logoutBtnStyle = {
   backgroundImage: 'linear-gradient(to right, gold, green)'
 }
 
-const AdultNavBar = () => {
-  return (
-    <div>
-      <NavLink to="/adult-user-profile">
-        <button style={profileBtnStyle}>User Profile</button>
-      </NavLink>
+class AdultNavBar extends Component {
 
-      <NavLink to="/adult-tasks-page">
-        <button style={tasksBtnStyle}>Tasks Page</button>
-      </NavLink>
-            
-      <NavLink to="/add-new-task">
-        <button style={addTaskBtnStyle}>Create a New Task</button>
-      </NavLink>
+  handleClick = event => {
+    event.preventDefault()
+    localStorage.removeItem("token")
+    this.props.logoutUser()
+  }
 
-      <NavLink to="/adult-prizes-page">
-        <button style={prizesBtnStyle}>Prizes Page</button>
-      </NavLink>
-
-      <NavLink to="/add-new-prize">
-        <button style={addPrizeBtnStyle}>Add a New Prize</button>
-      </NavLink>
-
-      <NavLink to="/logout">
-        <button style={logoutBtnStyle}>Logout</button>
-      </NavLink>
-      <Switch>
-        <Route exact path='/adult-user-profile' component={AdultUserProfile}></Route>
-      </Switch>
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <NavLink to="/adult-user-profile">
+          <button style={profileBtnStyle}>User Profile</button>
+        </NavLink>
+  
+        <NavLink to="/adult-tasks-page">
+          <button style={tasksBtnStyle}>Tasks Page</button>
+        </NavLink>
+              
+        <NavLink to="/add-new-task">
+          <button style={addTaskBtnStyle}>Create a New Task</button>
+        </NavLink>
+  
+        <NavLink to="/adult-prizes-page">
+          <button style={prizesBtnStyle}>Prizes Page</button>
+        </NavLink>
+  
+        <NavLink to="/add-new-prize">
+          <button style={addPrizeBtnStyle}>Add a New Prize</button>
+        </NavLink>
+  
+        <NavLink to="/logout">
+          <button
+          onClick={this.handleClick}
+          style={logoutBtnStyle}>Logout</button>
+        </NavLink>
+        <Switch>
+          <Route exact path='/adult-user-profile' component={AdultUserProfile}></Route>
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default AdultNavBar
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser())
+})
+
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER'
+})
+
+export default connect(null, mapDispatchToProps)(AdultNavBar)

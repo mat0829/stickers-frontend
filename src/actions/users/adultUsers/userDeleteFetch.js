@@ -1,6 +1,5 @@
 const userDeleteFetch = userId => {
   return dispatch => {
-      debugger
     const token = localStorage.token
     const result = window.confirm("Are you sure you want to delete this User? Click ok to confirm.")
     if (result) {

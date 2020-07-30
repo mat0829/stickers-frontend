@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import userCreateAvatar from '../../../actions/avatar/userCreateAvatar'
 import userSignupFetch from '../../../actions/users/adultUsers/userSignupFetch'
+import AdultUserAvatar from './AdultUserAvatar'
 
-const submitBtnStyle = {
+const btnStyle = {
   color: 'white',
   backgroundImage: 'linear-gradient(to right, #b827fc, #2c90fc, #b8fd33)'
 }
@@ -14,7 +16,7 @@ class AdultSignupForm extends Component {
     name: '',
     email: '',
     password: '',
-    avatar: 'https://robohash.org/Random-Robot-Avatar1.png'
+    avatar: ''
   }
 
   handleChange = event => {
@@ -23,15 +25,30 @@ class AdultSignupForm extends Component {
     });
   }
 
+  handleClick = event => {
+    event.preventDefault()
+    let avatar = this.props.userCreateAvatar()
+    this.setState({
+      avatar: avatar.payload
+    })
+  }
+
   handleSubmit = event => {
     event.preventDefault()
     this.props.userSignupFetch(this.state)
   }
+  
+  renderAvatar(){
+    if(this.props.currentUser.avatar)
+      return <AdultUserAvatar imgURL={this.props.currentUser.avatar} />
+    return null;
+  } 
 
   render() {
     return (
       <div>
         <h2>New Adult User:</h2>
+        {this.renderAvatar()}
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           <label htmlFor="adult-new-user-name">Name:</label>
           <input  
@@ -63,14 +80,19 @@ class AdultSignupForm extends Component {
           <label htmlFor="adult-new-user-avatar">Avatar Image URL:</label>
           <input
             name="avatar" 
-            placeholder="Leave to Generate Avatar"
+            placeholder="Add your own or --->"
             value={this.state.avatar}
             onChange={this.handleChange}
             autoComplete="off">
-          </input><br/><br/>
+          </input>
+
+          <button
+            onClick={this.handleClick}
+            style={btnStyle}>Generate an Avatar
+          </button><br/><br/>
 
           <input
-            style={submitBtnStyle}
+            style={btnStyle}
             type="submit" 
             value="Create User">
           </input>
@@ -80,8 +102,15 @@ class AdultSignupForm extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.adultUserReducer.currentUser
+  }
+}
+
 const mapDispatchToProps = dispatch => ({
+  userCreateAvatar: () => dispatch(userCreateAvatar()),
   userSignupFetch: userInfo => dispatch(userSignupFetch(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(AdultSignupForm)
+export default connect(mapStateToProps, mapDispatchToProps)(AdultSignupForm)

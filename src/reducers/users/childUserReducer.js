@@ -2,15 +2,15 @@ const initialState = {
   currentUser: {}
 }
 
-export default function adultUserReducer(state = initialState, action) {
+export default function childUserReducer(state = initialState, action) {
   switch (action.type) {
-    case 'LOGIN_ADULT_USER':
+    case 'LOGIN_CHILD_USER':
       return {...state, currentUser: action.payload}
-    case 'UPDATE_ADULT_USER':
+    case 'UPDATE_CHILD_USER':
       return {...state, currentUser: action.payload}
-    case 'LOGOUT_ADULT_USER':
+    case 'LOGOUT_CHILD_USER':
       return {...state, currentUser: {} }
-    case 'CREATE_ADULT_AVATAR':
+    case 'CREATE_CHILD_AVATAR':
       return {...state, currentUser: {avatar: action.payload} }
     default:
       return state

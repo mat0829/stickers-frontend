@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import childUserLogin from '../../../actions/users/childUsers/childUserLogin'
 
 const submitBtnStyle = {
   color: 'white',
@@ -6,24 +9,42 @@ const submitBtnStyle = {
 }
 
 class ChildLoginForm extends Component {
+  
+  state = {
+    name: '',
+    password: ''
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.childUserLogin(this.state)
+  }
+
   render() {
     return (
       <div>
         <h2>Please Login:</h2>
-        <form id="child-user-login-form">
+        <form onSubmit={this.handleSubmit}>
           <input 
-            id='child-user-login-name'
-            type='text' 
             name='name' 
-            placeholder="Name:" 
+            placeholder="Name:"
+            value={this.state.name}
+            onChange={this.handleChange}
             autoComplete="off">
           </input>
 
-          <input 
-            id="child-user-login-password" 
+          <input
             type="password" 
             name="password" 
-            placeholder="Password:" 
+            placeholder="Password:"
+            value={this.state.password}
+            onChange={this.handleChange}
             autoComplete="off">
           </input>
 
@@ -39,4 +60,8 @@ class ChildLoginForm extends Component {
   }
 }
 
-export default ChildLoginForm
+const mapDispatchToProps = dispatch => ({
+  childUserLogin: userInfo => dispatch(childUserLogin(userInfo))
+})
+
+export default connect(null, mapDispatchToProps)(ChildLoginForm)

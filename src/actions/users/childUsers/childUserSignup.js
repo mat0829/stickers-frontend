@@ -1,4 +1,4 @@
-const userSignupFetch = user => {
+const childUserSignup = user => {
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
@@ -26,8 +26,8 @@ const userSignupFetch = user => {
 }
 
 const loginUser = userObj => ({
-    type: 'LOGIN_USER',
+    type: 'LOGIN_CHILD_USER',
     payload: userObj
 })
 
-export default userSignupFetch
+export default childUserSignup

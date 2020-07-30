@@ -1,4 +1,4 @@
-const userDeleteFetch = userId => {
+const adultUserDelete = userId => {
   return dispatch => {
     const token = localStorage.token
     const result = window.confirm("Are you sure you want to delete this User? Click ok to confirm.")
@@ -18,7 +18,7 @@ const userDeleteFetch = userId => {
 }
 
 const deleteUser = () => ({
-  type: 'LOGOUT_USER'
+  type: 'LOGOUT_ADULT_USER'
 })
 
-export default userDeleteFetch
+export default adultUserDelete

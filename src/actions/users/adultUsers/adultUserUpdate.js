@@ -1,4 +1,4 @@
-const userUpdateFetch = user => {
+const adultUserUpdate = user => {
   const token = localStorage.token
   return dispatch => {
     return fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
@@ -26,8 +26,8 @@ const userUpdateFetch = user => {
 }
 
 const updateUser = userObj => ({
-    type: 'UPDATE_USER',
+    type: 'UPDATE_ADULT_USER',
     payload: userObj
 })
 
-export default userUpdateFetch
+export default adultUserUpdate

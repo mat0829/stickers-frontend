@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import userProfileFetch from '../../../actions/users/adultUsers/userProfileFetch'
+import adultUserProfile from '../../../actions/users/adultUsers/adultUserProfile'
 import AdultUserInfo from './AdultUserInfo'
 
 class AdultUserProfile extends Component {
-
-  componentDidMount() {
-    this.props.userProfileFetch()
-  }
   
   render() {
     return (
@@ -20,7 +16,7 @@ class AdultUserProfile extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userProfileFetch: () => dispatch(userProfileFetch())
+  adultUserProfile: () => dispatch(adultUserProfile())
 })
 
 export default connect(null, mapDispatchToProps)(AdultUserProfile)

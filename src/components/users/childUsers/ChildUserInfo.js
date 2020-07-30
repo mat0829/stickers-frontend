@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import AdultEditUserForm from './AdultEditUserForm'
-import adultUserDelete from '../../../actions/users/adultUsers/adultUserDelete'
-import AdultUserAvatar from './AdultUserAvatar'
+import ChildEditUserForm from './ChildEditUserForm'
+import childUserDelete from '../../../actions/users/childUsers/childUserDelete'
+import AdultUserAvatar from '../../../components/users/adultUsers/AdultUserAvatar'
 
-class AdultUserInfo extends Component{
+class ChildUserInfo extends Component{
   state = {
     showingUserProfile: true,
     showingEditForm: false 
@@ -25,7 +25,7 @@ class AdultUserInfo extends Component{
                 Edit User {this.props.currentUser.name}
               </button>
               <button 
-                onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}> 
+                onClick={() => this.props.childUserDelete(this.props.currentUser.id)}> 
                 Delete User {this.props.currentUser.name}
               </button><br /><br />
               <button> Save Current Avatar </button>
@@ -34,7 +34,7 @@ class AdultUserInfo extends Component{
         }
     
         {showingEditForm
-          ? <div><AdultEditUserForm /></div>
+          ? <div><ChildEditUserForm /></div>
           : null
         }
       </div>
@@ -44,12 +44,12 @@ class AdultUserInfo extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.adultUserReducer.currentUser
+    currentUser: state.childUserReducer.currentUser
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  adultUserDelete: userId => dispatch(adultUserDelete(userId))
+  childUserDelete: userId => dispatch(childUserDelete(userId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdultUserInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(ChildUserInfo)

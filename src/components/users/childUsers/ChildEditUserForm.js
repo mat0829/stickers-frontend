@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import adultUserUpdate from '../../../actions/users/adultUsers/adultUserUpdate'
+import childUserUpdate from '../../../actions/users/childUsers/childUserUpdate'
 
 const submitBtnStyle = {
   color: 'white',
   backgroundImage: 'linear-gradient(to right, #b827fc, #2c90fc, #b8fd33)'
 }
 
-class AdultEditUserForm extends Component {
+class ChildEditUserForm extends Component {
 
   state = {
     id: '',
@@ -31,16 +31,16 @@ class AdultEditUserForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.adultUserUpdate(this.state)
+    this.props.childUserUpdate(this.state)
   }
 
   render() {
     return (
       <div>
-        <h2>Edit Adult User:</h2>
+        <h2>Edit child User:</h2>
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           
-          <label htmlFor="adult-edit-user-name">Name:</label>
+          <label htmlFor="child-edit-user-name">Name:</label>
           <input  
             name="name" 
             value={this.state.name}
@@ -48,7 +48,7 @@ class AdultEditUserForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          <label htmlFor="adult-edit-user-email">Email:</label>
+          <label htmlFor="child-edit-user-email">Email:</label>
           <input 
             name="email" 
             value={this.state.email}
@@ -56,7 +56,7 @@ class AdultEditUserForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          <label htmlFor="adult-edit-user-password">Password:</label>
+          <label htmlFor="child-edit-user-password">Password:</label>
           <input 
             type="password" 
             name="password" 
@@ -65,7 +65,7 @@ class AdultEditUserForm extends Component {
             onChange={this.handleChange}>
           </input><br/><br/>
 
-          <label htmlFor="adult-edit-user-avatar">Avatar Image URL:</label>
+          <label htmlFor="child-edit-user-avatar">Avatar Image URL:</label>
           <input
             name="avatar" 
             value={this.state.avatar}
@@ -86,12 +86,12 @@ class AdultEditUserForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.adultUserReducer.currentUser
+    currentUser: state.childUserReducer.currentUser
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  adultUserUpdate: userInfo => dispatch(adultUserUpdate(userInfo))
+  childUserUpdate: userInfo => dispatch(childUserUpdate(userInfo))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdultEditUserForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ChildEditUserForm)

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import userLoginFetch from '../../../actions/users/adultUsers/userLoginFetch'
+import adultUserLogin from '../../../actions/users/adultUsers/adultUserLogin'
 
 const submitBtnStyle = {
   color: 'white',
@@ -23,7 +23,7 @@ class AdultLoginForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.userLoginFetch(this.state)
+    this.props.adultUserLogin(this.state)
   }
 
   render() {
@@ -61,7 +61,7 @@ class AdultLoginForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
+  adultUserLogin: userInfo => dispatch(adultUserLogin(userInfo))
 })
 
 export default connect(null, mapDispatchToProps)(AdultLoginForm)

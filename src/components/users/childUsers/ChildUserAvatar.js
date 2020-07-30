@@ -5,16 +5,16 @@ const avatarStyle = {
   maxHeight: '25vw'
 }
 
-const AdultUserAvatar = (props) => {
+const ChildUserAvatar = (props) => {
   return (
     <div>
       <img
        style={avatarStyle}
        src={props.imgURL} 
-       alt='adult-avatar'>
+       alt='child-avatar'>
       </img>
     </div>
   )
 }
 
-export default AdultUserAvatar
+export default ChildUserAvatar

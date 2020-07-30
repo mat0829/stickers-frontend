@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Switch, NavLink, Route} from 'react-router-dom'
 
-import AdultUserProfile from './AdultUserProfile'
+import ChildUserProfile from './ChildUserProfile'
 
 const profileBtnStyle = {
   color: 'white',
@@ -14,7 +14,7 @@ const tasksBtnStyle = {
   backgroundImage: 'linear-gradient(to right, purple, blue)'
 }
 
-const addTaskBtnStyle = {
+const stickersBtnStyle = {
   color: 'white',
   backgroundImage: 'linear-gradient(to right, blue, red)'
 }
@@ -24,7 +24,7 @@ const prizesBtnStyle = {
   backgroundImage: 'linear-gradient(to right, red, rgb(250, 120, 142)'
 }
 
-const addPrizeBtnStyle = {
+const prizesCollectionBtnStyle = {
   color: 'white',
   backgroundImage: 'linear-gradient(to right, rgb(250, 120, 142), gold)'
 }
@@ -34,7 +34,7 @@ const logoutBtnStyle = {
   backgroundImage: 'linear-gradient(to right, gold, green)'
 }
 
-class AdultNavBar extends Component {
+class ChildNavBar extends Component {
 
   handleClick = event => {
     event.preventDefault()
@@ -45,31 +45,31 @@ class AdultNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/adult-user-profile">
+        <NavLink to="/child-user-profile">
           <button style={profileBtnStyle}>User Profile</button>
         </NavLink>
   
-        <NavLink to="/adult-tasks-page">
+        <NavLink to="/child-tasks-page">
           <button style={tasksBtnStyle}>Tasks Page</button>
         </NavLink>
               
-        <NavLink to="/add-new-task">
-          <button style={addTaskBtnStyle}>Create a New Task</button>
+        <NavLink to="/stickers-collection">
+          <button style={stickersBtnStyle}>Stickers Collection</button>
         </NavLink>
   
-        <NavLink to="/adult-prizes-page">
+        <NavLink to="/child-prizes-page">
           <button style={prizesBtnStyle}>Prizes Page</button>
         </NavLink>
   
-        <NavLink to="/add-new-prize">
-          <button style={addPrizeBtnStyle}>Add a New Prize</button>
+        <NavLink to="/prizes-collection">
+          <button style={prizesCollectionBtnStyle}>Prizes Collection</button>
         </NavLink>
   
         <NavLink to="/logout">
           <button style={logoutBtnStyle} onClick={this.handleClick}>Logout</button>
         </NavLink>
         <Switch>
-          <Route exact path='/adult-user-profile' component={AdultUserProfile}></Route>
+          <Route exact path='/child-user-profile' component={ChildUserProfile}></Route>
         </Switch>
       </div>
     )
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export const logoutUser = () => ({
-  type: 'LOGOUT_ADULT_USER'
+  type: 'LOGOUT_CHILD_USER'
 })
 
-export default connect(null, mapDispatchToProps)(AdultNavBar)
+export default connect(null, mapDispatchToProps)(ChildNavBar)

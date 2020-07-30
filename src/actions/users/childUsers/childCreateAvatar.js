@@ -1,4 +1,4 @@
-const userCreateAvatar = () => {
+const childCreateAvatar = () => {
   return dispatch => {
     let userChoice
     let avatar
@@ -27,8 +27,8 @@ const userCreateAvatar = () => {
 }
 
 const createAvatar = avatarUrl => ({
-    type: 'CREATE_AVATAR',
+    type: 'CREATE_CHILD_AVATAR',
     payload: avatarUrl
 })
 
-export default userCreateAvatar
+export default childCreateAvatar

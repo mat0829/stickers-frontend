@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import userCreateAvatar from '../../../actions/avatar/userCreateAvatar'
-import userSignupFetch from '../../../actions/users/adultUsers/userSignupFetch'
+import adultCreateAvatar from '../../../actions/users/adultUsers/adultCreateAvatar'
+import adultUserSignup from '../../../actions/users/adultUsers/adultUserSignup'
 import AdultUserAvatar from './AdultUserAvatar'
 
 const btnStyle = {
@@ -11,11 +11,11 @@ const btnStyle = {
 }
 
 class AdultSignupForm extends Component {
-  
+
   state = {
     name: '',
-    email: '',
-    password: '',
+    email: 'email@email.com',
+    password: 'password',
     avatar: ''
   }
 
@@ -27,7 +27,7 @@ class AdultSignupForm extends Component {
 
   handleClick = event => {
     event.preventDefault()
-    let avatar = this.props.userCreateAvatar()
+    let avatar = this.props.adultCreateAvatar()
     this.setState({
       avatar: avatar.payload
     })
@@ -35,13 +35,19 @@ class AdultSignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.userSignupFetch(this.state)
+    this.props.adultUserSignup(this.state)
   }
   
   renderAvatar(){
     if(this.props.currentUser.avatar)
-      return <AdultUserAvatar imgURL={this.props.currentUser.avatar} />
-    return null;
+      return (
+        <div>
+          <h3>(Sample of your Avatar)</h3>
+          <AdultUserAvatar imgURL={this.props.currentUser.avatar} />
+          <h3>(Generate as many times as you wish!)</h3>
+        </div>
+      )
+    return null
   } 
 
   render() {
@@ -49,6 +55,7 @@ class AdultSignupForm extends Component {
       <div>
         <h2>New Adult User:</h2>
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
+          
           <label htmlFor="adult-new-user-name">Name:</label>
           <input  
             name="name" 
@@ -86,6 +93,7 @@ class AdultSignupForm extends Component {
           </input>
           
           {this.renderAvatar()}
+          
           <button
             onClick={this.handleClick}
             style={btnStyle}>Generate an Avatar
@@ -109,8 +117,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userCreateAvatar: () => dispatch(userCreateAvatar()),
-  userSignupFetch: userInfo => dispatch(userSignupFetch(userInfo))
+  adultCreateAvatar: () => dispatch(adultCreateAvatar()),
+  adultUserSignup: userInfo => dispatch(adultUserSignup(userInfo))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdultSignupForm)

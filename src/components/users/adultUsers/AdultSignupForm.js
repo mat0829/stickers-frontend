@@ -48,7 +48,6 @@ class AdultSignupForm extends Component {
     return (
       <div>
         <h2>New Adult User:</h2>
-        {this.renderAvatar()}
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           <label htmlFor="adult-new-user-name">Name:</label>
           <input  
@@ -85,7 +84,8 @@ class AdultSignupForm extends Component {
             onChange={this.handleChange}
             autoComplete="off">
           </input>
-
+          
+          {this.renderAvatar()}
           <button
             onClick={this.handleClick}
             style={btnStyle}>Generate an Avatar

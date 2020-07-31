@@ -27,8 +27,8 @@ const adultCreateAvatar = () => {
 }
 
 const createAvatar = avatarUrl => ({
-    type: 'CREATE_ADULT_AVATAR',
-    payload: avatarUrl
+  type: 'CREATE_ADULT_AVATAR',
+  payload: avatarUrl
 })
 
 export default adultCreateAvatar

@@ -6,6 +6,17 @@ import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
 import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
 
 class AdultUsersContainer extends Component {
+
+  componentDidMount() {
+    if (document.getElementById('adult-login-signup-container')) {
+      this.scrollTo('adult-login-signup-container')
+    } else this.scrollTo('adult-user-info')
+  }
+
+  scrollTo(id) {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
   
   render() {
     const isLoggedIn = this.props.loggedIn
@@ -17,7 +28,7 @@ class AdultUsersContainer extends Component {
       )
     } 
       return (
-        <div>
+        <div id="adult-login-signup-container">
           <AdultLoginform />
           <AdultSignupForm />
         </div>

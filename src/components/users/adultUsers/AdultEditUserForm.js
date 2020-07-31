@@ -32,6 +32,7 @@ class AdultEditUserForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.adultUserUpdate(this.state)
+    this.props.handleClick()
   }
 
   render() {

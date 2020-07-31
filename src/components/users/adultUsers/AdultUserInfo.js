@@ -11,17 +11,23 @@ class AdultUserInfo extends Component{
     showingEditForm: false 
   }
 
+  handleClick = () => {
+    const {showingUserProfile, showingEditForm} = this.state
+    this.setState({showingUserProfile: !showingUserProfile, 
+        showingEditForm: !showingEditForm
+    })
+  }
+
   render() {
     const {showingUserProfile, showingEditForm} = this.state
     return (
       <div>
         {showingUserProfile
-          ? <div> 
+          ? <div id="adult-user-info"> 
               <h1>{this.props.currentUser.name}</h1>
               <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
               <button 
-                onClick={() => this.setState({showingUserProfile: !showingUserProfile, 
-                showingEditForm: !showingEditForm })}>
+                onClick={this.handleClick}>
                 Edit User {this.props.currentUser.name}
               </button>
               <button 
@@ -34,7 +40,7 @@ class AdultUserInfo extends Component{
         }
     
         {showingEditForm
-          ? <div><AdultEditUserForm /></div>
+          ? <div><AdultEditUserForm handleClick={this.handleClick}/></div>
           : null
         }
       </div>

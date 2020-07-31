@@ -32,6 +32,7 @@ class ChildEditUserForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.childUserUpdate(this.state)
+    this.props.handleClick()
   }
 
   render() {

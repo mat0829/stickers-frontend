@@ -52,7 +52,7 @@ class AdultSignupForm extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <h2>New Adult User:</h2>
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           

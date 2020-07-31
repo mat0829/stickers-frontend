@@ -21,14 +21,12 @@ const adultCreateAvatar = () => {
       }
 
     return (
-      dispatch(createAvatar(avatar))
+      dispatch({
+        type: 'CREATE_ADULT_AVATAR',
+        payload: avatar
+      })
     )
   }
 }
-
-const createAvatar = avatarUrl => ({
-  type: 'CREATE_ADULT_AVATAR',
-  payload: avatarUrl
-})
 
 export default adultCreateAvatar

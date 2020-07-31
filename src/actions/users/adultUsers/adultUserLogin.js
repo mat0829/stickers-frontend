@@ -1,6 +1,6 @@
 const adultUserLogin = user => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/login", {
+    fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -19,15 +19,13 @@ const adultUserLogin = user => {
       } else {
         console.log(returnUserData)
         localStorage.setItem("token", returnUserData.jwt)
-        dispatch(loginUser(returnUserData.user))
+        dispatch({
+          type: 'LOGIN_ADULT_USER',
+          payload: returnUserData.user
+        })
       }
     })
   }
 }
-
-const loginUser = userObj => ({
-    type: 'LOGIN_ADULT_USER',
-    payload: userObj
-})
 
 export default adultUserLogin

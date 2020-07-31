@@ -1,7 +1,7 @@
 const adultUserUpdate = user => {
   const token = localStorage.token
   return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
+    fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
@@ -19,15 +19,13 @@ const adultUserUpdate = user => {
         // 'message' if there is an error
       } else {
         console.log(updatedUserData)
-        dispatch(updateUser(updatedUserData))
+        dispatch({
+          type: 'UPDATE_ADULT_USER',
+          payload: updatedUserData
+        })
       }
     })
   }
 }
-
-const updateUser = userObj => ({
-    type: 'UPDATE_ADULT_USER',
-    payload: userObj
-})
 
 export default adultUserUpdate

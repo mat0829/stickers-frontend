@@ -2,7 +2,7 @@ const adultUserProfile = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
-      return fetch("http://localhost:3000/api/v1/profile", {
+      fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -19,16 +19,14 @@ const adultUserProfile = () => {
           // If this happens, you may want to remove the invalid token.
           localStorage.removeItem("token")
         } else {
-          dispatch(loginUser(userData.user))
+          dispatch({
+            type: 'LOGIN_ADULT_USER',
+            payload: userData.user
+          })
         }
       })
     }
   }
 }
-
-const loginUser = userObj => ({
-  type: 'LOGIN_ADULT_USER',
-  payload: userObj
-})
 
 export default adultUserProfile

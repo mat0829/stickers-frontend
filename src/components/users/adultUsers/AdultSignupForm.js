@@ -19,6 +19,14 @@ class AdultSignupForm extends Component {
     avatar: ''
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.setState({
+        avatar: this.props.currentUser.avatar
+      })
+    }
+  }
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -27,9 +35,8 @@ class AdultSignupForm extends Component {
 
   handleClick = event => {
     event.preventDefault()
-    let avatar = this.props.adultCreateAvatar()
     this.setState({
-      avatar: avatar.payload
+      avatar: this.props.adultCreateAvatar()
     })
   }
 

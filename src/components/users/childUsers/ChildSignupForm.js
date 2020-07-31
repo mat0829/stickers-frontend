@@ -19,6 +19,14 @@ class ChildSignupForm extends Component {
     avatar: ''
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.setState({
+        avatar: this.props.currentUser.avatar
+      })
+    }
+  }
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -27,10 +35,7 @@ class ChildSignupForm extends Component {
 
   handleClick = event => {
     event.preventDefault()
-    let avatar = this.props.childCreateAvatar()
-    this.setState({
-      avatar: avatar.payload
-    })
+    this.props.childCreateAvatar()
   }
 
   handleSubmit = event => {
@@ -117,7 +122,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  childCreateAvatar: () => dispatch(childCreateAvatar()),
+  childCreateAvatar: avatar => dispatch(childCreateAvatar(avatar)),
   childUserSignup: userInfo => dispatch(childUserSignup(userInfo))
 })
 

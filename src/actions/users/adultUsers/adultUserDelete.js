@@ -11,7 +11,6 @@ const adultUserDelete = userId => {
         }
       })
       .then(delete localStorage.token)
-      .then(alert(`User Successfully Deleted`))
       .then(dispatch({
         type: 'LOGOUT_ADULT_USER'
       }))

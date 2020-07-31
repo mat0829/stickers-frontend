@@ -20,12 +20,10 @@ const adultCreateAvatar = () => {
           avatar = `http://loremflickr.com/320/240/${userChoice}` // Generates an avatar based on the word given
       }
 
-    return (
-      dispatch({
+      return dispatch({
         type: 'CREATE_ADULT_AVATAR',
         payload: avatar
       })
-    )
   }
 }
 

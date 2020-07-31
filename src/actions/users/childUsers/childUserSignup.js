@@ -1,6 +1,6 @@
 const childUserSignup = user => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/users", {
+    fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -19,15 +19,13 @@ const childUserSignup = user => {
       } else {
         console.log(newUserData)
         localStorage.setItem("token", newUserData.jwt)
-        dispatch(loginUser(newUserData.user))
+        dispatch({
+          type: 'LOGIN_CHILD_USER',
+          payload: newUserData.user
+        })
       }
     })
   }
 }
-
-const loginUser = userObj => ({
-    type: 'LOGIN_CHILD_USER',
-    payload: userObj
-})
 
 export default childUserSignup

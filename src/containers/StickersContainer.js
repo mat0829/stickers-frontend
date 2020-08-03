@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import Stickers from '../components/stickers/Stickers'
+import StickersList from '../components/stickers/StickersList'
 import fetchStickers from '../actions/stickers/fetchStickers'
+
+const stickerBarContainerStyle = {
+  height: '75vh',
+  textAlign: 'center'
+}
 
 class StickersContainer extends Component {
 
+  componentDidMount() {
+    this.props.fetchStickers()
+  }
+
   render() {
     return (
-      <div>
-        <Stickers />
+      <div id='adult-sticker-bar-container' style={stickerBarContainerStyle}>
+        <StickersList stickers={this.props.stickers} loading={this.props.loading}/>
       </div>
     )
   }
@@ -17,8 +26,13 @@ class StickersContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    stickers: state.stickers
+    stickers: state.stickerReducer.stickers,
+    loading: state.stickerReducer.loading
   }
 }
 
-export default connect(mapStateToProps, {fetchStickers})(StickersContainer)
+const mapDispatchToProps = dispatch => ({
+  fetchStickers: () => dispatch(fetchStickers())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StickersContainer)

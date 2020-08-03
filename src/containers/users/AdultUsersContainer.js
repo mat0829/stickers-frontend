@@ -15,7 +15,7 @@ class AdultUsersContainer extends Component {
 
   scrollTo(id) {
     const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth' })
   }
   
   render() {

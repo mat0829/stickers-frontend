@@ -5,10 +5,19 @@ import AdultEditUserForm from './AdultEditUserForm'
 import adultUserDelete from '../../../actions/users/adultUsers/adultUserDelete'
 import AdultUserAvatar from './AdultUserAvatar'
 
+const btnStyle = {
+  color: 'white',
+  backgroundImage: 'linear-gradient(to right, blue, purple, teal)'
+}
+
 class AdultUserInfo extends Component{
   state = {
     showingUserProfile: true,
     showingEditForm: false 
+  }
+
+  scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   handleClick = () => {
@@ -27,14 +36,16 @@ class AdultUserInfo extends Component{
               <h1>{this.props.currentUser.name}</h1>
               <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
               <button 
-                onClick={this.handleClick}>
+                onClick={this.handleClick}
+                style={btnStyle}>
                 Edit User {this.props.currentUser.name}
               </button>
               <button 
-                onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}> 
+                onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}
+                style={btnStyle}> 
                 Delete User {this.props.currentUser.name}
               </button><br /><br />
-              <button> Save Current Avatar </button>
+              <button style={btnStyle} onClick={this.scrollToTop}> Top of Page </button>
             </div>
           : null
         }

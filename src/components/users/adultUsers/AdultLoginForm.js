@@ -11,8 +11,8 @@ const submitBtnStyle = {
 class AdultLoginForm extends Component {
   
   state = {
-    name: '',
-    password: ''
+    name: 'Darth Mow',
+    password: 'password'
   }
 
   handleChange = event => {

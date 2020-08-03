@@ -2,7 +2,10 @@ const fetchStickers = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
-      return fetch("http://localhost:3000/api/v1/stickers", {
+      dispatch({ 
+        type: 'LOADING_STICKERS'
+      })
+      fetch("http://localhost:3000/api/v1/stickers", {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',

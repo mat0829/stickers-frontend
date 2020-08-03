@@ -9,9 +9,9 @@ const AdultUserAvatar = (props) => {
   return (
     <div>
       <img
-       style={avatarStyle}
-       src={props.imgURL} 
-       alt='adult-avatar'>
+        style={avatarStyle}
+        src={props.imgURL} 
+        alt='adult-avatar'>
       </img>
     </div>
   )

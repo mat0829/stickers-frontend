@@ -13,10 +13,10 @@ const btnStyle = {
 class AdultSignupForm extends Component {
 
   state = {
-    name: '',
+    name: 'Darth Mow',
     email: 'email@email.com',
     password: 'password',
-    avatar: ''
+    avatar: 'https://cataas.com/cat?396'
   }
 
   componentDidUpdate(prevProps) {

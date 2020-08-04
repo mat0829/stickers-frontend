@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Switch, NavLink, Route} from 'react-router-dom'
 
+import childUserLogout from '../../../actions/users/childUsers/childUserLogout'
 import ChildUserProfile from './ChildUserProfile'
 
 const profileBtnStyle = {
@@ -39,7 +40,7 @@ class ChildNavBar extends Component {
   handleClick = event => {
     event.preventDefault()
     localStorage.removeItem("token")
-    this.props.logoutUser()
+    this.props.childUserLogout()
   }
 
   render() {
@@ -76,12 +77,4 @@ class ChildNavBar extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
-})
-
-export const logoutUser = () => ({
-  type: 'LOGOUT_CHILD_USER'
-})
-
-export default connect(null, mapDispatchToProps)(ChildNavBar)
+export default connect(null, { childUserLogout })(ChildNavBar)

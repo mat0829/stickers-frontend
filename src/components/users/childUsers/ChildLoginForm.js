@@ -60,8 +60,4 @@ class ChildLoginForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  childUserLogin: userInfo => dispatch(childUserLogin(userInfo))
-})
-
-export default connect(null, mapDispatchToProps)(ChildLoginForm)
+export default connect(null, { childUserLogin })(ChildLoginForm)

@@ -15,8 +15,4 @@ class ChildUserProfile extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  childUserProfile: () => dispatch(childUserProfile())
-})
-
-export default connect(null, mapDispatchToProps)(ChildUserProfile)
+export default connect(null, { childUserProfile })(ChildUserProfile)

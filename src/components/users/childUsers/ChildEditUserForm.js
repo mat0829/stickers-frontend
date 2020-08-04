@@ -91,8 +91,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  childUserUpdate: userInfo => dispatch(childUserUpdate(userInfo))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChildEditUserForm)
+export default connect(mapStateToProps, { childUserUpdate })(ChildEditUserForm)

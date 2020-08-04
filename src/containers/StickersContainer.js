@@ -31,8 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchStickers: () => dispatch(fetchStickers())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(StickersContainer)
+export default connect(mapStateToProps, { fetchStickers })(StickersContainer)

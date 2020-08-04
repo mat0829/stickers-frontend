@@ -15,8 +15,4 @@ class AdultUserProfile extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  adultUserProfile: () => dispatch(adultUserProfile())
-})
-
-export default connect(null, mapDispatchToProps)(AdultUserProfile)
+export default connect(null, { adultUserProfile} )(AdultUserProfile)

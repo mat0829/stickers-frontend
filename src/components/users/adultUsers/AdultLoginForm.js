@@ -60,8 +60,4 @@ class AdultLoginForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  adultUserLogin: userInfo => dispatch(adultUserLogin(userInfo))
-})
-
-export default connect(null, mapDispatchToProps)(AdultLoginForm)
+export default connect(null, { adultUserLogin })(AdultLoginForm)

@@ -121,9 +121,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  childCreateAvatar: avatar => dispatch(childCreateAvatar(avatar)),
-  childUserSignup: userInfo => dispatch(childUserSignup(userInfo))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChildSignupForm)
+export default connect(mapStateToProps, { 
+  childCreateAvatar, 
+  childUserSignup
+})(ChildSignupForm)

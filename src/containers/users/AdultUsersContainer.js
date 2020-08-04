@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
 import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
-import TaskImagesContainer from '../../containers/TaskImagesContainer'
 
 class AdultUsersContainer extends Component {
 
@@ -25,7 +24,6 @@ class AdultUsersContainer extends Component {
       return (
         <div>
           <AdultUserProfile />
-          <TaskImagesContainer />
         </div>
       )
     } 

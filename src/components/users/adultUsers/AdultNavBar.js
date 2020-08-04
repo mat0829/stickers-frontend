@@ -78,11 +78,9 @@ class AdultNavBar extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
-})
-
-export const logoutUser = () => ({
-  type: 'LOGOUT_ADULT_USER'
+  logoutUser: () => dispatch({
+    type: 'LOGOUT_ADULT_USER'
+  })
 })
 
 export default connect(null, mapDispatchToProps)(AdultNavBar)

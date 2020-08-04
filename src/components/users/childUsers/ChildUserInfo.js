@@ -54,8 +54,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  childUserDelete: userId => dispatch(childUserDelete(userId))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChildUserInfo)
+export default connect(mapStateToProps, { childUserDelete })(ChildUserInfo)

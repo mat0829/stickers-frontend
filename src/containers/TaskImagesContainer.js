@@ -31,8 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchTaskImages: () => dispatch(fetchTaskImages())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TaskImagesContainer)
+export default connect(mapStateToProps, { fetchTaskImages })(TaskImagesContainer)

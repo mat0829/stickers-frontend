@@ -24,7 +24,7 @@ const fetchStickers = () => {
           console.log(stickersData)
           dispatch({
             type: 'FETCH_STICKERS',
-            payload: stickersData 
+            stickers: stickersData 
           })
         }
       })

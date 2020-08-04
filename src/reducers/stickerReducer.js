@@ -10,7 +10,7 @@ const stickerReducer = (state = {stickers: [], loading: false}, action) => {
       case 'FETCH_STICKERS':
         return {
             ...state,
-            stickers: action.payload,
+            stickers: action.stickers,
             loading: false
         }
       default: 

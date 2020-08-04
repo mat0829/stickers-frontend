@@ -24,7 +24,7 @@ const fetchTaskImages = () => {
           console.log(taskImagesData)
           dispatch({
             type: 'FETCH_TASK_IMAGES',
-            payload: taskImagesData
+            taskImages: taskImagesData
           })
         }
       })

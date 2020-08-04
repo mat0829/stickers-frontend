@@ -21,7 +21,7 @@ const adultUserLogin = user => {
         localStorage.setItem("token", returnUserData.jwt)
         dispatch({
           type: 'LOGIN_ADULT_USER',
-          payload: returnUserData.user
+          user: returnUserData.user
         })
       }
     })

@@ -21,7 +21,7 @@ const adultUserProfile = () => {
         } else {
           dispatch({
             type: 'LOGIN_ADULT_USER',
-            payload: userData.user
+            user: userData.user
           })
         }
       })

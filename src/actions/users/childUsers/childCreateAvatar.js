@@ -22,7 +22,7 @@ const childCreateAvatar = () => {
 
       return dispatch({
         type: 'CREATE_CHILD_AVATAR',
-        payload: avatar
+        avatar: avatar
       })
   }
 }

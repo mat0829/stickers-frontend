@@ -21,7 +21,7 @@ const childUserSignup = user => {
         localStorage.setItem("token", newUserData.jwt)
         dispatch({
           type: 'LOGIN_CHILD_USER',
-          payload: newUserData.user
+          user: newUserData.user
         })
       }
     })

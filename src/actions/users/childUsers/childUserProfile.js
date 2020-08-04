@@ -21,7 +21,7 @@ const childUserProfile = () => {
         } else {
           dispatch({
             type: 'LOGIN_CHILD_USER',
-            payload: userData.user
+            user: userData.user
           })
         }
       })

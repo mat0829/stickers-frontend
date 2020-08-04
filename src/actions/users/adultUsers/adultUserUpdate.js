@@ -21,7 +21,7 @@ const adultUserUpdate = user => {
         console.log(updatedUserData)
         dispatch({
           type: 'UPDATE_ADULT_USER',
-          payload: updatedUserData
+          updatedUser: updatedUserData
         })
       }
     })

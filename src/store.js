@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import adultUserReducer from './reducers/users/adultUserReducer'
 import childUserReducer from './reducers/users/childUserReducer'
+import taskImageReducer from './reducers/taskImageReducer'
 import stickerReducer from './reducers/stickerReducer'
 
 const rootReducer = combineReducers({
   adultUserReducer,
   childUserReducer,
+  taskImageReducer,
   stickerReducer
 })
 

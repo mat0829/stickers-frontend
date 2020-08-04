@@ -17,12 +17,12 @@ const stickerImageStyle = {
   height: '75px'
 }
 
-class StickersList extends Component {
+class StickersCollection extends Component {
 
   renderStickers = () => {
     return this.props.stickers.map(sticker => 
-      <span style={spanStyle}>
-        <img key ={sticker.id} src={sticker.image} alt={`sticker ${sticker.id}`} style={stickerImageStyle}></img>
+      <span key ={sticker.id} style={spanStyle}>
+        <img src={sticker.image} alt={`sticker ${sticker.id}`} style={stickerImageStyle}></img>
       </span>)
   }
 
@@ -35,4 +35,4 @@ class StickersList extends Component {
   }
 }
 
-export default StickersList
+export default StickersCollection

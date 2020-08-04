@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import StickersList from '../components/stickers/StickersList'
+import StickersCollection from '../components/stickers/StickersCollection'
 import fetchStickers from '../actions/stickers/fetchStickers'
 
 const stickerBarContainerStyle = {
@@ -18,7 +18,7 @@ class StickersContainer extends Component {
   render() {
     return (
       <div id='adult-sticker-bar-container' style={stickerBarContainerStyle}>
-        <StickersList stickers={this.props.stickers} loading={this.props.loading}/>
+        <StickersCollection stickers={this.props.stickers} loading={this.props.loading}/>
       </div>
     )
   }

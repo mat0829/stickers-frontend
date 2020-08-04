@@ -70,6 +70,7 @@ class AdultNavBar extends Component {
         </NavLink>
         <Switch>
           <Route exact path='/adult-user-profile' component={AdultUserProfile}></Route>
+          <Route exact path='/add-new-task' component={AdultUserProfile}></Route>
         </Switch>
       </div>
     )

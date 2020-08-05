@@ -46,7 +46,7 @@ class ChildNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/child-user-profile">
+        <NavLink to="/kids-homepage">
           <button style={profileBtnStyle}>User Profile</button>
         </NavLink>
   
@@ -70,7 +70,7 @@ class ChildNavBar extends Component {
           <button style={logoutBtnStyle} onClick={this.handleClick}>Logout</button>
         </NavLink>
         <Switch>
-          <Route exact path='/child-user-profile' component={ChildUserProfile}></Route>
+          <Route exact path='/kids-homepage' component={ChildUserProfile}></Route>
         </Switch>
       </div>
     )

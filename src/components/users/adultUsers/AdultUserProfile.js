@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import adultUserProfile from '../../../actions/users/adultUsers/adultUserProfile'
 import AdultUserInfo from './AdultUserInfo'
 
 class AdultUserProfile extends Component {
+
+  componentDidMount() {
+    this.props.adultUserProfile()
+  }
   
   render() {
     return (
@@ -15,4 +19,4 @@ class AdultUserProfile extends Component {
   }
 }
 
-export default connect(null, { adultUserProfile} )(AdultUserProfile)
+export default connect(null, { adultUserProfile })(AdultUserProfile)

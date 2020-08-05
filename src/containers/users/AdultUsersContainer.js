@@ -3,14 +3,15 @@ import {connect} from 'react-redux'
 
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
-import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
+import AdultNavBar from '../../components/users/adultUsers/AdultNavBar'
+import adultUserProfile from '../../actions/users/adultUsers/adultUserProfile'
 
 class AdultUsersContainer extends Component {
 
   componentDidMount() {
     if (document.getElementById('adult-login-signup-container')) {
       this.scrollTo('adult-login-signup-container')
-    } else this.scrollTo('adult-user-info')
+    }
   }
 
   scrollTo(id) {
@@ -23,7 +24,7 @@ class AdultUsersContainer extends Component {
     if (isLoggedIn) {
       return (
         <div>
-          <AdultUserProfile />
+          <AdultNavBar />
         </div>
       )
     } 
@@ -42,4 +43,4 @@ const mapStateToProps = function(state) {
   }
 }
 
-export default connect(mapStateToProps)(AdultUsersContainer)
+export default connect(mapStateToProps, { adultUserProfile })(AdultUsersContainer)

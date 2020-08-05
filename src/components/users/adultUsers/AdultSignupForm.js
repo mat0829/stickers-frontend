@@ -64,7 +64,8 @@ class AdultSignupForm extends Component {
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           
           <label htmlFor="adult-new-user-name">Name:</label>
-          <input  
+          <input
+            id="adult-new-user-name"
             name="name" 
             placeholder="Enter Your Name"
             value={this.state.name}
@@ -73,7 +74,8 @@ class AdultSignupForm extends Component {
           </input><br/><br/>
 
           <label htmlFor="adult-new-user-email">Email:</label>
-          <input 
+          <input
+            id="adult-new-user-email"
             name="email" 
             placeholder="Enter Your Email Address"
             value={this.state.email}
@@ -82,7 +84,8 @@ class AdultSignupForm extends Component {
           </input><br/><br/>
 
           <label htmlFor="adult-new-user-password">Password:</label>
-          <input 
+          <input
+            id="adult-new-user-password"
             type="password" 
             name="password" 
             placeholder="Create a Password"
@@ -92,6 +95,7 @@ class AdultSignupForm extends Component {
 
           <label htmlFor="adult-new-user-avatar">Avatar Image URL:</label>
           <input
+            id="adult-new-user-avatar"
             name="avatar" 
             placeholder="Add your own or --->"
             value={this.state.avatar}

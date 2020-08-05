@@ -3,14 +3,14 @@ import {connect} from 'react-redux'
 
 import ChildLoginform from '../../components/users/childUsers/ChildLoginForm'
 import ChildSignupForm from '../../components/users/childUsers/ChildSignupForm'
-import ChildUserProfile from '../../components/users/childUsers/ChildUserProfile'
+import ChildNavBar from '../../components/users/childUsers/ChildNavBar'
 
 class ChildUsersContainer extends Component {
 
   componentDidMount() {
     if (document.getElementById('child-login-signup-container')) {
       this.scrollTo('child-login-signup-container')
-    } else this.scrollTo('child-user-info')
+    }
   }
 
   scrollTo(id) {
@@ -23,7 +23,7 @@ class ChildUsersContainer extends Component {
     if (isLoggedIn) {
       return (
         <div>
-          <ChildUserProfile />
+          <ChildNavBar />
         </div>
       )
     } 

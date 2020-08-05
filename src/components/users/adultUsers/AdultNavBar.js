@@ -4,6 +4,7 @@ import {Switch, NavLink, Route} from 'react-router-dom'
 
 import adultUserLogout from '../../../actions/users/adultUsers/adultUserLogout'
 import AdultUserProfile from './AdultUserProfile'
+import NewTaskForm from '../../tasks/NewTaskForm'
 
 const profileBtnStyle = {
   color: 'white',
@@ -46,7 +47,7 @@ class AdultNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/adult-user-profile">
+        <NavLink to="/adults-homepage">
           <button style={profileBtnStyle}>User Profile</button>
         </NavLink>
   
@@ -70,8 +71,8 @@ class AdultNavBar extends Component {
           <button style={logoutBtnStyle} onClick={this.handleClick}>Logout</button>
         </NavLink>
         <Switch>
-          <Route exact path='/adult-user-profile' component={AdultUserProfile}></Route>
-          <Route exact path='/add-new-task' component={AdultUserProfile}></Route>
+          <Route exact path='/adults-homepage' component={AdultUserProfile}></Route>
+          <Route exact path='/add-new-task' component={NewTaskForm}></Route>
         </Switch>
       </div>
     )

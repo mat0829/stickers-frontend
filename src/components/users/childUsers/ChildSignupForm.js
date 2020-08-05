@@ -62,7 +62,8 @@ class ChildSignupForm extends Component {
         <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
           
           <label htmlFor="child-new-user-name">Name:</label>
-          <input  
+          <input
+            id="child-new-user-name"
             name="name" 
             placeholder="Enter Your Name"
             value={this.state.name}
@@ -71,7 +72,8 @@ class ChildSignupForm extends Component {
           </input><br/><br/>
 
           <label htmlFor="child-new-user-email">Email:</label>
-          <input 
+          <input
+            id="child-new-user-email"
             name="email" 
             placeholder="Enter Your Email Address"
             value={this.state.email}
@@ -80,7 +82,8 @@ class ChildSignupForm extends Component {
           </input><br/><br/>
 
           <label htmlFor="child-new-user-password">Password:</label>
-          <input 
+          <input
+            id="child-new-user-password"
             type="password" 
             name="password" 
             placeholder="Create a Password"
@@ -90,6 +93,7 @@ class ChildSignupForm extends Component {
 
           <label htmlFor="child-new-user-avatar">Avatar Image URL:</label>
           <input
+            id="child-new-user-avatar"
             name="avatar" 
             placeholder="Add your own or --->"
             value={this.state.avatar}

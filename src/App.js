@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 
 import MainHeader from './MainHeader'
 import IndexNavBar from './IndexNavBar'
-import AdultNavBar from './components/users/adultUsers/AdultNavBar'
+import adultUserProfile from './actions/users/adultUsers/adultUserProfile'
+import childUserProfile from './actions/users/childUsers/childUserProfile'
 import AdultUsersContainer from './containers/users/AdultUsersContainer'
-import ChildNavBar from './components/users/childUsers/ChildNavBar'
 import ChildUsersContainer from './containers/users/ChildUsersContainer'
 
 const appStyle = {
@@ -15,6 +15,13 @@ const appStyle = {
 }
 
 class App extends Component {
+
+  componentDidMount() {
+    if (this.props.adultLoggedIn) {
+      this.props.adultUserProfile()
+    } else if (this.props.childLoggedIn) 
+      this.props.childUserProfile()
+  }
   
   render() {
     const adultLoggedIn = this.props.adultLoggedIn
@@ -23,7 +30,6 @@ class App extends Component {
       return (
         <div className="App" style={appStyle}>
           <MainHeader />
-          <AdultNavBar />
           <AdultUsersContainer />
         </div>
       )
@@ -31,7 +37,6 @@ class App extends Component {
       return (
         <div className="App" style={appStyle}>
           <MainHeader />
-          <ChildNavBar />
           <ChildUsersContainer />
         </div>
       )
@@ -52,4 +57,7 @@ const mapStateToProps = function(state) {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, {
+  adultUserProfile,
+  childUserProfile
+ })(App)

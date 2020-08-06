@@ -15,7 +15,7 @@ class AdultSignupForm extends Component {
     name: 'Darth Mow',
     email: 'email@email.com',
     password: 'password',
-    avatar: 'https://cataas.com/cat?396'
+    avatar: 'https://cataas.com/cat/595f2810557291a9750ebfdc'
   }
 
   avatarGenerator = () => {

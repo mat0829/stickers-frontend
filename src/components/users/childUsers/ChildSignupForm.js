@@ -16,7 +16,7 @@ class ChildSignupForm extends Component {
     name: 'Meeyu',
     email: 'email@email.com',
     password: 'password',
-    avatar: ''
+    avatar: 'https://cataas.com/cat/595f280e557291a9750ebfa9'
   }
 
   componentDidUpdate(prevProps) {
@@ -44,11 +44,11 @@ class ChildSignupForm extends Component {
   }
   
   renderAvatar(){
-    if(this.props.currentUser.avatar)
+    if(this.state.avatar)
       return (
         <div>
           <h3>(Sample of your Avatar)</h3>
-          <ChildUserAvatar imgURL={this.props.currentUser.avatar} />
+          <ChildUserAvatar imgURL={this.state.avatar} />
           <h3>(Generate as many times as you wish!)</h3>
         </div>
       )

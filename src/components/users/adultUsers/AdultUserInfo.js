@@ -22,8 +22,9 @@ class AdultUserInfo extends Component{
 
   handleClick = () => {
     const {showingUserProfile, showingEditForm} = this.state
-    this.setState({showingUserProfile: !showingUserProfile, 
-        showingEditForm: !showingEditForm
+    this.setState({
+      showingUserProfile: !showingUserProfile, 
+      showingEditForm: !showingEditForm
     })
   }
 

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import addNewTask from '../../actions/tasks/addNewTask'
 import TaskImagesContainer from '../../containers/TaskImagesContainer'
+import TaskImageInfo from '../taskImages/TaskImageInfo'
 import StickersContainer from '../../containers/StickersContainer'
 
 const submitBtnStyle = {
@@ -15,16 +16,26 @@ class NewTaskForm extends Component {
   state = {
     taskGiverId: `${this.props.currentUser.id}`,
     taskReceiverId: '2',
-    name: '',
+    name: 'Test',
     image: '',
     value: '5',
     completed: false,
-    stickerImage: ''
+    stickerImage: '',
+    showingTaskImageCollection: true,
+    showingTaskImageInfo: false
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    })
+  }
+
+  handleClick = () => {
+    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
+    this.setState({
+      showingTaskImageCollection: !showingTaskImageCollection, 
+      showingTaskImageInfo: !showingTaskImageInfo
     })
   }
 
@@ -34,6 +45,7 @@ class NewTaskForm extends Component {
     this.setState({
       image: taskImage
     })
+    this.handleClick()
   }
 
   handleStickerClick = event => {
@@ -50,6 +62,7 @@ class NewTaskForm extends Component {
   }
 
   render() {
+    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
     return (
       <div>
         <h1>Create a new Task</h1>
@@ -74,7 +87,15 @@ class NewTaskForm extends Component {
               autoComplete="off">
             </input><br/><br/>
 
-            <TaskImagesContainer handleTaskClick={this.handleTaskClick}/>
+            {showingTaskImageCollection
+              ? <TaskImagesContainer handleTaskClick={this.handleTaskClick}/>
+              : null
+            }
+
+            {showingTaskImageInfo
+              ? <TaskImageInfo imgURL={this.state.image} handleClick={this.handleClick}/>: null
+            }
+            
 
             <StickersContainer handleStickerClick={this.handleStickerClick}/>
 

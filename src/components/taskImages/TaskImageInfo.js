@@ -19,9 +19,12 @@ const TaskImageInfo = (props) => {
         src={props.imgURL}
         alt='taskImage' >
       </img><br/>
+
       <button
         style={btnStyle}
-        onClick={props.handleShowHideTaskImage}>Select a Different Task Image</button>
+        onClick={props.handleShowHideTaskImage}>
+        Select a Different Task Image
+      </button>
     </div>
   )
 }

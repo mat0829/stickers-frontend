@@ -19,9 +19,12 @@ const StickerInfo = (props) => {
         src={props.imgURL}
         alt='sticker' >
       </img><br/>
+      
       <button
         style={btnStyle}
-        onClick={props.handleShowHideSticker}>Select a Different Sticker</button>
+        onClick={props.handleShowHideSticker}>
+        Select a Different Sticker
+      </button>
     </div>
   )
 }

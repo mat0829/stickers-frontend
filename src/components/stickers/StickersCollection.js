@@ -21,20 +21,27 @@ class StickersCollection extends Component {
 
   renderStickers = () => {
     return this.props.stickers.map(sticker => 
-      <span key ={sticker.id} style={spanStyle}>
-        <img 
-          src={sticker.image} 
-          alt={`sticker ${sticker.id}`}
-          onClick={this.props.handleStickerClick}
-          style={stickerImageStyle}>
-        </img>
+      <span 
+        key ={sticker.id} 
+        style={spanStyle}>
+          <img 
+            src={sticker.image} 
+            alt={`sticker ${sticker.id}`}
+            onClick={this.props.handleStickerClick}
+            style={stickerImageStyle}>
+          </img>
       </span>)
   }
 
   render() {
     return (
-      <div id='adult-sticker-bar' style={stickerBarStyle}>
-        {this.props.loading ?  <h1>"Loading..."</h1> : this.renderStickers()}
+      <div 
+        id='adult-sticker-bar' 
+        style={stickerBarStyle}>
+          {this.props.loading 
+            ?  <h1>"Loading..."</h1> 
+            :  this.renderStickers()
+          }
       </div>
     )
   }

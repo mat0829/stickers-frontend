@@ -28,6 +28,15 @@ class NewTaskForm extends Component {
     showingStickerInfo: false
   }
 
+  componentDidMount() {
+    this.scrollTo('new-task-form-container')
+  }
+
+  scrollTo(id) {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -81,7 +90,7 @@ class NewTaskForm extends Component {
       showingStickerInfo
     } = this.state
     return (
-      <div>
+      <div id="new-task-form-container">
         <h1>Create a new Task</h1>
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-task-name">Task Name:</label>
@@ -105,25 +114,37 @@ class NewTaskForm extends Component {
             </input><br/><br/>
 
             {showingTaskImageCollection
-              ? <TaskImagesContainer handleTaskClick={this.handleTaskClick}/>
+              ? <TaskImagesContainer 
+                  scrollTo={this.scrollTo} 
+                  handleTaskClick={this.handleTaskClick}
+                />
               : null
             }
 
             {showingTaskImageInfo
               ? <div>
-                  <TaskImageInfo imgURL={this.state.image} handleShowHideTaskImage={this.handleShowHideTaskImage}/><br/>
+                  <TaskImageInfo
+                    imgURL={this.state.image}
+                    handleShowHideTaskImage={this.handleShowHideTaskImage}
+                  /><br/>
                 </div>
               : null
             }
 
             {showingStickerCollection
-              ? <StickersContainer handleStickerClick={this.handleStickerClick}/>
+              ? <StickersContainer
+                  scrollTo={this.scrollTo}
+                  handleStickerClick={this.handleStickerClick}
+                />
               : null
             }
 
             {showingStickerInfo
               ? <div>
-                  <StickerInfo imgURL={this.state.stickerImage} handleShowHideSticker={this.handleShowHideSticker}/><br/>
+                  <StickerInfo
+                    imgURL={this.state.stickerImage} 
+                    handleShowHideSticker={this.handleShowHideSticker}
+                  /><br/>
                 </div>
               : null
             }

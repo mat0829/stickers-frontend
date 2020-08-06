@@ -17,6 +17,7 @@ class StickersContainer extends Component {
 
   componentDidMount() {
     this.props.fetchStickers()
+    this.props.scrollTo('adult-sticker-bar-container')
   }
 
   render() {

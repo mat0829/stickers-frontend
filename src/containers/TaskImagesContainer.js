@@ -19,6 +19,7 @@ class TaskImagesContainer extends Component {
 
   componentDidMount() {
     this.props.fetchTaskImages()
+    this.props.scrollTo('adult-task-image-bar-container')
   }
 
   render() {

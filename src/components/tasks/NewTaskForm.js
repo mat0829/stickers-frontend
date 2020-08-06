@@ -5,6 +5,7 @@ import addNewTask from '../../actions/tasks/addNewTask'
 import TaskImagesContainer from '../../containers/TaskImagesContainer'
 import TaskImageInfo from '../taskImages/TaskImageInfo'
 import StickersContainer from '../../containers/StickersContainer'
+import StickerInfo from '../stickers/StickerInfo'
 
 const submitBtnStyle = {
   color: 'white',
@@ -22,20 +23,14 @@ class NewTaskForm extends Component {
     completed: false,
     stickerImage: '',
     showingTaskImageCollection: true,
-    showingTaskImageInfo: false
+    showingTaskImageInfo: false,
+    showingStickerCollection: true,
+    showingStickerInfo: false
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-  }
-
-  handleClick = () => {
-    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
-    this.setState({
-      showingTaskImageCollection: !showingTaskImageCollection, 
-      showingTaskImageInfo: !showingTaskImageInfo
     })
   }
 
@@ -45,7 +40,15 @@ class NewTaskForm extends Component {
     this.setState({
       image: taskImage
     })
-    this.handleClick()
+    this.handleShowHideTaskImage()
+  }
+
+  handleShowHideTaskImage = () => {
+    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
+    this.setState({
+      showingTaskImageCollection: !showingTaskImageCollection, 
+      showingTaskImageInfo: !showingTaskImageInfo
+    })
   }
 
   handleStickerClick = event => {
@@ -53,6 +56,15 @@ class NewTaskForm extends Component {
     const sticker = event.target.src
     this.setState({
       stickerImage: sticker
+    })
+    this.handleShowHideSticker()
+  }
+
+  handleShowHideSticker = () => {
+    const {showingStickerCollection, showingStickerInfo} = this.state
+    this.setState({
+      showingStickerCollection: !showingStickerCollection, 
+      showingStickerInfo: !showingStickerInfo
     })
   }
 
@@ -62,7 +74,12 @@ class NewTaskForm extends Component {
   }
 
   render() {
-    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
+    const {
+      showingTaskImageCollection, 
+      showingTaskImageInfo,
+      showingStickerCollection,
+      showingStickerInfo
+    } = this.state
     return (
       <div>
         <h1>Create a new Task</h1>
@@ -93,11 +110,23 @@ class NewTaskForm extends Component {
             }
 
             {showingTaskImageInfo
-              ? <TaskImageInfo imgURL={this.state.image} handleClick={this.handleClick}/>: null
+              ? <div>
+                  <TaskImageInfo imgURL={this.state.image} handleShowHideTaskImage={this.handleShowHideTaskImage}/><br/>
+                </div>
+              : null
             }
-            
 
-            <StickersContainer handleStickerClick={this.handleStickerClick}/>
+            {showingStickerCollection
+              ? <StickersContainer handleStickerClick={this.handleStickerClick}/>
+              : null
+            }
+
+            {showingStickerInfo
+              ? <div>
+                  <StickerInfo imgURL={this.state.stickerImage} handleShowHideSticker={this.handleShowHideSticker}/><br/>
+                </div>
+              : null
+            }
 
             <label htmlFor="new-task-value">Choose Task Sticker Value:</label>
               <select id="new-task-value" name="value" onChange={this.handleChange}>

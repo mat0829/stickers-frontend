@@ -26,6 +26,7 @@ class App extends Component {
   render() {
     const adultLoggedIn = this.props.adultLoggedIn
     const childLoggedIn = this.props.childLoggedIn
+
     if (adultLoggedIn) {
       return (
         <div className="App" style={appStyle}>
@@ -42,9 +43,11 @@ class App extends Component {
       )
     }
       return (
-        <div className="App" style={appStyle}>
-          <MainHeader />
-          <IndexNavBar />
+        <div 
+          className="App" 
+          style={appStyle}>
+            <MainHeader />
+            <IndexNavBar />
         </div>
       )
   }

@@ -22,12 +22,21 @@ class StickersContainer extends Component {
 
   render() {
     return (
-      <div id='adult-sticker-bar-container' style={stickerBarContainerStyle}>
-        <label htmlFor="adult-sticker-bar" style={labelStyle}>Click to Select a Sticker:</label>
-        <StickersCollection 
-          stickers={this.props.stickers}
-          handleStickerClick={this.props.handleStickerClick}
-          loading={this.props.loading}/>
+      <div 
+        id='adult-sticker-bar-container' 
+        style={stickerBarContainerStyle}>
+
+          <label 
+            htmlFor="adult-sticker-bar" 
+            style={labelStyle}>
+              Click to Select a Sticker:
+          </label>
+
+          <StickersCollection 
+            stickers={this.props.stickers}
+            handleStickerClick={this.props.handleStickerClick}
+            loading={this.props.loading}
+          />
       </div>
     )
   }

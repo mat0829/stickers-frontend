@@ -47,30 +47,46 @@ class ChildNavBar extends Component {
     return (
       <div>
         <NavLink to="/kids-homepage">
-          <button style={profileBtnStyle}>User Profile</button>
+          <button style={profileBtnStyle}>
+            User Profile
+          </button>
         </NavLink>
   
         <NavLink to="/child-tasks-page">
-          <button style={tasksBtnStyle}>Tasks Page</button>
+          <button style={tasksBtnStyle}>
+            Tasks Page
+          </button>
         </NavLink>
               
         <NavLink to="/stickers-collection">
-          <button style={stickersBtnStyle}>Stickers Collection</button>
+          <button style={stickersBtnStyle}>
+            Stickers Collection
+          </button>
         </NavLink>
   
         <NavLink to="/child-prizes-page">
-          <button style={prizesBtnStyle}>Prizes Page</button>
+          <button style={prizesBtnStyle}>
+            Prizes Page
+          </button>
         </NavLink>
   
         <NavLink to="/prizes-collection">
-          <button style={prizesCollectionBtnStyle}>Prizes Collection</button>
+          <button style={prizesCollectionBtnStyle}>
+            Prizes Collection
+          </button>
         </NavLink>
   
         <NavLink to="/logout">
-          <button style={logoutBtnStyle} onClick={this.handleClick}>Logout</button>
+          <button style={logoutBtnStyle} onClick={this.handleClick}>
+            Logout
+          </button>
         </NavLink>
+
         <Switch>
-          <Route exact path='/kids-homepage' component={ChildUserProfile}></Route>
+          <Route 
+            exact path='/kids-homepage' 
+            component={ChildUserProfile}>
+          </Route>
         </Switch>
       </div>
     )

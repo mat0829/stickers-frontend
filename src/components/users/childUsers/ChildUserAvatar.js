@@ -9,9 +9,9 @@ const ChildUserAvatar = (props) => {
   return (
     <div>
       <img
-       style={avatarStyle}
-       src={props.imgURL} 
-       alt='child-avatar'>
+        style={avatarStyle}
+        src={props.imgURL} 
+        alt='child-avatar'>
       </img>
     </div>
   )

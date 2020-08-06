@@ -11,6 +11,7 @@ const btnStyle = {
 }
 
 class AdultUserInfo extends Component{
+  
   state = {
     showingUserProfile: true,
     showingEditForm: false 

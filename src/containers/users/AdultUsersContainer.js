@@ -21,6 +21,7 @@ class AdultUsersContainer extends Component {
   
   render() {
     const isLoggedIn = this.props.loggedIn
+    
     if (isLoggedIn) {
       return (
         <div>

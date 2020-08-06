@@ -24,12 +24,21 @@ class TaskImagesContainer extends Component {
 
   render() {
     return (
-      <div id='adult-task-image-bar-container' style={taskImageBarContainerStyle}>
-        <label htmlFor="adult-task-image-bar" style={labelStyle}>Click to Select a Task Image:</label>
-        <TaskImagesCollection 
-          taskImages={this.props.taskImages} 
-          handleTaskClick={this.props.handleTaskClick}
-          loading={this.props.loading}/>
+      <div 
+        id='adult-task-image-bar-container' 
+        style={taskImageBarContainerStyle}>
+          
+          <label 
+            htmlFor="adult-task-image-bar" 
+            style={labelStyle}>
+              Click to Select a Task Image:
+          </label>
+
+          <TaskImagesCollection 
+            taskImages={this.props.taskImages} 
+            handleTaskClick={this.props.handleTaskClick}
+            loading={this.props.loading}
+          />
       </div>
     )
   }

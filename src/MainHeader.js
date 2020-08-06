@@ -16,8 +16,14 @@ const HeaderImgStyle = {
 
 const MainHeader = () => {
   return (
-    <div style={HeaderStyle} id="stickers-header">
-      <img style={HeaderImgStyle} src="https://i.imgur.com/xDlD33Q.jpg" alt="stickers-header"/>
+    <div 
+      style={HeaderStyle} 
+      id="stickers-header">
+        <img
+          style={HeaderImgStyle} 
+          src="https://i.imgur.com/xDlD33Q.jpg" 
+          alt="stickers-header">
+        </img>
     </div>
   )
 }

@@ -4,8 +4,12 @@ import {connect} from 'react-redux'
 import StickersCollection from '../components/stickers/StickersCollection'
 import fetchStickers from '../actions/stickers/fetchStickers'
 
+const labelStyle = {
+  fontSize: '35px'
+}
+
 const stickerBarContainerStyle = {
-  height: '75vh',
+  height: 'auto',
   textAlign: 'center'
 }
 
@@ -18,7 +22,11 @@ class StickersContainer extends Component {
   render() {
     return (
       <div id='adult-sticker-bar-container' style={stickerBarContainerStyle}>
-        <StickersCollection stickers={this.props.stickers} loading={this.props.loading}/>
+        <label htmlFor="adult-sticker-bar" style={labelStyle}>Click to Select a Sticker:</label>
+        <StickersCollection 
+          stickers={this.props.stickers}
+          handleStickerClick={this.props.handleStickerClick}
+          loading={this.props.loading}/>
       </div>
     )
   }

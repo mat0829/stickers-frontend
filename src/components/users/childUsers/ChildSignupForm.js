@@ -13,7 +13,7 @@ const btnStyle = {
 class ChildSignupForm extends Component {
 
   state = {
-    name: '',
+    name: 'Meeyu',
     email: 'email@email.com',
     password: 'password',
     avatar: ''

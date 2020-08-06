@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import addNewTask from '../../actions/tasks/addNewTask'
+import TaskImagesContainer from '../../containers/TaskImagesContainer'
+import StickersContainer from '../../containers/StickersContainer'
 
 const submitBtnStyle = {
   color: 'white',
@@ -11,18 +13,34 @@ const submitBtnStyle = {
 class NewTaskForm extends Component {
 
   state = {
-    taskGiverId: '1',
+    taskGiverId: `${this.props.currentUser.id}`,
     taskReceiverId: '2',
     name: '',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTareRMaMfcc1mZ9V2HZOco4EW_Nv-CoSZAg&usqp=CAU',
-    value: '',
+    image: '',
+    value: '5',
     completed: false,
-    stickerImage: 'https://i.imgur.com/VEt4BPW.png'
+    stickerImage: ''
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    })
+  }
+
+  handleTaskClick = event => {
+    event.preventDefault()
+    const taskImage = event.target.src
+    this.setState({
+      image: taskImage
+    })
+  }
+
+  handleStickerClick = event => {
+    event.preventDefault()
+    const sticker = event.target.src
+    this.setState({
+      stickerImage: sticker
     })
   }
 
@@ -56,8 +74,12 @@ class NewTaskForm extends Component {
               autoComplete="off">
             </input><br/><br/>
 
+            <TaskImagesContainer handleTaskClick={this.handleTaskClick}/>
+
+            <StickersContainer handleStickerClick={this.handleStickerClick}/>
+
             <label htmlFor="new-task-value">Choose Task Sticker Value:</label>
-              <select id="new-task-value" name="value" value={this.state.value} onChange={this.handleChange}>
+              <select id="new-task-value" name="value" onChange={this.handleChange}>
                 <option value="5">5 Sticker Points</option>
                 <option value="10">10 Sticker Points</option>
                 <option value="20">20 Sticker Points</option>
@@ -69,7 +91,7 @@ class NewTaskForm extends Component {
                 <option value="500">500 Sticker Points</option>
                 <option value="750">750 Sticker Points</option>
                 <option value="1000">1000 Sticker Points</option>
-              </select><br /><br />
+              </select><br/><br/>
 
               <input
                 style={submitBtnStyle}

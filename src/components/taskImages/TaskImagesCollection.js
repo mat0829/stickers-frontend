@@ -22,13 +22,18 @@ class TaskImagesCollection extends Component {
   renderTaskImages = () => {
     return this.props.taskImages.map(taskImage => 
       <span key={taskImage.id} style={spanStyle}>
-        <img src={taskImage.imageUrl} alt={`taskImage ${taskImage.id}`} style={taskImageStyle}></img>
+        <img 
+          src={taskImage.imageUrl} 
+          alt={`taskImage ${taskImage.id}`}
+          onClick={this.props.handleTaskClick}
+          style={taskImageStyle}>
+        </img>
       </span>)
   }
 
   render() {
     return (
-      <div id='adult-taskImage-bar' style={taskImageBarStyle}>
+      <div id='adult-task-image-bar' style={taskImageBarStyle}>
         {this.props.loading ?  <h1>"Loading..."</h1> : this.renderTaskImages()}
       </div>
     )

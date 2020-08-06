@@ -22,7 +22,12 @@ class StickersCollection extends Component {
   renderStickers = () => {
     return this.props.stickers.map(sticker => 
       <span key ={sticker.id} style={spanStyle}>
-        <img src={sticker.image} alt={`sticker ${sticker.id}`} style={stickerImageStyle}></img>
+        <img 
+          src={sticker.image} 
+          alt={`sticker ${sticker.id}`}
+          onClick={this.props.handleStickerClick}
+          style={stickerImageStyle}>
+        </img>
       </span>)
   }
 

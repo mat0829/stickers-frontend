@@ -4,9 +4,15 @@ import {connect} from 'react-redux'
 import TaskImagesCollection from '../components/taskImages/TaskImagesCollection'
 import fetchTaskImages from '../actions/taskImages/fetchTaskImages'
 
+const labelStyle = {
+  fontSize: '35px'
+}
+
 const taskImageBarContainerStyle = {
-  height: '75vh',
-  textAlign: 'center'
+  height: 'auto',
+  width: 'auto',
+  textAlign: 'center',
+  padding: '5px'
 }
 
 class TaskImagesContainer extends Component {
@@ -18,7 +24,11 @@ class TaskImagesContainer extends Component {
   render() {
     return (
       <div id='adult-task-image-bar-container' style={taskImageBarContainerStyle}>
-        <TaskImagesCollection taskImages={this.props.taskImages} loading={this.props.loading}/>
+        <label htmlFor="adult-task-image-bar" style={labelStyle}>Click to Select a Task Image:</label>
+        <TaskImagesCollection 
+          taskImages={this.props.taskImages} 
+          handleTaskClick={this.props.handleTaskClick}
+          loading={this.props.loading}/>
       </div>
     )
   }

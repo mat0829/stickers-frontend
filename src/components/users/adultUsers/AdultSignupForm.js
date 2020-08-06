@@ -79,60 +79,75 @@ class AdultSignupForm extends Component {
     return (
       <div >
         <h2>New Adult User:</h2>
-        <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
+        <form 
+          onSubmit={this.handleSubmit} 
+          style={{paddingBottom: "2vw"}}>
           
-          <label htmlFor="adult-new-user-name">Name:</label>
-          <input
-            id="adult-new-user-name"
-            name="name" 
-            placeholder="Enter Your Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
+            <label htmlFor="adult-new-user-name">
+              Name:
+            </label>
 
-          <label htmlFor="adult-new-user-email">Email:</label>
-          <input
-            id="adult-new-user-email"
-            name="email" 
-            placeholder="Enter Your Email Address"
-            value={this.state.email}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
+            <input
+              id="adult-new-user-name"
+              name="name" 
+              placeholder="Enter Your Name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
 
-          <label htmlFor="adult-new-user-password">Password:</label>
-          <input
-            id="adult-new-user-password"
-            type="password" 
-            name="password" 
-            placeholder="Create a Password"
-            value={this.state.password}
-            onChange={this.handleChange}>
-          </input><br/><br/>
+            <label htmlFor="adult-new-user-email">
+              Email:
+            </label>
 
-          <label htmlFor="adult-new-user-avatar">Avatar Image URL:</label>
-          <input
-            id="adult-new-user-avatar"
-            name="avatar" 
-            placeholder="Add your own or --->"
-            value={this.state.avatar}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input>
+            <input
+              id="adult-new-user-email"
+              name="email" 
+              placeholder="Enter Your Email Address"
+              value={this.state.email}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
+
+            <label htmlFor="adult-new-user-password">
+              Password:
+            </label>
+
+            <input
+              id="adult-new-user-password"
+              type="password" 
+              name="password" 
+              placeholder="Create a Password"
+              value={this.state.password}
+              onChange={this.handleChange}>
+            </input><br/><br/>
+
+           <label htmlFor="adult-new-user-avatar">
+             Avatar Image URL:
+           </label>
+
+            <input
+              id="adult-new-user-avatar"
+              name="avatar" 
+              placeholder="Add your own or --->"
+              value={this.state.avatar}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input>
           
-          {this.renderAvatar()}
+            {this.renderAvatar()}
           
-          <button
-            onClick={this.handleClick}
-            style={btnStyle}>Generate an Avatar
-          </button><br/><br/>
+            <button
+              onClick={this.handleClick}
+              style={btnStyle}>
+                Generate an Avatar
+            </button><br/><br/>
 
-          <input
-            style={btnStyle}
-            type="submit" 
-            value="Create User">
-          </input>
+            <input
+              style={btnStyle}
+              type="submit" 
+              value="Create User">
+            </input>
         </form>
       </div>
     )

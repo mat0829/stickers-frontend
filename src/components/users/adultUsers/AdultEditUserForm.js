@@ -20,7 +20,12 @@ class AdultEditUserForm extends Component {
   } 
 
   componentDidMount() {
-    const {id, name, email, avatar} = this.props.currentUser
+    const {
+      id, 
+      name, 
+      email, 
+      avatar
+    } = this.props.currentUser
     this.setState({id, name, email, avatar})
   }
 
@@ -84,53 +89,72 @@ class AdultEditUserForm extends Component {
     return (
       <div>
         <h2>Edit Adult User:</h2>
-        <form onSubmit={this.handleSubmit} style={{paddingBottom: "2vw"}}>
+        <form 
+          onSubmit={this.handleSubmit} 
+          style={{paddingBottom: "2vw"}}>
           
-          <label htmlFor="adult-edit-user-name">Name:</label>
-          <input  
-            name="name" 
-            value={this.state.name}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
+            <label htmlFor="adult-edit-user-name">
+              Name:
+            </label>
 
-          <label htmlFor="adult-edit-user-email">Email:</label>
-          <input 
-            name="email" 
-            value={this.state.email}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
+            <input
+              id="adult-edit-user-name"
+              name="name" 
+              value={this.state.name}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
 
-          <label htmlFor="adult-edit-user-password">Password:</label>
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Enter old or new password:"
-            value={this.state.password}
-            onChange={this.handleChange}>
-          </input><br/><br/>
+            <label htmlFor="adult-edit-user-email">
+              Email:
+            </label>
 
-          <label htmlFor="adult-edit-user-avatar">Avatar Image URL:</label>
-          <input
-            name="avatar" 
-            value={this.state.avatar}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input>
+            <input
+              id="adult-edit-user-email"
+              name="email" 
+              value={this.state.email}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
 
-          {this.renderAvatar()}
+            <label htmlFor="adult-edit-user-password">
+              Password:
+            </label>
+
+            <input
+              id="adult-edit-user-password"
+              type="password" 
+              name="password" 
+              placeholder="Enter old or new password:"
+              value={this.state.password}
+              onChange={this.handleChange}>
+            </input><br/><br/>
+
+            <label htmlFor="adult-edit-user-avatar">
+              Avatar Image URL:
+            </label>
+
+            <input
+              id="adult-edit-user-avatar"
+              name="avatar" 
+              value={this.state.avatar}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input>
+
+            {this.renderAvatar()}
           
-          <button
-            onClick={this.handleClick}
-            style={btnStyle}>Generate an Avatar
-          </button><br/><br/>
+            <button
+              onClick={this.handleClick}
+              style={btnStyle}>
+              Generate an Avatar
+            </button><br/><br/>
 
-          <input
-            style={btnStyle}
-            type="submit" 
-            value="Update User">
-          </input>
+            <input
+              style={btnStyle}
+              type="submit" 
+              value="Update User">
+            </input>
         </form>
       </div>
     )

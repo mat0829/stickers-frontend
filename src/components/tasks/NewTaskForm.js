@@ -95,8 +95,7 @@ class NewTaskForm extends Component {
         <h1>Create a new Task</h1>
         <form onSubmit={this.handleSubmit}>
 
-          <label 
-            htmlFor="new-task-name">
+          <label htmlFor="new-task-name">
             Task Name:
           </label>
 
@@ -109,8 +108,7 @@ class NewTaskForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          <label 
-            htmlFor="new-task-image">
+          <label htmlFor="new-task-image">
             Task Image URL:
           </label>
 
@@ -159,8 +157,7 @@ class NewTaskForm extends Component {
             :  null
           }
 
-          <label 
-            htmlFor="new-task-value">
+          <label htmlFor="new-task-value">
             Choose Task Sticker Value:
           </label>
 

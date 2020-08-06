@@ -48,31 +48,53 @@ class AdultNavBar extends Component {
     return (
       <div>
         <NavLink to="/adults-homepage">
-          <button style={profileBtnStyle}>User Profile</button>
+          <button style={profileBtnStyle}>
+            User Profile
+          </button>
         </NavLink>
   
         <NavLink to="/adult-tasks-page">
-          <button style={tasksBtnStyle}>Tasks Page</button>
+          <button style={tasksBtnStyle}>
+            Tasks Page
+          </button>
         </NavLink>
               
         <NavLink to="/add-new-task">
-          <button style={addTaskBtnStyle}>Create a New Task</button>
+          <button style={addTaskBtnStyle}>
+            Create a New Task
+          </button>
         </NavLink>
   
         <NavLink to="/adult-prizes-page">
-          <button style={prizesBtnStyle}>Prizes Page</button>
+          <button style={prizesBtnStyle}>
+            Prizes Page
+          </button>
         </NavLink>
   
         <NavLink to="/add-new-prize">
-          <button style={addPrizeBtnStyle}>Add a New Prize</button>
+          <button style={addPrizeBtnStyle}>
+            Add a New Prize
+          </button>
         </NavLink>
   
         <NavLink to="/logout">
-          <button style={logoutBtnStyle} onClick={this.handleClick}>Logout</button>
+          <button 
+            style={logoutBtnStyle} 
+            onClick={this.handleClick}>
+              Logout
+          </button>
         </NavLink>
+        
         <Switch>
-          <Route exact path='/adults-homepage' component={AdultUserProfile}></Route>
-          <Route exact path='/add-new-task' component={NewTaskForm}></Route>
+          <Route 
+            exact path='/adults-homepage' 
+            component={AdultUserProfile}>
+          </Route>
+
+          <Route 
+            exact path='/add-new-task' 
+            component={NewTaskForm}>
+          </Route>
         </Switch>
       </div>
     )

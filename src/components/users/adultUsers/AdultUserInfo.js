@@ -33,27 +33,34 @@ class AdultUserInfo extends Component{
     return (
       <div>
         {showingUserProfile
-          ? <div id="adult-user-info"> 
-              <h1>{this.props.currentUser.name}</h1>
-              <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
-              <button 
-                onClick={this.handleClick}
-                style={btnStyle}>
-                Edit User {this.props.currentUser.name}
-              </button>
-              <button 
-                onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}
-                style={btnStyle}> 
-                Delete User {this.props.currentUser.name}
-              </button><br /><br />
-              <button style={btnStyle} onClick={this.scrollToTop}> Top of Page </button>
-            </div>
-          : null
+          ?  <div id="adult-user-info"> 
+               <h1>{this.props.currentUser.name}</h1>
+               <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
+
+               <button 
+                 onClick={this.handleClick}
+                 style={btnStyle}>
+                   Edit User {this.props.currentUser.name}
+               </button>
+
+               <button 
+                 onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}
+                 style={btnStyle}> 
+                   Delete User {this.props.currentUser.name}
+               </button><br /><br />
+
+               <button 
+                 style={btnStyle} 
+                 onClick={this.scrollToTop}> 
+                   Top of Page 
+               </button>
+             </div>
+          :  null
         }
     
         {showingEditForm
-          ? <div><AdultEditUserForm handleClick={this.handleClick}/></div>
-          : null
+          ?  <AdultEditUserForm handleClick={this.handleClick}/>
+          :  null
         }
       </div>
     )

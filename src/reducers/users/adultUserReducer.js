@@ -2,7 +2,7 @@ const initialState = {
   currentUser: {}
 }
 
-export default function adultUserReducer(state = initialState, action) {
+const adultUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_ADULT_USER':
       return {...state, currentUser: action.user}
@@ -14,3 +14,5 @@ export default function adultUserReducer(state = initialState, action) {
       return state
   }
 }
+
+export default adultUserReducer

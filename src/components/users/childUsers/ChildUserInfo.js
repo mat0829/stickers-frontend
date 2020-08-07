@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import ChildEditUserForm from './ChildEditUserForm'
 import childUserDelete from '../../../actions/users/childUsers/childUserDelete'
-import AdultUserAvatar from '../../../components/users/adultUsers/AdultUserAvatar'
+import ChildUserAvatar from './ChildUserAvatar'
 
 const btnStyle = {
   color: 'white',
@@ -15,6 +15,10 @@ class ChildUserInfo extends Component{
   state = {
     showingUserProfile: true,
     showingEditForm: false 
+  }
+
+  scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   handleClick = () => {
@@ -36,7 +40,7 @@ class ChildUserInfo extends Component{
         {showingUserProfile
           ?  <div id='child-user-info'> 
                <h1>{this.props.currentUser.name}</h1>
-               <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
+               <ChildUserAvatar imgURL={this.props.currentUser.avatar}/>
 
                <button 
                  onClick={this.handleClick}
@@ -50,8 +54,10 @@ class ChildUserInfo extends Component{
                    Delete User {this.props.currentUser.name}
                </button><br /><br />
 
-               <button style={btnStyle}> 
-                 Top of Page
+               <button 
+                 style={btnStyle}
+                 onClick={this.scrollToTop}> 
+                   Top of Page
                 </button>
              </div>
           :  null

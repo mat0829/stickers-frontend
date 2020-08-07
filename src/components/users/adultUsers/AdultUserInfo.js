@@ -17,8 +17,17 @@ class AdultUserInfo extends Component{
     showingEditForm: false 
   }
 
+  componentDidMount() {
+    this.scrollTo('adult-user-info')
+  }
+
   scrollToTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+
+  scrollTo(id) {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth' })
   }
 
   handleClick = () => {

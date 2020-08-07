@@ -12,7 +12,11 @@ const adultUserLogin = user => {
     .then(returnUserData => {
       if (returnUserData.message !== undefined) {
           console.log(returnUserData.message)
-          alert(returnUserData.message)
+          dispatch({
+            type: 'LOGIN_FAILURE',
+            message: returnUserData.message
+          })
+          //alert(returnUserData.message)
         // Here you should have logic to handle invalid login credentials.
         // This assumes your Rails API will return a JSON object with a key of
         // 'message' if there is an error

@@ -1,22 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
-import adultUserProfile from '../../../actions/users/adultUsers/adultUserProfile'
 import AdultUserInfo from './AdultUserInfo'
 
-class AdultUserProfile extends Component {
-
-  componentDidMount() {
-    this.props.adultUserProfile()
-  }
+const AdultUserProfile = () => {
   
-  render() {
     return (
       <div>
         <AdultUserInfo />
       </div>
     )
-  }
 }
 
-export default connect(null, { adultUserProfile })(AdultUserProfile)
+export default AdultUserProfile

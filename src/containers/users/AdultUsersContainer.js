@@ -30,9 +30,25 @@ class AdultUsersContainer extends Component {
       return (
         <ErrorsContainer 
           loginError={this.props.loginError}
-          scrollTo={this.props.scrollTo}
         />
       )
+    else
+      return null
+  }
+
+  renderSignupErrors = () => {
+    let signupFailure
+    this.props.signupErrors
+      ? signupFailure = true
+      : signupFailure = false
+
+    if (signupFailure)
+      return (
+        <ErrorsContainer
+          signupErrors={this.props.signupErrors}
+        />
+      )
+    else 
       return null
   }
   
@@ -49,6 +65,7 @@ class AdultUsersContainer extends Component {
         <div id="adult-login-signup-container">
           <AdultLoginform />
           {this.renderLoginError()}
+          {this.renderSignupErrors()}
           <AdultSignupForm />
         </div>
       )
@@ -58,7 +75,8 @@ class AdultUsersContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.adultUserReducer.currentUser.logged_in,
-    loginError: state.errorReducer.message
+    loginError: state.errorReducer.message,
+    signupErrors: state.errorReducer.signupErrors
   }
 }
 

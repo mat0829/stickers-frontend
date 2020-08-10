@@ -1,7 +1,7 @@
 const initialState = {
   currentUser: {},
   message: null,
-  errors: null
+  signupErrors: null
 }
 
 export default function childUserReducer(state = initialState, action) {

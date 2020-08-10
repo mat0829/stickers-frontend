@@ -1,4 +1,4 @@
-const childCreateAvatar = () => {
+const adultCreateAvatar = () => {
   return dispatch => {
     let userChoice
     let avatar
@@ -20,13 +20,13 @@ const childCreateAvatar = () => {
           avatar = `https://loremflickr.com/320/240/${userChoice}` // Generates an avatar based on the word given
       }
 
-      console.log('new child avatar:', avatar)
+      console.log('new adult avatar:', avatar)
 
       return dispatch({
-        type: 'CREATE_CHILD_AVATAR',
+        type: 'CREATE_ADULT_AVATAR',
         avatar: avatar
       })
   }
 }
 
-export default childCreateAvatar
+export default adultCreateAvatar

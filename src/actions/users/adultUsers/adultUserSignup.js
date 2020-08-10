@@ -11,13 +11,13 @@ const adultUserSignup = user => {
     .then(resp => resp.json())
     .then(newUserData => {
       if (newUserData.errors !== undefined) {
-        console.log('signup errors:', newUserData.errors)
+        console.log('adult signup errors:', newUserData.errors)
         dispatch({
           type: 'SIGNUP_FAILURE',
           errors: newUserData.errors
         })
       } else {
-        console.log(newUserData)
+        console.log('new adult user:', newUserData.user)
         localStorage.setItem("token", newUserData.jwt)
         dispatch({
           type: 'LOGIN_ADULT_USER',

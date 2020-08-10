@@ -11,13 +11,13 @@ const adultUserLogin = user => {
     .then(resp => resp.json())
     .then(returnUserData => {
       if (returnUserData.message !== undefined) {
-          console.log('login error:', returnUserData.message)
+          console.log('adult login error:', returnUserData.message)
           dispatch({
             type: 'LOGIN_FAILURE',
             message: returnUserData.message
           })
       } else {
-          console.log('returning user:', returnUserData.user)
+          console.log('return adult user:', returnUserData.user)
           localStorage.setItem("token", returnUserData.jwt)
           dispatch({
             type: 'LOGIN_ADULT_USER',

@@ -1,7 +1,7 @@
 const initialState = {
   currentUser: {},
   message: null,
-  errors: null
+  signupErrors: null
 }
 
 const adultUserReducer = (state = initialState, action) => {
@@ -16,6 +16,8 @@ const adultUserReducer = (state = initialState, action) => {
       return {...state, currentUser: action.updatedUser}
     case 'LOGOUT_ADULT_USER':
       return {...state, currentUser: {} }
+    case 'CREATE_ADULT_AVATAR':
+      return {...state, currentUser: {avatar: action.avatar} }
     default:
       return state
   }

@@ -11,11 +11,11 @@ const childUserLogin = user => {
     .then(resp => resp.json())
     .then(returnUserData => {
       if (returnUserData.message !== undefined) {
-          console.log(returnUserData.message)
-          alert(returnUserData.message)
-        // Here you should have logic to handle invalid login credentials.
-        // This assumes your Rails API will return a JSON object with a key of
-        // 'message' if there is an error
+          console.log('login error:', returnUserData.message)
+          dispatch({
+            type: 'LOGIN_FAILURE',
+            message: returnUserData.message
+          })
       } else {
         console.log(returnUserData)
         localStorage.setItem("token", returnUserData.jwt)

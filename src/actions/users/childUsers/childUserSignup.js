@@ -11,11 +11,11 @@ const childUserSignup = user => {
     .then(resp => resp.json())
     .then(newUserData => {
       if (newUserData.errors !== undefined) {
-        console.log(newUserData.errors)
-        alert(newUserData.errors)
-        // Here you should have logic to handle invalid creation of a user.
-        // This assumes your Rails API will return a JSON object with a key of
-        // 'message' if there is an error with creating the user, i.e. invalid username
+        console.log('signup errors:', newUserData.errors)
+        dispatch({
+          type: 'SIGNUP_FAILURE',
+          errors: newUserData.errors
+        })
       } else {
         console.log(newUserData)
         localStorage.setItem("token", newUserData.jwt)

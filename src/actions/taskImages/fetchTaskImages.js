@@ -21,7 +21,7 @@ const fetchTaskImages = () => {
           // If this happens, you may want to remove the invalid token.
           localStorage.removeItem("token")
         } else {
-          console.log(taskImagesData)
+          console.log('taskImages:', taskImagesData)
           dispatch({
             type: 'FETCH_TASK_IMAGES',
             taskImages: taskImagesData

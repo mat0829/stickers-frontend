@@ -21,7 +21,7 @@ const fetchStickers = () => {
           // If this happens, you may want to remove the invalid token.
           localStorage.removeItem("token")
         } else {
-          console.log(stickersData)
+          console.log('stickers:', stickersData)
           dispatch({
             type: 'FETCH_STICKERS',
             stickers: stickersData 

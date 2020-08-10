@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
 
 import AdultEditUserForm from './AdultEditUserForm'
-import adultUserDelete from '../../../actions/users/adultUsers/adultUserDelete'
 import AdultUserAvatar from './AdultUserAvatar'
 
 const btnStyle = {
@@ -10,77 +8,40 @@ const btnStyle = {
   backgroundImage: 'linear-gradient(to right, blue, purple, teal)'
 }
 
-class AdultUserInfo extends Component{
-  
-  state = {
-    showingUserProfile: true,
-    showingEditForm: false 
-  }
+const AdultUserInfo = (props) => {
 
-  componentDidMount() {
-    this.scrollTo('adult-user-info')
-  }
-
-  scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
-  scrollTo(id) {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  handleClick = () => {
-    const {showingUserProfile, showingEditForm} = this.state
-    this.setState({
-      showingUserProfile: !showingUserProfile, 
-      showingEditForm: !showingEditForm
-    })
-  }
-
-  render() {
-    const {showingUserProfile, showingEditForm} = this.state
-    return (
-      <div>
+  const {showingUserProfile, showingEditForm} = props.profileState
+  return (
+    <div>
         {showingUserProfile
-          ?  <div id="adult-user-info"> 
-               <h1>{this.props.currentUser.name}</h1>
-               <AdultUserAvatar imgURL={this.props.currentUser.avatar}/>
-
-               <button 
-                 onClick={this.handleClick}
-                 style={btnStyle}>
-                   Edit User {this.props.currentUser.name}
-               </button>
-
-               <button 
-                 onClick={() => this.props.adultUserDelete(this.props.currentUser.id)}
-                 style={btnStyle}> 
-                   Delete User {this.props.currentUser.name}
-               </button><br /><br />
-
-               <button 
-                 style={btnStyle} 
-                 onClick={this.scrollToTop}> 
-                   Top of Page 
-               </button>
-             </div>
-          :  null
+          ? <div id="adult-user-info"> 
+              <h1>{props.currentUser.name}</h1>
+              <AdultUserAvatar imgURL={props.currentUser.avatar}/>
+              <button 
+                onClick={props.handleClick}
+                style={btnStyle}>
+                Edit User {props.currentUser.name}
+              </button>
+              <button 
+                onClick={() => props.adultUserDelete(props.currentUser.id)}
+                style={btnStyle}> 
+                Delete User {props.currentUser.name}
+              </button><br /><br />
+              <button style={btnStyle} onClick={scrollToTop}> Top of Page </button>
+            </div>
+          : null
         }
     
-        {showingEditForm
-          ?  <AdultEditUserForm handleClick={this.handleClick}/>
-          :  null
-        }
-      </div>
-    )
-  }
+      {showingEditForm
+        ? <div><AdultEditUserForm handleClick={props.handleClick}/></div>
+        : null
+      }
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.adultUserReducer.currentUser
-  }
-}
-
-export default connect(mapStateToProps, { adultUserDelete })(AdultUserInfo)
+export default AdultUserInfo

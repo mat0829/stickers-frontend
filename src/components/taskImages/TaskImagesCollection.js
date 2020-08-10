@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const taskImageBarStyle = {
   background: 'black',
@@ -17,34 +17,32 @@ const taskImageStyle = {
   height: '75px'
 }
 
-class TaskImagesCollection extends Component {
+const TaskImagesCollection = (props) => {
 
-  renderTaskImages = () => {
-    return this.props.taskImages.map(taskImage => 
+  const renderTaskImages = () => {
+    return props.taskImages.map(taskImage => 
       <span 
         key={taskImage.id} 
         style={spanStyle}>
           <img 
             src={taskImage.imageUrl} 
             alt={`taskImage ${taskImage.id}`}
-            onClick={this.props.handleTaskClick}
+            onClick={props.handleTaskClick}
             style={taskImageStyle}>
           </img>
       </span>)
   }
 
-  render() {
-    return (
-      <div 
-        id='adult-task-image-bar' 
-        style={taskImageBarStyle}>
-          {this.props.loading 
-            ?  <h1>"Loading..."</h1> 
-            :  this.renderTaskImages()
-          }
-      </div>
-    )
-  }
+  return (
+    <div 
+      id='adult-task-image-bar' 
+      style={taskImageBarStyle}>
+        {props.loading 
+          ?  <h1>"Loading..."</h1> 
+          :  renderTaskImages()
+        }
+    </div>
+  )
 }
 
 export default TaskImagesCollection

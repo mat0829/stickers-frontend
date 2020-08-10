@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const stickerBarStyle = {
   background: 'black',
@@ -17,34 +17,32 @@ const stickerImageStyle = {
   height: '75px'
 }
 
-class StickersCollection extends Component {
+const StickersCollection = (props) => {
 
-  renderStickers = () => {
-    return this.props.stickers.map(sticker => 
+  const renderStickers = () => {
+    return props.stickers.map(sticker => 
       <span 
         key ={sticker.id} 
         style={spanStyle}>
           <img 
             src={sticker.image} 
             alt={`sticker ${sticker.id}`}
-            onClick={this.props.handleStickerClick}
+            onClick={props.handleStickerClick}
             style={stickerImageStyle}>
           </img>
       </span>)
   }
 
-  render() {
-    return (
-      <div 
-        id='adult-sticker-bar' 
-        style={stickerBarStyle}>
-          {this.props.loading 
-            ?  <h1>"Loading..."</h1> 
-            :  this.renderStickers()
-          }
-      </div>
-    )
-  }
+  return (
+    <div 
+      id='adult-sticker-bar' 
+      style={stickerBarStyle}>
+        {props.loading 
+          ?  <h1>"Loading..."</h1> 
+          :  renderStickers()
+        }
+    </div>
+  )
 }
 
 export default StickersCollection

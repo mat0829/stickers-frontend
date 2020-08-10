@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Zoom from 'react-reveal/Zoom'
 
 import ChildLoginform from '../../components/users/childUsers/ChildLoginForm'
 import ChildSignupForm from '../../components/users/childUsers/ChildSignupForm'
@@ -28,11 +27,9 @@ class ChildUsersContainer extends Component {
       
     if (loginFailure)
       return (
-        <Zoom>
-          <ErrorsContainer 
-            loginError={this.props.loginError}
-          />
-        </Zoom>
+        <ErrorsContainer 
+          loginError={this.props.loginError}
+        />
       )
     else
       return null
@@ -46,12 +43,10 @@ class ChildUsersContainer extends Component {
 
     if (signupFailure)
       return (
-        <Zoom>
-          <ErrorsContainer
-            scrollTo={this.scrollTo('child-login-signup-container')}
-            signupErrors={this.props.signupErrors}
-          />
-        </Zoom>
+        <ErrorsContainer
+          scrollTo={this.scrollTo('child-login-signup-container')}
+          signupErrors={this.props.signupErrors}
+        />
       )
     else 
       return null
@@ -81,8 +76,8 @@ class ChildUsersContainer extends Component {
 const mapStateToProps = function(state) {
   return {
     loggedIn: state.childUserReducer.currentUser.logged_in,
-    loginError: state.errorReducer.message,
-    signupErrors: state.errorReducer.signupErrors
+    loginError: state.childUserReducer.message,
+    signupErrors: state.childUserReducer.signupErrors
   }
 }
 

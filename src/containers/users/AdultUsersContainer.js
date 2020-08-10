@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Zoom from 'react-reveal/Zoom'
 
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
@@ -29,11 +28,9 @@ class AdultUsersContainer extends Component {
       
     if (loginFailure)
       return (
-        <Zoom>
-          <ErrorsContainer 
-            loginError={this.props.loginError}
-          />
-        </Zoom>
+        <ErrorsContainer 
+          loginError={this.props.loginError}
+        />
       )
     else
       return null
@@ -47,12 +44,10 @@ class AdultUsersContainer extends Component {
 
     if (signupFailure)
       return (
-        <Zoom>
-          <ErrorsContainer
-            scrollTo={this.scrollTo('adult-login-signup-container')}
-            signupErrors={this.props.signupErrors}
-          />
-        </Zoom>
+        <ErrorsContainer
+          scrollTo={this.scrollTo('adult-login-signup-container')}
+          signupErrors={this.props.signupErrors}
+        />
       )
     else 
       return null
@@ -81,8 +76,8 @@ class AdultUsersContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.adultUserReducer.currentUser.logged_in,
-    loginError: state.errorReducer.message,
-    signupErrors: state.errorReducer.signupErrors
+    loginError: state.adultUserReducer.message,
+    signupErrors: state.adultUserReducer.signupErrors
   }
 }
 

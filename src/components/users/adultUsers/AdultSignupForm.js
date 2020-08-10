@@ -12,9 +12,9 @@ const btnStyle = {
 class AdultSignupForm extends Component {
 
   state = {
-    name: 'Darth Mow',
-    email: 'email@email.com',
-    password: 'password',
+    name: '',
+    email: '',
+    password: '',
     avatar: 'https://cataas.com/cat/595f2810557291a9750ebfdc'
   }
 

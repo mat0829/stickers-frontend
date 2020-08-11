@@ -1,6 +1,13 @@
 import React from 'react'
 
-const taskBarStyle = {}
+const taskBarStyle = {
+  height: '25vh',
+  background: 'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
+  display: 'flex',
+  width: 'auto',
+  justifyContent: 'space-around',
+  alignItems: 'center'
+}
 
 const spanStyle = {
   fontSize: '20px',
@@ -10,7 +17,7 @@ const spanStyle = {
   justifyContent: 'center',
   margin: '5px',
   alignItems: 'center',
-  borderRadius: '1 rem',
+  borderRadius: '1rem',
   border: '2px solid black'
 }
 
@@ -19,20 +26,18 @@ const TasksCollection = (props) => {
   const renderTasks = () => {
     return props.tasks.map(task => 
         <span 
-          key={task.id} 
+          key={task.id}
+          id={task.id}
+          onClick={props.handleClick}
           style={spanStyle}>
-            <img 
-              src={task.name} 
-              alt={`task ${task.id}`}
-              onClick={props.handleTaskClick}>
-            </img>
+            {task.name}
         </span>)
   }
 
 
    return (
     <div 
-      id='adult-task-image-bar' 
+      id='adult-task-bar' 
       style={taskBarStyle}>
         {props.loading 
           ?  <h1>"Loading..."</h1> 

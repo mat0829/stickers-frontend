@@ -9,7 +9,7 @@ const taskImageReducer = (state = {taskImages: [], loading: false}, action) => {
       case 'FETCH_TASK_IMAGES':
         return {
           ...state,
-          taskImages: [...state.taskImages, action.payload],
+          taskImages: action.payload,
           loading: false
         }
       default: 

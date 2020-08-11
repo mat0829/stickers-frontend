@@ -53,7 +53,11 @@ class NewTaskForm extends Component {
   }
 
   handleShowHideTaskImage = () => {
-    const {showingTaskImageCollection, showingTaskImageInfo} = this.state
+    const {
+      showingTaskImageCollection, 
+      showingTaskImageInfo
+    } = this.state
+    
     this.setState({
       showingTaskImageCollection: !showingTaskImageCollection, 
       showingTaskImageInfo: !showingTaskImageInfo

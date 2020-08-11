@@ -1,6 +1,7 @@
 const childUserProfile = () => {
   return dispatch => {
     const token = localStorage.token
+    
     if (token) {
       fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
@@ -18,10 +19,11 @@ const childUserProfile = () => {
           // An error will occur if the token is invalid.
           // If this happens, you may want to remove the invalid token.
           localStorage.removeItem("token")
-        } else {
+        } 
+        else {
           dispatch({
             type: 'LOGIN_CHILD_USER',
-            user: userData.user
+            payload: userData.user
           })
         }
       })

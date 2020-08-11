@@ -17,11 +17,12 @@ const adultUserUpdate = user => {
         // Here you should have logic to handle invalid login credentials.
         // This assumes your Rails API will return a JSON object with a key of
         // 'message' if there is an error
-      } else {
+      } 
+      else {
         console.log(updatedUserData)
         dispatch({
           type: 'UPDATE_ADULT_USER',
-          updatedUser: updatedUserData
+          payload: updatedUserData
         })
       }
     })

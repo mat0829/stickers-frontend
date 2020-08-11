@@ -14,14 +14,15 @@ const childUserSignup = user => {
         console.log('child signup errors:', newUserData.errors)
         dispatch({
           type: 'SIGNUP_FAILURE',
-          errors: newUserData.errors
+          payload: newUserData.errors
         })
-      } else {
+      } 
+      else {
         console.log('new child user:', newUserData.user)
         localStorage.setItem("token", newUserData.jwt)
         dispatch({
           type: 'LOGIN_CHILD_USER',
-          user: newUserData.user
+          payload: newUserData.user
         })
       }
     })

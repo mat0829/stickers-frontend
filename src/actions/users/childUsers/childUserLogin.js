@@ -11,17 +11,18 @@ const childUserLogin = user => {
     .then(resp => resp.json())
     .then(returnUserData => {
       if (returnUserData.message !== undefined) {
-          console.log('child login error:', returnUserData.message)
-          dispatch({
-            type: 'LOGIN_FAILURE',
-            message: returnUserData.message
-          })
-      } else {
+        console.log('child login error:', returnUserData.message)
+        dispatch({
+          type: 'LOGIN_FAILURE',
+          payload: returnUserData.message
+        })
+      } 
+      else {
         console.log('return child user:', returnUserData)
         localStorage.setItem("token", returnUserData.jwt)
         dispatch({
           type: 'LOGIN_CHILD_USER',
-          user: returnUserData.user
+          payload: returnUserData.user
         })
       }
     })

@@ -5,6 +5,7 @@ import {Switch, NavLink, Route} from 'react-router-dom'
 import adultUserLogout from '../../../actions/users/adultUsers/adultUserLogout'
 import AdultUserProfile from './AdultUserProfile'
 import NewTaskForm from '../../tasks/NewTaskForm'
+import TasksContainer from '../../../containers/TasksContainer'
 
 const profileBtnStyle = {
   color: 'white',
@@ -89,6 +90,11 @@ class AdultNavBar extends Component {
           <Route 
             exact path='/adults-homepage' 
             component={AdultUserProfile}>
+          </Route>
+
+          <Route 
+            exact path='/adult-tasks-page' 
+            component={TasksContainer}>
           </Route>
 
           <Route 

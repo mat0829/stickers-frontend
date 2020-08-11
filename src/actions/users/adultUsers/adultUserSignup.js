@@ -14,14 +14,15 @@ const adultUserSignup = user => {
         console.log('adult signup errors:', newUserData.errors)
         dispatch({
           type: 'SIGNUP_FAILURE',
-          errors: newUserData.errors
+          payload: newUserData.errors
         })
-      } else {
+      }
+      else {
         console.log('new adult user:', newUserData.user)
         localStorage.setItem("token", newUserData.jwt)
         dispatch({
           type: 'LOGIN_ADULT_USER',
-          user: newUserData.user
+          payload: newUserData.user
         })
       }
     })

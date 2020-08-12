@@ -23,7 +23,7 @@ const TaskImageInfo = (props) => {
       <button
         style={btnStyle}
         onClick={props.handleShowHideTaskImage}>
-        Select a Different Task Image
+          Select a Different Task Image
       </button>
     </div>
   )

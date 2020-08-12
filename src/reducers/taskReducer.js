@@ -18,6 +18,17 @@ const taskReducer = (state = {tasks: [], loading: false}, action) => {
           tasks: [...state.tasks, action.payload],
           loading: false
         }
+      case 'UPDATE_TASK':
+        return {
+          ...state, 
+          tasks: [...state.tasks, action.payload],
+          loading: false
+        }
+      case "DELETE_TASK":
+        return {
+          ...state,
+          tasks: [...state.tasks.filter(task => task.id === action.payload ? false : true)]
+        }
       default: 
         return state
   }

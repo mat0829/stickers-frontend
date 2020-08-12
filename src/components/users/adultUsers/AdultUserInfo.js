@@ -21,17 +21,24 @@ const AdultUserInfo = (props) => {
           ? <div id="adult-user-info"> 
               <h1>{props.currentUser.name}</h1>
               <AdultUserAvatar imgURL={props.currentUser.avatar}/>
+
               <button 
                 onClick={props.handleClick}
                 style={btnStyle}>
-                Edit User {props.currentUser.name}
+                  Edit User {props.currentUser.name}
               </button>
+
               <button 
                 onClick={() => props.adultUserDelete(props.currentUser.id)}
                 style={btnStyle}> 
-                Delete User {props.currentUser.name}
-              </button><br /><br />
-              <button style={btnStyle} onClick={scrollToTop}> Top of Page </button>
+                  Delete User {props.currentUser.name}
+              </button><br/><br/>
+
+              <button 
+                style={btnStyle} 
+                onClick={scrollToTop}>
+                  Top of Page 
+              </button>
             </div>
           : null
         }

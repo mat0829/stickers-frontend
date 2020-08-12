@@ -23,7 +23,7 @@ const StickerInfo = (props) => {
       <button
         style={btnStyle}
         onClick={props.handleShowHideSticker}>
-        Select a Different Sticker
+          Select a Different Sticker
       </button>
     </div>
   )

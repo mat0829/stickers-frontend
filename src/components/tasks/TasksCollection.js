@@ -25,13 +25,13 @@ const TasksCollection = (props) => {
 
   const renderTasks = () => {
     return props.tasks.map(task => 
-        <span 
-          key={task.id}
-          id={task.id}
-          onClick={props.handleClick}
-          style={spanStyle}>
-            {task.name}
-        </span>)
+      <span 
+        key={task.id}
+        id={task.id}
+        onClick={props.handleClick}
+        style={spanStyle}>
+          {task.name}
+      </span>)
   }
 
 

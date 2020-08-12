@@ -21,31 +21,40 @@ const TaskInfo = (props) => {
   return (
     <div id="adult-task-info">
       <h2 id="h2">{task.task_child.name} is currently working on: {task.name}</h2>
+
       <img 
         src={task.image} 
         alt="" 
         style={imgStyle}
       />
+
       <h4>~ Created by: {task.task_parent.name}</h4>
       <h2>Sticker Reward:</h2>
+
       <img 
         src={task.stickerImage} 
         alt="sticker"
         style={stickerImageStyle}
       />
+
       <h2>Value: {task.value} Sticker Points!</h2>
+
       <button 
         style={btnStyle}>
           Edit this Task!
       </button>
-      <button 
+
+      <button
+        onClick={() => props.handleDelete(props.task.id)}
         style={btnStyle}>
           Delete this Task!
       </button><br/><br/>
+
       <button 
         style={btnStyle}>
           Create another new Task
       </button><br/><br/>
+      
       <button 
         style={btnStyle}
         onClick={props.scrollToTop}>

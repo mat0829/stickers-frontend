@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import fetchTasks from '../actions/tasks/fetchTasks'
+import deleteTask from '../actions/tasks/deleteTask'
 import TasksCollection from '../components/tasks/TasksCollection'
 import TaskInfo from '../components/tasks/TaskInfo'
 
@@ -51,6 +52,13 @@ class TasksContainer extends Component {
     })
   }
 
+  handleDelete = taskId => {
+    this.props.deleteTask(taskId)
+    this.setState({
+      showingTaskInfo: false
+    })
+  }
+
   render() {
     const { showingTaskInfo } = this.state
     return (
@@ -72,6 +80,7 @@ class TasksContainer extends Component {
 
           {showingTaskInfo
             ?  <TaskInfo
+                 handleDelete={this.handleDelete}
                  task={this.state.selectedTask}
                  scrollToTop={this.scrollToTop}
                />
@@ -89,4 +98,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchTasks })(TasksContainer)
+export default connect(mapStateToProps, {
+  fetchTasks,
+  deleteTask
+})(TasksContainer)

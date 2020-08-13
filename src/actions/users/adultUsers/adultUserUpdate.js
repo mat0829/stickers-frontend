@@ -19,7 +19,7 @@ const adultUserUpdate = user => {
         // 'message' if there is an error
       } 
       else {
-        console.log(updatedUserData)
+        console.log('updated user:' ,updatedUserData)
         dispatch({
           type: 'UPDATE_ADULT_USER',
           payload: updatedUserData

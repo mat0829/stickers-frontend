@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import fetchTasks from '../actions/tasks/fetchTasks'
+import editTask from '../actions/tasks/editTask'
 import deleteTask from '../actions/tasks/deleteTask'
 import TasksCollection from '../components/tasks/TasksCollection'
 import TaskInfo from '../components/tasks/TaskInfo'
+import EditTaskForm from '../components/tasks/EditTaskForm'
 
 const labelStyle = {
   fontSize: '35px'
@@ -18,28 +20,31 @@ class TasksContainer extends Component {
 
   state = {
     selectedTask: '',
-    showingTaskInfo: false
+    showingTaskInfo: false,
+    showingEditTaskForm: false
   }
 
   componentDidMount() {
     this.props.fetchTasks()
+    console.log('fetch tasks:', this.props.tasks)
   }
 
-  componentDidUpdate() {
-    this.scrollToBottom()
+  componentDidUpdate(prevProps) {
+    if (prevProps.tasks.length > 0 && prevProps.tasks !== this.props.tasks) {
+      this.setState({          
+        tasks: this.props.tasks
+      })
+      const taskId = this.state.selectedTask.id
+      const newTask = this.props.tasks.find(task => task.id === taskId)
+      this.setState({
+        selectedTask: newTask
+      })
+    }
+    window.scrollTo({top: 1000, behavior: 'smooth'})
   }
 
   scrollToTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'})
-  }
-
-  scrollToBottom = () => {
-    window.scrollTo({top: 1000, behavior: 'smooth'})
-  }
-
-  scrollTo(id) {
-    const element = document.getElementById(id)
-    element.scrollIntoView({ behavior: 'smooth' })
   }
 
   handleClick = event => {
@@ -48,7 +53,16 @@ class TasksContainer extends Component {
     const foundTask = tasks.find(task => task.name === taskName)
     this.setState({
       selectedTask: foundTask,
-      showingTaskInfo: true
+      showingTaskInfo: true,
+      showingEditTaskForm: false
+    })
+  }
+
+  handleShowHideEditForm = () => {
+    const {showingTaskInfo, showingEditTaskForm} = this.state
+    this.setState({
+      showingTaskInfo: !showingTaskInfo,
+      showingEditTaskForm: !showingEditTaskForm
     })
   }
 
@@ -60,7 +74,7 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const { showingTaskInfo } = this.state
+    const { showingTaskInfo, showingEditTaskForm } = this.state
     return (
       <div 
         id='adult-tasks-container' 
@@ -80,11 +94,23 @@ class TasksContainer extends Component {
 
           {showingTaskInfo
             ?  <TaskInfo
+                 handleShowHideEditForm={this.handleShowHideEditForm}
                  handleDelete={this.handleDelete}
                  task={this.state.selectedTask}
                  scrollToTop={this.scrollToTop}
                />
             :  null
+          }
+
+          {showingEditTaskForm
+            ? <div>
+                <EditTaskForm
+                  handleEdit={this.props.editTask}
+                  handleShowHideEditForm={this.handleShowHideEditForm}
+                  task={this.state.selectedTask}
+                />
+              </div>
+            : null
           }
       </div>
     )
@@ -100,5 +126,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   fetchTasks,
+  editTask,
   deleteTask
 })(TasksContainer)

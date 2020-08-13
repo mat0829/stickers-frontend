@@ -17,7 +17,6 @@ const btnStyle = {
 
 const TaskInfo = (props) => {
   const task = props.task
-
   return (
     <div id="adult-task-info">
       <h2 id="h2">{task.task_child.name} is currently working on: {task.name}</h2>
@@ -39,7 +38,8 @@ const TaskInfo = (props) => {
 
       <h2>Value: {task.value} Sticker Points!</h2>
 
-      <button 
+      <button
+        onClick={props.handleShowHideEditForm}
         style={btnStyle}>
           Edit this Task!
       </button>

@@ -1,4 +1,14 @@
 const editTask = task => {
+  const {
+    taskGiverId, 
+    taskReceiverId, 
+    name, 
+    value, 
+    image, 
+    completed, 
+    stickerImage
+  } = task
+  
   const token = localStorage.token
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/tasks/${task.id}`, {
@@ -7,7 +17,15 @@ const editTask = task => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({task})
+      body: JSON.stringify({
+        taskGiverId: taskGiverId,
+        taskReceiverId: taskReceiverId,
+        name: name,
+        value: value,
+        image: image,
+        completed: completed,
+        stickerImage: stickerImage
+      })
     })
     .then(resp => resp.json())
     .then(updatedTaskData => {
@@ -19,7 +37,7 @@ const editTask = task => {
         // 'message' if there is an error
       } 
       else {
-        console.log(updatedTaskData)
+        console.log('updated task:', updatedTaskData)
         dispatch({
           type: 'UPDATE_TASK',
           payload: updatedTaskData

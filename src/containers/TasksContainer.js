@@ -31,11 +31,9 @@ class TasksContainer extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.tasks.length > 0 && prevProps.tasks !== this.props.tasks) {
-      this.setState({          
-        tasks: this.props.tasks
-      })
       const taskId = this.state.selectedTask.id
-      const newTask = this.props.tasks.find(task => task.id === taskId)
+      const tasks = this.props.tasks
+      const newTask = tasks.find(task => task.id === taskId)
       this.setState({
         selectedTask: newTask
       })

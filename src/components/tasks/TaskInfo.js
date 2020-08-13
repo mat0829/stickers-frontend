@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 const imgStyle = {
   maxWidth: '250px',
@@ -50,10 +51,12 @@ const TaskInfo = (props) => {
           Delete this Task!
       </button><br/><br/>
 
-      <button 
-        style={btnStyle}>
-          Create another new Task
-      </button><br/><br/>
+      <NavLink to="/add-new-task">
+        <button 
+          style={btnStyle}>
+            Create another new Task
+        </button><br/><br/>
+      </NavLink> 
       
       <button 
         style={btnStyle}

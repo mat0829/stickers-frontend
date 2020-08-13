@@ -1,5 +1,4 @@
 const deleteTask = taskId => {
-  debugger
   return dispatch => {
     const token = localStorage.token
 

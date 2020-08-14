@@ -1,4 +1,6 @@
 import React from 'react'
+import SignupErrors from '../errors/Errors'
+import Error from '../errors/Error'
 
 const taskBarStyle = {
   height: '25vh',
@@ -42,6 +44,14 @@ const TasksCollection = (props) => {
         {props.loading 
           ?  <h1>"Loading..."</h1> 
           :  renderTasks()
+        }
+        {props.message
+          ? <Error />
+          : null
+        }
+        {props.errors
+          ? <h2><SignupErrors signupErrors={props.errors}/></h2>
+          : null
         }
     </div>
   )

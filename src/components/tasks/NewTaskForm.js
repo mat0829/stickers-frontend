@@ -30,6 +30,10 @@ class NewTaskForm extends Component {
 
   componentDidMount() {
     this.scrollTo('new-task-form-container')
+    this.setState({
+      showingTaskImageCollection: true, 
+      showingStickerCollection: true
+    })
   }
 
   scrollTo(id) {

@@ -13,7 +13,7 @@ const childUserLogin = user => {
       if (returnUserData.message !== undefined) {
         console.log('child login error:', returnUserData.message)
         dispatch({
-          type: 'LOGIN_FAILURE',
+          type: 'CHILD_LOGIN_FAILURE',
           payload: returnUserData.message
         })
       } 

@@ -90,6 +90,8 @@ class TasksContainer extends Component {
             tasks={this.props.tasks} 
             handleClick={this.handleClick}
             loading={this.props.loading}
+            message={this.props.message}
+            errors={this.props.errors}
           />
 
           {showingTaskInfo
@@ -120,7 +122,9 @@ class TasksContainer extends Component {
 const mapStateToProps = state => {
   return {
     tasks: state.taskReducer.tasks,
-    loading: state.taskReducer.loading
+    loading: state.taskReducer.loading,
+    message: state.taskReducer.message,
+    errors: state.taskReducer.errors
   }
 }
 

@@ -1,4 +1,11 @@
-const taskReducer = (state = {tasks: [], loading: false}, action) => {
+const initialState = {
+  tasks: [],
+  errorMessage: null,
+  errors: null,
+  loading: false
+}
+
+const taskReducer = (state = initialState, action) => {
   switch(action.type) {
       case 'LOADING_TASKS':
         return {
@@ -24,10 +31,20 @@ const taskReducer = (state = {tasks: [], loading: false}, action) => {
           tasks: [...state.tasks.map(task => task.id === action.payload.id ? action.payload : task)],
           loading: false
         }
-      case "DELETE_TASK":
+      case 'DELETE_TASK':
         return {
           ...state,
           tasks: [...state.tasks.filter(task => task.id === action.payload ? false : true)]
+        }
+      case 'TASKS_ERRORS':
+        return {
+          ...state, 
+          errors: action.payload
+        }
+      case 'TASKS_ERROR':
+        return {
+          ...state,
+          errorMessage: action.payload
         }
       default: 
         return state

@@ -2,9 +2,6 @@ const fetchTasks = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
-      dispatch({ 
-        type: 'LOADING_TASKS'
-      })
       fetch("http://localhost:3000/api/v1/tasks", {
         method: "GET",
         headers: {
@@ -15,10 +12,17 @@ const fetchTasks = () => {
       })
       .then(resp => resp.json())
       .then(tasksData => {
-        if (tasksData.errors !== undefined) {
-          alert(tasksData.errors)
-          // An error will occur if the token is invalid.
-          // If this happens, you may want to remove the invalid token.
+        if (tasksData === null) {
+          dispatch({
+            type: 'TASK_ERROR',
+            payload: "You Currently have 0 Tasks."
+          })
+        }
+        else if (tasksData.errors !== undefined) {
+          dispatch({
+            type: 'TASKS_ERRORS',
+            payload: tasksData.errors
+          })
           localStorage.removeItem("token")
         } 
         else {

@@ -4,8 +4,8 @@ const liStyle = {
   color: 'red'
 }
 
-const SignupErrors = (props) => {
-  const errors = props.signupErrors
+const Errors = (props) => {
+  const errors = props.errors
   
   const errorsList = errors.map((error, id) => (
       <h2 key={id} style={liStyle}>
@@ -20,4 +20,4 @@ const SignupErrors = (props) => {
       return errorsList
 }
 
-export default SignupErrors
+export default Errors

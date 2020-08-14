@@ -1,18 +1,18 @@
 import React from 'react'
-import LoginError from '../components/errors/LoginError'
-import SignupErrors from '../components/errors/SignupErrors'
+import Error from '../components/errors/Error'
+import Errors from '../components/errors/Errors'
 
 const ErrorsContainer = (props) => {
-  if (props.loginError)
+  if (props.errorMessage)
     return (
       <div>
-        <LoginError loginError={props.loginError}/>
+        <Error errorMessage={props.errorMessage}/>
       </div>
     )
-  else if (props.signupErrors.length)
+  else if (props.errors.length)
     return (
       <div>
-        <SignupErrors signupErrors={props.signupErrors}/>
+        <Errors errors={props.errors}/>
       </div>
     )
   else return null

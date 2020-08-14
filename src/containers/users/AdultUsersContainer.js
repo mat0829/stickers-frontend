@@ -22,14 +22,14 @@ class AdultUsersContainer extends Component {
 
   renderLoginError = () => {
     let loginFailure
-    this.props.loginError 
+    this.props.errorMessage 
       ? loginFailure = true 
       : loginFailure = false
       
     if (loginFailure)
       return (
         <ErrorsContainer 
-          loginError={this.props.loginError}
+          errorMessage={this.props.errorMessage}
         />
       )
     else
@@ -37,16 +37,16 @@ class AdultUsersContainer extends Component {
   }
 
   renderSignupErrors = () => {
+    debugger
     let signupFailure
-    this.props.signupErrors
+    this.props.errors
       ? signupFailure = true
       : signupFailure = false
 
     if (signupFailure)
       return (
         <ErrorsContainer
-          scrollTo={this.scrollTo('adult-login-signup-container')}
-          signupErrors={this.props.signupErrors}
+          errors={this.props.errors}
         />
       )
     else 
@@ -76,8 +76,8 @@ class AdultUsersContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.adultUserReducer.currentUser.logged_in,
-    loginError: state.adultUserReducer.message,
-    signupErrors: state.adultUserReducer.signupErrors
+    errorMessage: state.adultUserReducer.errorMessage,
+    errors: state.adultUserReducer.errors
   }
 }
 

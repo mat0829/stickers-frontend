@@ -1,7 +1,7 @@
 const initialState = {
   currentUser: {},
-  message: null,
-  signupErrors: null
+  errorMessage: null,
+  errors: null
 }
 
 export default function childUserReducer(state = initialState, action) {
@@ -11,15 +11,15 @@ export default function childUserReducer(state = initialState, action) {
         ...state, 
         currentUser: action.payload
       }
-    case 'LOGIN_FAILURE':
+    case 'CHILD_LOGIN_FAILURE':
       return {
         ...state, 
-        message: action.payload
+        errorMessage: action.payload
       }
-    case 'SIGNUP_FAILURE':
+    case 'CHILD_SIGNUP_FAILURE':
       return {
         ...state, 
-        signupErrors: action.payload
+        errors: action.payload
       }
     case 'UPDATE_CHILD_USER':
       return {

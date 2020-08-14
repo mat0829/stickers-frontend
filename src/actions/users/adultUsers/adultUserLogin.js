@@ -13,7 +13,7 @@ const adultUserLogin = user => {
       if (returnUserData.message !== undefined) {
         console.log('adult login error:', returnUserData.message)
         dispatch({
-          type: 'LOGIN_FAILURE',
+          type: 'ADULT_LOGIN_FAILURE',
           payload: returnUserData.message
         })
       } 

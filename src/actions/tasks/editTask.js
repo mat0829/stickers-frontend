@@ -31,10 +31,10 @@ const editTask = task => {
     .then(updatedTaskData => {
       if (updatedTaskData.errors !== undefined) {
           console.log(updatedTaskData.errors)
-          alert(updatedTaskData.errors)
-        // Here you should have logic to handle invalid login credentials.
-        // This assumes your Rails API will return a JSON object with a key of
-        // 'message' if there is an error
+          dispatch({
+            type: 'TASKS_ERRORS',
+            payload: updatedTaskData.errors
+          })
       } 
       else {
         console.log('updated task:', updatedTaskData)

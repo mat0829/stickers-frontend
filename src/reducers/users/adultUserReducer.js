@@ -1,7 +1,7 @@
 const initialState = {
   currentUser: {},
-  message: null,
-  signupErrors: null
+  errorMessage: null,
+  errors: null
 }
 
 const adultUserReducer = (state = initialState, action) => {
@@ -11,15 +11,15 @@ const adultUserReducer = (state = initialState, action) => {
         ...state, 
         currentUser: action.payload
       }
-    case 'LOGIN_FAILURE':
+    case 'ADULT_LOGIN_FAILURE':
       return {
         ...state, 
-        message: action.payload
+        errorMessage: action.payload
       }
-    case 'SIGNUP_FAILURE':
+    case 'ADULT_SIGNUP_FAILURE':
       return {
         ...state, 
-        signupErrors: action.payload
+        errors: action.payload
       }
     case 'UPDATE_ADULT_USER':
       return {

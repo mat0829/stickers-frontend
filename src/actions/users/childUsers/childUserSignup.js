@@ -13,7 +13,7 @@ const childUserSignup = user => {
       if (newUserData.errors !== undefined) {
         console.log('child signup errors:', newUserData.errors)
         dispatch({
-          type: 'SIGNUP_FAILURE',
+          type: 'CHILD_SIGNUP_FAILURE',
           payload: newUserData.errors
         })
       } 

@@ -4,12 +4,13 @@ const initialState = {
   errors: null
 }
 
-export default function childUserReducer(state = initialState, action) {
+const childUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_CHILD_USER':
       return {
         ...state, 
-        currentUser: action.payload
+        currentUser: action.payload,
+        errorMessage: null
       }
     case 'CHILD_LOGIN_FAILURE':
       return {
@@ -24,7 +25,13 @@ export default function childUserReducer(state = initialState, action) {
     case 'UPDATE_CHILD_USER':
       return {
         ...state, 
-        currentUser: action.payload
+        currentUser: action.payload,
+        errors: null
+      }
+    case 'CHILD_UPDATE_FAILURE':
+      return {
+        ...state, 
+        errors: action.payload
       }
     case 'LOGOUT_CHILD_USER':
       return {
@@ -34,9 +41,11 @@ export default function childUserReducer(state = initialState, action) {
     case 'CREATE_CHILD_AVATAR':
       return {
         ...state, 
-        currentUser: {avatar: action.payload} 
+        currentUser: {avatar: action.payload}
       }
     default:
       return state
   }
 }
+
+export default childUserReducer

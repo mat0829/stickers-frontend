@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
 
 import ChildEditUserForm from './ChildEditUserForm'
-import childUserDelete from '../../../actions/users/childUsers/childUserDelete'
 import ChildUserAvatar from './ChildUserAvatar'
 
 const btnStyle = {
@@ -10,72 +8,52 @@ const btnStyle = {
   backgroundImage: 'linear-gradient(to right, blue, purple, teal)'
 }
 
-class ChildUserInfo extends Component{
-  
-  state = {
-    showingUserProfile: true,
-    showingEditForm: false 
-  }
+const ChildUserInfo = (props) => {
 
-  scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
-  handleClick = () => {
-    const {showingUserProfile, showingEditForm} = this.state
-    this.setState({
-      showingUserProfile: !showingUserProfile, 
-      showingEditForm: !showingEditForm
-    })
-  }
-
-  render() {
-    const {
-      showingUserProfile, 
-      showingEditForm
-    } = this.state
-
-    return (
-      <div>
+  const {showingUserProfile, showingEditForm} = props.profileState
+  return (
+    <div>
         {showingUserProfile
-          ?  <div id='child-user-info'> 
-               <h1>{this.props.currentUser.name}</h1>
-               <ChildUserAvatar imgURL={this.props.currentUser.avatar}/>
+          ? <div id="child-user-info"> 
+              <h1>{props.currentUser.name}</h1>
+              <ChildUserAvatar imgURL={props.currentUser.avatar}/>
 
-               <button 
-                 onClick={this.handleClick}
-                 style={btnStyle}>
-                   Edit User {this.props.currentUser.name}
-               </button>
+              <button 
+                onClick={props.handleClick}
+                style={btnStyle}>
+                  Edit User {props.currentUser.name}
+              </button>
 
-               <button 
-                 onClick={() => this.props.childUserDelete(this.props.currentUser.id)}
-                 style={btnStyle}>
-                   Delete User {this.props.currentUser.name}
-               </button><br /><br />
+              <button 
+                onClick={() => props.childUserDelete(props.currentUser.id)}
+                style={btnStyle}> 
+                  Delete User {props.currentUser.name}
+              </button><br/><br/>
 
-               <button 
-                 style={btnStyle}
-                 onClick={this.scrollToTop}> 
-                   Top of Page
-                </button>
-             </div>
-          :  null
+              <button 
+                style={btnStyle} 
+                onClick={scrollToTop}>
+                  Top of Page 
+              </button>
+            </div>
+          : null
         }
     
-        {showingEditForm
-          ?  <ChildEditUserForm handleClick={this.handleClick}/>
-          :  null
-        }
-      </div>
-    )
-  }
+      {showingEditForm
+        ? <div>
+            <ChildEditUserForm
+              renderUpdateErrors={props.renderUpdateErrors}
+              handleClick={props.handleClick}
+            />
+          </div>
+        : null
+      }
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.childUserReducer.currentUser
-  }
-}
-
-export default connect(mapStateToProps, { childUserDelete })(ChildUserInfo)
+export default ChildUserInfo

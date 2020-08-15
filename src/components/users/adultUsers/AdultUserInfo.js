@@ -44,7 +44,12 @@ const AdultUserInfo = (props) => {
         }
     
       {showingEditForm
-        ? <div><AdultEditUserForm handleClick={props.handleClick}/></div>
+        ? <div>
+            <AdultEditUserForm
+              renderUpdateErrors={props.renderUpdateErrors}
+              handleClick={props.handleClick}
+            />
+          </div>
         : null
       }
     </div>

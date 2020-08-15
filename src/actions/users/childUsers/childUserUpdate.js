@@ -13,10 +13,10 @@ const childUserUpdate = user => {
     .then(updatedUserData => {
       if (updatedUserData.errors !== undefined) {
           console.log(updatedUserData.errors)
-          alert(updatedUserData.errors)
-        // Here you should have logic to handle invalid login credentials.
-        // This assumes your Rails API will return a JSON object with a key of
-        // 'message' if there is an error
+          dispatch({
+            type: 'CHILD_UPDATE_FAILURE',
+            payload: updatedUserData.errors
+          })
       } 
       else {
         console.log(updatedUserData)

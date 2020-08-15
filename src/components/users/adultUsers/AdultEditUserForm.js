@@ -83,7 +83,7 @@ class AdultEditUserForm extends Component {
         <h3>(Generate as many times as you wish!)</h3>
       </div>
     )
-  } 
+  }
 
   render() {
     return (
@@ -142,9 +142,12 @@ class AdultEditUserForm extends Component {
               autoComplete="off">
             </input>
 
+            {this.props.renderUpdateErrors()}
+
             {this.renderAvatar()}
           
             <button
+              type="button"
               onClick={this.handleClick}
               style={btnStyle}>
               Generate an Avatar

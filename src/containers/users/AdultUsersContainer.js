@@ -37,7 +37,6 @@ class AdultUsersContainer extends Component {
   }
 
   renderSignupErrors = () => {
-    debugger
     let signupFailure
     this.props.errors
       ? signupFailure = true

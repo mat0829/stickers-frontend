@@ -118,6 +118,7 @@ class ChildSignupForm extends Component {
             {this.renderAvatar()}
           
             <button
+              type="button"
               onClick={this.handleClick}
               style={btnStyle}>
                 Generate an Avatar

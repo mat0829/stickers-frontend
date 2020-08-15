@@ -15,6 +15,10 @@ class AdultUsersContainer extends Component {
     }
   }
 
+  scrollToTop = () => {
+    window.scrollTo({top: 520, behavior: 'smooth'})
+  }
+
   scrollTo(id) {
     const element = document.getElementById(id);
     element.scrollIntoView({ behavior: 'smooth' })
@@ -45,6 +49,7 @@ class AdultUsersContainer extends Component {
     if (signupFailure)
       return (
         <ErrorsContainer
+          scrollToTop={this.scrollToTop()}
           errors={this.props.errors}
         />
       )

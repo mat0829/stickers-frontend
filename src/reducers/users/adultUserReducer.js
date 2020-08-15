@@ -10,7 +10,8 @@ const adultUserReducer = (state = initialState, action) => {
       return {
         ...state, 
         currentUser: action.payload,
-        errorMessage: null
+        errorMessage: null,
+        errors: null
       }
     case 'ADULT_LOGIN_FAILURE':
       return {

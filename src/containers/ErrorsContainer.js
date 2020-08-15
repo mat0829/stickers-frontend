@@ -5,14 +5,14 @@ import Errors from '../components/errors/Errors'
 const ErrorsContainer = (props) => {
   if (props.errorMessage) {
     return (
-      <div>
+      <div id="error-message">
         <Error errorMessage={props.errorMessage}/>
       </div>
     )
   }
   else if (props.errors && props.errors.length) {
     return (
-      <div>
+      <div id="errors-container">
         <Errors errors={props.errors}/>
       </div>
     )

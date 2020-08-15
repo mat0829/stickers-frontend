@@ -6,9 +6,7 @@ const h2Style = {
 
 const ErrorMessage = (props) => {
   return (
-    <div>
-      <h2 style={h2Style}>{props.errorMessage}</h2>
-    </div>
+    <h2 style={h2Style}>{props.errorMessage}</h2>
   )
 }
 

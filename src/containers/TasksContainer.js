@@ -86,7 +86,7 @@ class TasksContainer extends Component {
               Click on a Task to see more details:
           </label>
 
-          <TasksCollection 
+          <TasksCollection
             tasks={this.props.tasks} 
             handleClick={this.handleClick}
             loading={this.props.loading}

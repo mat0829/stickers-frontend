@@ -2,6 +2,9 @@ const fetchTasks = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
+      dispatch({ 
+        type: 'LOADING_TASKS'
+      })
       fetch("http://localhost:3000/api/v1/tasks", {
         method: "GET",
         headers: {

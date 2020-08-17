@@ -39,12 +39,15 @@ const taskReducer = (state = initialState, action) => {
       case 'TASKS_ERRORS':
         return {
           ...state, 
-          errors: action.payload
+          errors: action.payload,
+          loading: false
         }
-      case 'TASKS_ERROR':
+      case 'TASK_ERROR':
+        debugger
         return {
           ...state,
-          errorMessage: action.payload
+          errorMessage: action.payload,
+          loading: false
         }
       default: 
         return state

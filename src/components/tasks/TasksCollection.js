@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupErrors from '../errors/Errors'
+import Errors from '../errors/Errors'
 import Error from '../errors/Error'
 
 const taskBarStyle = {
@@ -24,33 +24,35 @@ const spanStyle = {
 }
 
 const TasksCollection = (props) => {
-
   const renderTasks = () => {
-    return props.tasks.map(task => 
-      <span 
-        key={task.id}
-        id={task.id}
-        onClick={props.handleClick}
-        style={spanStyle}>
-          {task.name}
-      </span>)
+    if (props.tasks.length === 0) {
+      return <h2>You Currently have 0 Tasks.</h2>
+    } else {
+      return props.tasks.map(task => 
+        <span 
+          key={task.id}
+          id={task.id}
+          onClick={props.handleClick}
+          style={spanStyle}>
+            {task.name}
+        </span>)
+    }
   }
-
 
    return (
     <div 
       id='adult-task-bar' 
       style={taskBarStyle}>
-        {props.loading 
+        {props.loading
           ?  <h1>"Loading..."</h1> 
           :  renderTasks()
         }
-        {props.message
+        {props.errorMessage
           ? <Error />
           : null
         }
         {props.errors
-          ? <h2><SignupErrors signupErrors={props.errors}/></h2>
+          ? <h2><Errors errors={props.errors}/></h2>
           : null
         }
     </div>

@@ -19,7 +19,7 @@ const childUserUpdate = user => {
           })
       } 
       else {
-        console.log(updatedUserData)
+        console.log('updated child user:' ,updatedUserData)
         dispatch({
           type: 'UPDATE_CHILD_USER',
           payload: updatedUserData

@@ -19,7 +19,7 @@ const adultUserUpdate = user => {
           })
       } 
       else {
-        console.log('updated user:' ,updatedUserData)
+        console.log('updated adult user:' ,updatedUserData)
         dispatch({
           type: 'UPDATE_ADULT_USER',
           payload: updatedUserData

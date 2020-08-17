@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 import addNewTask from '../../actions/tasks/addNewTask'
 import TaskImagesContainer from '../../containers/TaskImagesContainer'
@@ -25,7 +26,8 @@ class NewTaskForm extends Component {
     showingTaskImageCollection: true,
     showingTaskImageInfo: false,
     showingStickerCollection: true,
-    showingStickerInfo: false
+    showingStickerInfo: false,
+    redirect: false
   }
 
   componentDidMount() {
@@ -88,6 +90,9 @@ class NewTaskForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.addNewTask(this.state)
+    this.setState({
+      redirect: true
+    })
   }
 
   render() {
@@ -97,8 +102,10 @@ class NewTaskForm extends Component {
       showingStickerCollection,
       showingStickerInfo
     } = this.state
+
+    if (this.state.redirect) return <Redirect to='/adult-tasks-page'/>
     
-    return (
+    else return (
       <div id="new-task-form-container">
         <h1>Create a new Task</h1>
         <form onSubmit={this.handleSubmit}>

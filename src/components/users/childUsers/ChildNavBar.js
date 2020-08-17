@@ -4,6 +4,7 @@ import {Switch, NavLink, Route} from 'react-router-dom'
 
 import childUserLogout from '../../../actions/users/childUsers/childUserLogout'
 import ChildUserProfile from './ChildUserProfile'
+import TasksContainer from '../../../containers/TasksContainer'
 
 const profileBtnStyle = {
   color: 'white',
@@ -86,6 +87,11 @@ class ChildNavBar extends Component {
           <Route 
             exact path='/kids-homepage' 
             component={ChildUserProfile}>
+          </Route>
+
+          <Route 
+            exact path='/child-tasks-page' 
+            component={TasksContainer}>
           </Route>
         </Switch>
       </div>

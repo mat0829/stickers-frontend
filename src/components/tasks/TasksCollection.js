@@ -29,7 +29,7 @@ const TasksCollection = (props) => {
       return <h2>You Currently have 0 Tasks.</h2>
     } else {
       return props.tasks.map(task => 
-        <span 
+        <span
           key={task.id}
           id={task.id}
           onClick={props.handleClick}
@@ -41,7 +41,7 @@ const TasksCollection = (props) => {
 
    return (
     <div 
-      id='adult-task-bar' 
+      id='task-bar' 
       style={taskBarStyle}>
         {props.loading
           ?  <h1>"Loading..."</h1> 

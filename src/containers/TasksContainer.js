@@ -77,11 +77,11 @@ class TasksContainer extends Component {
     const { showingTaskInfo, showingEditTaskForm } = this.state
     return (
       <div 
-        id='adult-tasks-container' 
+        id='tasks-container' 
         style={taskBarContainerStyle}>
           
           <label 
-            htmlFor="adult-task-bar" 
+            htmlFor="task-bar" 
             style={labelStyle}>
               Click on a Task to see more details:
           </label>
@@ -96,6 +96,8 @@ class TasksContainer extends Component {
 
           {showingTaskInfo
             ?  <TaskInfo
+                 adultUser={this.props.adultUser}
+                 childUser={this.props.childUser}
                  handleShowHideEditForm={this.handleShowHideEditForm}
                  handleDelete={this.handleDelete}
                  task={this.state.selectedTask}
@@ -121,6 +123,8 @@ class TasksContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    adultUser: state.adultUserReducer.currentUser,
+    childUser: state.childUserReducer.currentUser,
     tasks: state.taskReducer.tasks,
     loading: state.taskReducer.loading,
     message: state.taskReducer.message,

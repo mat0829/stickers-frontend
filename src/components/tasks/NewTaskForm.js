@@ -107,17 +107,25 @@ class NewTaskForm extends Component {
     console.log(children)
 
     if (this.state.redirect) return <Redirect to='/adult-tasks-page'/>
-    
+
     else return (
       <div id="new-task-form-container">
         <h1>Create a new Task</h1>
         <form onSubmit={this.handleSubmit}>
        
-        <select name="taskReceiverId">
-          {children.map(child =>
-            <option key={child.key} value={child.key}>{child.value}</option>
-          )}
-        </select>
+        <label htmlFor="new-task-child">
+          Choose the Child the Task is for:
+        </label>
+
+        <select
+          id="new-task-child"
+          name="taskReceiverId"
+          onChange={this.handleChange}>
+            <option>Select Name Here</option>
+            {children.map(child =>
+              <option key={child.id} value={child.id}>{child.name}</option>
+            )}
+        </select><br/><br/>
 
           <label htmlFor="new-task-name">
             Task Name:

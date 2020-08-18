@@ -11,7 +11,6 @@ const addNewTask = task => {
   } = task
   
   const token = localStorage.token
-  debugger
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/tasks`, {
       method: "POST",

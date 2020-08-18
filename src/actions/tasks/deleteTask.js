@@ -1,7 +1,6 @@
 const deleteTask = taskId => {
   return dispatch => {
     const token = localStorage.token
-debugger
     const result = window.confirm("Are you sure you want to delete this Task? Click ok to confirm.")
     if (result) {
       fetch(`http://localhost:3000/api/v1/tasks/${taskId}`, {

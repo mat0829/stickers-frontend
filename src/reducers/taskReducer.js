@@ -23,7 +23,8 @@ const taskReducer = (state = initialState, action) => {
         return {
           ...state, 
           tasks: [...state.tasks, action.payload],
-          loading: false
+          loading: false,
+          errors: null
         }
       case 'UPDATE_TASK':
         return {
@@ -36,14 +37,13 @@ const taskReducer = (state = initialState, action) => {
           ...state,
           tasks: [...state.tasks.filter(task => task.id === action.payload ? false : true)]
         }
-      case 'TASKS_ERRORS':
+      case 'TASK_ERRORS':
         return {
           ...state, 
           errors: action.payload,
           loading: false
         }
       case 'TASK_ERROR':
-        debugger
         return {
           ...state,
           errorMessage: action.payload,

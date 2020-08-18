@@ -7,6 +7,7 @@ import TaskImagesContainer from '../../containers/TaskImagesContainer'
 import TaskImageInfo from '../taskImages/TaskImageInfo'
 import StickersContainer from '../../containers/StickersContainer'
 import StickerInfo from '../stickers/StickerInfo'
+import ErrorsContainer from '../../containers/ErrorsContainer'
 
 const submitBtnStyle = {
   color: 'white',
@@ -16,6 +17,7 @@ const submitBtnStyle = {
 class NewTaskForm extends Component {
 
   state = {
+    currentErrors: null,
     taskGiverId: `${this.props.currentUser.id}`,
     taskReceiverId: '',
     name: 'Test',
@@ -36,6 +38,21 @@ class NewTaskForm extends Component {
       showingTaskImageCollection: true, 
       showingStickerCollection: true
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      if (this.props.errors !== null) {
+        this.setState({
+          currentErrors: this.props.errors
+        })
+      }
+    }
+    if (prevProps.tasks !== this.props.tasks) {
+      this.setState({
+        redirect: true
+      })
+    }
   }
 
   scrollTo(id) {
@@ -90,9 +107,18 @@ class NewTaskForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.addNewTask(this.state)
-    this.setState({
-      redirect: true
-    })
+  }
+
+  renderCreateTaskErrors = () => {
+    const currentErrors = this.state.currentErrors
+    if (currentErrors) {
+      return (
+        <ErrorsContainer
+          errors={this.props.errors}
+        />
+      )
+    }
+    else return null
   }
 
   render() {
@@ -100,13 +126,14 @@ class NewTaskForm extends Component {
       showingTaskImageCollection, 
       showingTaskImageInfo,
       showingStickerCollection,
-      showingStickerInfo
+      showingStickerInfo,
+      redirect
     } = this.state
 
     const children = JSON.parse(localStorage.getItem("childNames"))
     console.log(children)
-
-    if (this.state.redirect) return <Redirect to='/adult-tasks-page'/>
+    
+    if (redirect) return <Redirect to='/adult-tasks-page'/>
 
     else return (
       <div id="new-task-form-container">
@@ -171,6 +198,8 @@ class NewTaskForm extends Component {
             :  null
           }
 
+          {this.renderCreateTaskErrors()}
+
           {showingStickerCollection
             ?  <StickersContainer
                  scrollTo={this.scrollTo}
@@ -223,7 +252,9 @@ class NewTaskForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.adultUserReducer.currentUser
+    currentUser: state.adultUserReducer.currentUser,
+    tasks: state.taskReducer.tasks,
+    errors: state.taskReducer.errors
   }
 }
 

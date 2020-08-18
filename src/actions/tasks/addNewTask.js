@@ -31,11 +31,11 @@ const addNewTask = task => {
     .then(resp => resp.json())
     .then(newTaskData => {
       if (newTaskData.errors !== undefined) {
-          console.log('create task errors:', newTaskData.errors)
-          dispatch({
-            type: 'TASKS ERRORS',
-            payload: newTaskData.errors
-          })
+        console.log('create task errors:', newTaskData.errors)
+        dispatch({
+          type: 'TASK_ERRORS',
+          payload: newTaskData.errors
+        })
       } 
       else {
         console.log('new task:', newTaskData)

@@ -18,7 +18,6 @@ const btnStyle = {
 
 const TaskInfo = (props) => {
   const task = props.task
-  debugger
   if (Object.keys(props.adultUser).length !== 0) {
     return (
       <div id="adult-task-info">

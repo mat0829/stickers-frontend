@@ -17,7 +17,7 @@ class NewTaskForm extends Component {
 
   state = {
     taskGiverId: `${this.props.currentUser.id}`,
-    taskReceiverId: '2',
+    taskReceiverId: '',
     name: 'Test',
     image: '',
     value: '5',
@@ -103,12 +103,21 @@ class NewTaskForm extends Component {
       showingStickerInfo
     } = this.state
 
+    const children = JSON.parse(localStorage.getItem("childNames"))
+    console.log(children)
+
     if (this.state.redirect) return <Redirect to='/adult-tasks-page'/>
     
     else return (
       <div id="new-task-form-container">
         <h1>Create a new Task</h1>
         <form onSubmit={this.handleSubmit}>
+       
+        <select name="taskReceiverId">
+          {children.map(child =>
+            <option key={child.key} value={child.key}>{child.value}</option>
+          )}
+        </select>
 
           <label htmlFor="new-task-name">
             Task Name:

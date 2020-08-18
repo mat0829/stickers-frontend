@@ -19,6 +19,14 @@ const childUserSignup = user => {
       } 
       else {
         console.log('new child user:', newUserData.user)
+        const childNames = JSON.parse(localStorage.getItem("childNames")) || []
+        const childObject = {
+          id: newUserData.user.id,
+          name: newUserData.user.name
+        }
+        childNames.push(childObject)
+        console.log('children:', childNames)
+        localStorage.setItem('childNames', JSON.stringify(childNames))
         localStorage.setItem("token", newUserData.jwt)
         dispatch({
           type: 'LOGIN_CHILD_USER',

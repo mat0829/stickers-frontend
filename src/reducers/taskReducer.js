@@ -17,7 +17,8 @@ const taskReducer = (state = initialState, action) => {
         return {
           ...state, 
           tasks: action.payload,
-          loading: false
+          loading: false,
+          errors: null
         }
       case 'ADD_NEW_TASK':
         return {
@@ -30,7 +31,8 @@ const taskReducer = (state = initialState, action) => {
         return {
           ...state, 
           tasks: [...state.tasks.map(task => task.id === action.payload.id ? action.payload : task)],
-          loading: false
+          loading: false,
+          errors: null
         }
       case 'DELETE_TASK':
         return {

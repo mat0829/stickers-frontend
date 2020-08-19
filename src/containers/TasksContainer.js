@@ -91,7 +91,6 @@ class TasksContainer extends Component {
             handleClick={this.handleClick}
             loading={this.props.loading}
             message={this.props.message}
-            errors={this.props.errors}
           />
 
           {showingTaskInfo
@@ -109,9 +108,11 @@ class TasksContainer extends Component {
           {showingEditTaskForm
             ? <div>
                 <EditTaskForm
-                  handleEdit={this.props.editTask}
+                  editTask={this.props.editTask}
                   handleShowHideEditForm={this.handleShowHideEditForm}
                   task={this.state.selectedTask}
+                  errors={this.props.errors}
+                  tasks={this.props.tasks}
                 />
               </div>
             : null

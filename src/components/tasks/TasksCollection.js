@@ -1,5 +1,4 @@
 import React from 'react'
-import Errors from '../errors/Errors'
 import Error from '../errors/Error'
 
 const taskBarStyle = {
@@ -49,10 +48,6 @@ const TasksCollection = (props) => {
         }
         {props.errorMessage
           ? <Error />
-          : null
-        }
-        {props.errors
-          ? <h2><Errors errors={props.errors}/></h2>
           : null
         }
     </div>

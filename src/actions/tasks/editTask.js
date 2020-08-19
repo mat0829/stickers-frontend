@@ -32,7 +32,7 @@ const editTask = task => {
       if (updatedTaskData.errors !== undefined) {
           console.log(updatedTaskData.errors)
           dispatch({
-            type: 'TASKS_ERRORS',
+            type: 'TASK_ERRORS',
             payload: updatedTaskData.errors
           })
       } 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
 
-import editTask from '../../actions/tasks/editTask'
 import TaskImagesContainer from '../../containers/TaskImagesContainer'
 import TaskImageInfo from '../taskImages/TaskImageInfo'
 import StickersContainer from '../../containers/StickersContainer'
 import StickerInfo from '../stickers/StickerInfo'
+import ErrorsContainer from '../../containers/ErrorsContainer'
 
 const submitBtnStyle = {
   color: 'white',
@@ -26,7 +25,8 @@ class EditTaskForm extends Component {
     showingTaskImageCollection: false,
     showingTaskImageInfo: true,
     showingStickerCollection: false,
-    showingStickerInfo: true
+    showingStickerInfo: true,
+    currentErrors: null
   }
 
   componentDidMount() {
@@ -51,6 +51,19 @@ class EditTaskForm extends Component {
       completed, 
       stickerImage
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      if (this.props.errors !== null) {
+        this.setState({
+          currentErrors: this.props.errors
+        })
+      }
+    }
+    if (prevProps.tasks !== this.props.tasks) {
+      this.props.handleShowHideEditForm()
+    }
   }
 
   scrollTo(id) {
@@ -105,7 +118,18 @@ class EditTaskForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.editTask(this.state)
-    this.props.handleShowHideEditForm()
+  }
+
+  renderEditTaskErrors = () => {
+    const currentErrors = this.state.currentErrors
+    if (currentErrors) {
+      return (
+        <ErrorsContainer
+          errors={currentErrors}
+        />
+      )
+    }
+    else return null
   }
 
   render() {
@@ -115,11 +139,28 @@ class EditTaskForm extends Component {
       showingStickerCollection,
       showingStickerInfo
     } = this.state
+
+    const children = JSON.parse(localStorage.getItem("childNames"))
     
     return (
       <div id="edit-task-form-container">
         <h1>Edit Task</h1>
         <form onSubmit={this.handleSubmit}>
+
+          <label htmlFor="edit-task-child">
+            Choose the Child the Task is for:
+          </label>
+
+          <select
+            id="edit-task-child"
+            name="taskReceiverId"
+            value={this.state.taskReceiverId}
+            onChange={this.handleChange}>
+              <option>Select Name Here</option>
+              {children.map(child =>
+                <option key={child.id} value={child.id}>{child.name}</option>
+              )}
+          </select><br/><br/>
 
           <label htmlFor="edit-task-name">
             Task Name:
@@ -156,14 +197,16 @@ class EditTaskForm extends Component {
           }
 
           {showingTaskImageInfo
-            ?  <div>
+            ?  <>
                 <TaskImageInfo
                   imgURL={this.state.image}
                   handleShowHideTaskImage={this.handleShowHideTaskImage}
                 /><br/>
-              </div>
+              </>
             :  null
           }
+
+          {this.renderEditTaskErrors()}
 
           {showingStickerCollection
             ?  <StickersContainer
@@ -174,12 +217,12 @@ class EditTaskForm extends Component {
           }
 
           {showingStickerInfo
-            ?  <div>
+            ?  <>
                  <StickerInfo
                    imgURL={this.state.stickerImage} 
                    handleShowHideSticker={this.handleShowHideSticker}
                  /><br/>
-               </div>
+               </>
             :  null
           }
 
@@ -215,4 +258,4 @@ class EditTaskForm extends Component {
   }
 }
 
-export default connect(null, { editTask })(EditTaskForm)
+export default EditTaskForm

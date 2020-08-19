@@ -17,7 +17,6 @@ const submitBtnStyle = {
 class NewTaskForm extends Component {
 
   state = {
-    currentErrors: null,
     taskGiverId: `${this.props.currentUser.id}`,
     taskReceiverId: '',
     name: 'Test',
@@ -29,7 +28,8 @@ class NewTaskForm extends Component {
     showingTaskImageInfo: false,
     showingStickerCollection: true,
     showingStickerInfo: false,
-    redirect: false
+    redirect: false,
+    currentErrors: null,
   }
 
   componentDidMount() {
@@ -131,7 +131,6 @@ class NewTaskForm extends Component {
     } = this.state
 
     const children = JSON.parse(localStorage.getItem("childNames"))
-    console.log(children)
     
     if (redirect) return <Redirect to='/adult-tasks-page'/>
 
@@ -189,12 +188,12 @@ class NewTaskForm extends Component {
           }
 
           {showingTaskImageInfo
-            ?  <div>
+            ?  <>
                 <TaskImageInfo
                   imgURL={this.state.image}
                   handleShowHideTaskImage={this.handleShowHideTaskImage}
                 /><br/>
-              </div>
+              </>
             :  null
           }
 
@@ -209,12 +208,12 @@ class NewTaskForm extends Component {
           }
 
           {showingStickerInfo
-            ?  <div>
+            ?  <>
                  <StickerInfo
                    imgURL={this.state.stickerImage} 
                    handleShowHideSticker={this.handleShowHideSticker}
                  /><br/>
-               </div>
+               </>
             :  null
           }
 

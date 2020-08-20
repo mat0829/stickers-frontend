@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import fetchTasks from '../actions/tasks/fetchTasks'
+import sortTasks from '../actions/tasks/sortTasks'
 import editTask from '../actions/tasks/editTask'
 import deleteTask from '../actions/tasks/deleteTask'
 import TasksCollection from '../components/tasks/TasksCollection'
@@ -66,6 +67,15 @@ class TasksContainer extends Component {
     })
   }
 
+  handleTaskSorting = (event) => {
+    if (event.target.value === 'Show all Tasks') {
+      this.props.fetchTasks()
+    } else {
+      let childId = parseInt(event.target.value)
+      this.props.sortTasks(childId)
+    }
+  }
+
   handleDelete = taskId => {
     this.props.deleteTask(taskId)
     this.setState({
@@ -75,6 +85,7 @@ class TasksContainer extends Component {
 
   render() {
     const { showingTaskInfo, showingEditTaskForm } = this.state
+    const children = JSON.parse(localStorage.getItem("childNames"))
     return (
       <div 
         id='tasks-container' 
@@ -92,6 +103,19 @@ class TasksContainer extends Component {
             loading={this.props.loading}
             message={this.props.message}
           />
+          
+          <label htmlFor="task-child">
+            Sort by a Child:
+          </label>
+
+        <select
+          id="task-child"
+          onChange={this.handleTaskSorting}>
+            <option>Show all Tasks</option>
+            {children.map(child =>
+              <option key={child.id} value={child.id}>{child.name}</option>
+            )}
+        </select><br/><br/>
 
           {showingTaskInfo
             ?  <TaskInfo
@@ -135,6 +159,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   fetchTasks,
+  sortTasks,
   editTask,
   deleteTask
 })(TasksContainer)

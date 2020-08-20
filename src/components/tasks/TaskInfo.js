@@ -41,25 +41,29 @@ const TaskInfo = (props) => {
         <h2>Value: {task.value} Sticker Points!</h2>
   
         <button
+          type="button"
           onClick={props.handleShowHideEditForm}
           style={btnStyle}>
             Edit this Task!
         </button>
   
         <button
+          type="button"
           onClick={() => props.handleDelete(props.task.id)}
           style={btnStyle}>
             Delete this Task!
         </button><br/><br/>
   
         <NavLink to="/add-new-task">
-          <button 
+          <button
+            type="button"
             style={btnStyle}>
               Create another new Task
           </button><br/><br/>
         </NavLink> 
         
-        <button 
+        <button
+          type="button"
           style={btnStyle}
           onClick={props.scrollToTop}>
             Top of Page
@@ -89,7 +93,8 @@ const TaskInfo = (props) => {
   
         <h2>Value: {task.value} Sticker Points!</h2>
         
-        <button 
+        <button
+          type="button"
           style={btnStyle}
           onClick={props.scrollToTop}>
             Top of Page

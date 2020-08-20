@@ -21,6 +21,7 @@ const TaskImageInfo = (props) => {
       </img><br/>
 
       <button
+        type="button"
         style={btnStyle}
         onClick={props.handleShowHideTaskImage}>
           Select a Different Task Image

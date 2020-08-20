@@ -19,7 +19,7 @@ class NewTaskForm extends Component {
   state = {
     taskGiverId: `${this.props.currentUser.id}`,
     taskReceiverId: '',
-    name: 'Test',
+    name: '',
     image: '',
     value: '5',
     completed: false,

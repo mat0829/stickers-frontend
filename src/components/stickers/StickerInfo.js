@@ -21,6 +21,7 @@ const StickerInfo = (props) => {
       </img><br/>
       
       <button
+        type="button"
         style={btnStyle}
         onClick={props.handleShowHideSticker}>
           Select a Different Sticker

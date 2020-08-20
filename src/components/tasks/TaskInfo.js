@@ -18,6 +18,9 @@ const btnStyle = {
 
 const TaskInfo = (props) => {
   const task = props.task
+  let taskStatusToggle
+  task.completed === false ? taskStatusToggle = 'Completed' : taskStatusToggle = 'Not Completed'
+  
   if (Object.keys(props.adultUser).length !== 0) {
     return (
       <div id="adult-task-info">
@@ -44,14 +47,21 @@ const TaskInfo = (props) => {
           type="button"
           onClick={props.handleShowHideEditForm}
           style={btnStyle}>
-            Edit this Task!
+            Edit this Task
+        </button>
+
+        <button
+          type="button"
+          onClick={() => props.handleMarkTaskComplete(props.task)}
+          style={btnStyle}>
+            Mark Task as {taskStatusToggle}
         </button>
   
         <button
           type="button"
           onClick={() => props.handleDelete(props.task.id)}
           style={btnStyle}>
-            Delete this Task!
+            Delete this Task
         </button><br/><br/>
   
         <NavLink to="/add-new-task">

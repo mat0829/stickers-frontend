@@ -1,10 +1,7 @@
-const sortTasks = (childId) => {
+const sortTasks = (childName) => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
-      dispatch({ 
-        type: 'LOADING_TASKS'
-      })
       fetch("http://localhost:3000/api/v1/tasks", {
         method: "GET",
         headers: {
@@ -29,11 +26,12 @@ const sortTasks = (childId) => {
           localStorage.removeItem("token")
         } 
         else {
-          console.log('tasks:', tasksData)
-          const sortedTasks = tasksData.filter(task => task.taskReceiverId === childId)
+          let tasksSortedByName = tasksData.sort((a, b) => (a.name > b.name) ? 1 : -1)
+          const tasksSortedByChild = tasksSortedByName.filter(task => task.task_child.name === childName)
+          console.log(`tasks sorted by Child ${childName}:`, tasksSortedByChild)
           dispatch({
             type: 'FETCH_TASKS',
-            payload: sortedTasks
+            payload: tasksSortedByChild
           })
         }
       })

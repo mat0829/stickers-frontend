@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import fetchTasks from '../actions/tasks/fetchTasks'
 import sortTasks from '../actions/tasks/sortTasks'
 import editTask from '../actions/tasks/editTask'
+import markTaskComplete from '../actions/tasks/markTaskComplete'
 import deleteTask from '../actions/tasks/deleteTask'
 import TasksCollection from '../components/tasks/TasksCollection'
 import TaskInfo from '../components/tasks/TaskInfo'
@@ -68,12 +69,20 @@ class TasksContainer extends Component {
   }
 
   handleTaskSorting = (event) => {
+    this.setState({
+      showingTaskInfo: false
+    })
     if (event.target.value === 'Show all Tasks') {
       this.props.fetchTasks()
     } else {
-      let childId = parseInt(event.target.value)
-      this.props.sortTasks(childId)
+      let childName = event.target.value
+      this.props.sortTasks(childName)
     }
+  }
+
+  handleMarkTaskComplete = task => {
+    task.completed = !task.completed
+    this.props.markTaskComplete(task)
   }
 
   handleDelete = taskId => {
@@ -113,7 +122,7 @@ class TasksContainer extends Component {
           onChange={this.handleTaskSorting}>
             <option>Show all Tasks</option>
             {children.map(child =>
-              <option key={child.id} value={child.id}>{child.name}</option>
+              <option key={child.id}>{child.name}</option>
             )}
         </select><br/><br/>
 
@@ -122,6 +131,7 @@ class TasksContainer extends Component {
                  adultUser={this.props.adultUser}
                  childUser={this.props.childUser}
                  handleShowHideEditForm={this.handleShowHideEditForm}
+                 handleMarkTaskComplete={this.handleMarkTaskComplete}
                  handleDelete={this.handleDelete}
                  task={this.state.selectedTask}
                  scrollToTop={this.scrollToTop}
@@ -161,5 +171,6 @@ export default connect(mapStateToProps, {
   fetchTasks,
   sortTasks,
   editTask,
+  markTaskComplete,
   deleteTask
 })(TasksContainer)

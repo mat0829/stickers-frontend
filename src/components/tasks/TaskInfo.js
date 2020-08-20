@@ -64,7 +64,7 @@ const TaskInfo = (props) => {
             Delete this Task
         </button><br/><br/>
   
-        <NavLink to="/add-new-task">
+        <NavLink to="/adult-tasks/new">
           <button
             type="button"
             style={btnStyle}>

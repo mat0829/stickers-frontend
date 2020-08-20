@@ -132,7 +132,7 @@ class NewTaskForm extends Component {
 
     const children = JSON.parse(localStorage.getItem("childNames"))
     
-    if (redirect) return <Redirect to='/adult-tasks-page'/>
+    if (redirect) return <Redirect to='/adult-tasks'/>
 
     else return (
       <div id="new-task-form-container">

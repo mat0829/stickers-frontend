@@ -48,31 +48,31 @@ class AdultNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/adults-homepage">
+        <NavLink to="/adult-homepage">
           <button style={profileBtnStyle}>
             User Profile
           </button>
         </NavLink>
   
-        <NavLink to="/adult-tasks-page">
+        <NavLink to="/adult-tasks">
           <button style={tasksBtnStyle}>
             Tasks Page
           </button>
         </NavLink>
               
-        <NavLink to="/add-new-task">
+        <NavLink to="/adult-tasks/new">
           <button style={addTaskBtnStyle}>
             Create a New Task
           </button>
         </NavLink>
   
-        <NavLink to="/adult-prizes-page">
+        <NavLink to="/adult-prizes">
           <button style={prizesBtnStyle}>
             Prizes Page
           </button>
         </NavLink>
   
-        <NavLink to="/add-new-prize">
+        <NavLink to="/adult-prizes/new">
           <button style={addPrizeBtnStyle}>
             Add a New Prize
           </button>
@@ -88,17 +88,17 @@ class AdultNavBar extends Component {
         
         <Switch>
           <Route 
-            exact path='/adults-homepage' 
+            exact path='/adult-homepage' 
             component={AdultUserProfile}>
           </Route>
 
           <Route 
-            exact path='/adult-tasks-page' 
+            exact path='/adult-tasks' 
             component={TasksContainer}>
           </Route>
 
           <Route 
-            exact path='/add-new-task' 
+            exact path='/adult-tasks/new' 
             component={NewTaskForm}>
           </Route>
         </Switch>

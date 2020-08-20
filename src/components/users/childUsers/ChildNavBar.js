@@ -47,13 +47,13 @@ class ChildNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/kids-homepage">
+        <NavLink to="/kid-homepage">
           <button style={profileBtnStyle}>
             User Profile
           </button>
         </NavLink>
   
-        <NavLink to="/child-tasks-page">
+        <NavLink to="/child-tasks">
           <button style={tasksBtnStyle}>
             Tasks Page
           </button>
@@ -65,7 +65,7 @@ class ChildNavBar extends Component {
           </button>
         </NavLink>
   
-        <NavLink to="/child-prizes-page">
+        <NavLink to="/child-prizes">
           <button style={prizesBtnStyle}>
             Prizes Page
           </button>
@@ -85,12 +85,12 @@ class ChildNavBar extends Component {
 
         <Switch>
           <Route 
-            exact path='/kids-homepage' 
+            exact path='/kid-homepage' 
             component={ChildUserProfile}>
           </Route>
 
           <Route 
-            exact path='/child-tasks-page' 
+            exact path='/child-tasks' 
             component={TasksContainer}>
           </Route>
         </Switch>

@@ -17,13 +17,13 @@ const childBtnStyle = {
 const IndexNavBar = () => {
   return (
     <div className="index-navbar">
-      <NavLink to="/adults-homepage">
+      <NavLink to="/adult-homepage">
         <button style={adultBtnStyle}> 
           Parent's Page 
         </button>
       </NavLink>
 
-      <NavLink to="/kids-homepage">
+      <NavLink to="/kid-homepage">
         <button style={childBtnStyle}> 
            Kid's Page
         </button>
@@ -31,12 +31,12 @@ const IndexNavBar = () => {
 
       <Switch>
         <Route 
-          exact path='/adults-homepage' 
+          exact path='/adult-homepage' 
           component={AdultUsersContainer}>
         </Route>
 
         <Route 
-          exact path='/kids-homepage' 
+          exact path='/kid-homepage' 
           component={ChildUsersContainer}>
         </Route>
       </Switch>

@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Switch, NavLink, Route} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 import adultUserLogout from '../../../actions/users/adultUsers/adultUserLogout'
-import AdultUserProfile from './AdultUserProfile'
-import NewTaskForm from '../../tasks/NewTaskForm'
-import TasksContainer from '../../../containers/TasksContainer'
 
 const profileBtnStyle = {
   color: 'white',
@@ -48,7 +45,7 @@ class AdultNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/adult-homepage">
+        <NavLink to="/adult/profile">
           <button style={profileBtnStyle}>
             User Profile
           </button>
@@ -78,30 +75,13 @@ class AdultNavBar extends Component {
           </button>
         </NavLink>
   
-        <NavLink to="/logout">
+        <NavLink to="/">
           <button 
             style={logoutBtnStyle} 
             onClick={this.handleClick}>
               Logout
           </button>
         </NavLink>
-        
-        <Switch>
-          <Route 
-            exact path='/adult-homepage' 
-            component={AdultUserProfile}>
-          </Route>
-
-          <Route 
-            exact path='/adult-tasks' 
-            component={TasksContainer}>
-          </Route>
-
-          <Route 
-            exact path='/adult-tasks/new' 
-            component={NewTaskForm}>
-          </Route>
-        </Switch>
       </div>
     )
   }

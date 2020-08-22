@@ -128,6 +128,7 @@ class TasksContainer extends Component {
 
           {showingTaskInfo
             ?  <TaskInfo
+                 path={`${this.props.match.url}/${this.state.selectedTask.id}`}
                  adultUser={this.props.adultUser}
                  childUser={this.props.childUser}
                  handleShowHideEditForm={this.handleShowHideEditForm}

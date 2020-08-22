@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Switch, NavLink, Route} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 import childUserLogout from '../../../actions/users/childUsers/childUserLogout'
-import ChildUserProfile from './ChildUserProfile'
-import TasksContainer from '../../../containers/TasksContainer'
 
 const profileBtnStyle = {
   color: 'white',
@@ -47,7 +45,7 @@ class ChildNavBar extends Component {
   render() {
     return (
       <div>
-        <NavLink to="/kid-homepage">
+        <NavLink to="/child/profile">
           <button style={profileBtnStyle}>
             User Profile
           </button>
@@ -77,23 +75,11 @@ class ChildNavBar extends Component {
           </button>
         </NavLink>
   
-        <NavLink to="/logout">
+        <NavLink to="/">
           <button style={logoutBtnStyle} onClick={this.handleClick}>
             Logout
           </button>
         </NavLink>
-
-        <Switch>
-          <Route 
-            exact path='/kid-homepage' 
-            component={ChildUserProfile}>
-          </Route>
-
-          <Route 
-            exact path='/child-tasks' 
-            component={TasksContainer}>
-          </Route>
-        </Switch>
       </div>
     )
   }

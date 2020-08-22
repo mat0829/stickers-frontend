@@ -3,16 +3,12 @@ import {connect} from 'react-redux'
 
 import ChildLoginform from '../../components/users/childUsers/ChildLoginForm'
 import ChildSignupForm from '../../components/users/childUsers/ChildSignupForm'
-import ChildNavBar from '../../components/users/childUsers/ChildNavBar'
+import childUserProfile from '../../actions/users/childUsers/childUserProfile'
 import ErrorsContainer from '../ErrorsContainer'
+import IndexNavBar from '../../IndexNavBar'
+import ChildUserProfile from '../../components/users/childUsers/ChildUserProfile'
 
 class ChildUsersContainer extends Component {
-
-  componentDidMount() {
-    if (document.getElementById('child-login-signup-container')) {
-      this.scrollTo('child-login-signup-container')
-    }
-  }
 
   scrollToTop = () => {
     window.scrollTo({top: 520, behavior: 'smooth'})
@@ -20,7 +16,7 @@ class ChildUsersContainer extends Component {
 
   scrollTo(id) {
     const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth' })
   }
 
   renderLoginError = () => {
@@ -55,34 +51,31 @@ class ChildUsersContainer extends Component {
     else 
       return null
   }
-
+  
   render() {
-    const isLoggedIn = this.props.loggedIn
-    
-    if (isLoggedIn) {
-      return (
-        <div>
-          <ChildNavBar />
-        </div>
-      )
-    } 
-      return (
-        <div id='child-login-signup-container'>
+    const {childLoggedIn} = this.props
+
+    if (childLoggedIn) return <ChildUserProfile />
+
+    else {
+      return ( 
+        <div id="child-login-signup-container">
+          <IndexNavBar />
           <ChildLoginform />
           {this.renderLoginError()}
           {this.renderSignupErrors()}
           <ChildSignupForm />
         </div>
       )
+    }
   }
 }
 
-const mapStateToProps = function(state) {
+const mapStateToProps = (state) => {
   return {
-    loggedIn: state.childUserReducer.currentUser.logged_in,
     errorMessage: state.childUserReducer.errorMessage,
     errors: state.childUserReducer.errors
   }
 }
 
-export default connect(mapStateToProps)(ChildUsersContainer)
+export default connect(mapStateToProps, { childUserProfile })(ChildUsersContainer)

@@ -3,17 +3,12 @@ import {connect} from 'react-redux'
 
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
-import AdultNavBar from '../../components/users/adultUsers/AdultNavBar'
 import adultUserProfile from '../../actions/users/adultUsers/adultUserProfile'
 import ErrorsContainer from '../ErrorsContainer'
+import IndexNavBar from '../../IndexNavBar'
+import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
 
 class AdultUsersContainer extends Component {
-
-  componentDidMount() {
-    if (document.getElementById('adult-login-signup-container')) {
-      this.scrollTo('adult-login-signup-container')
-    }
-  }
 
   scrollToTop = () => {
     window.scrollTo({top: 520, behavior: 'smooth'})
@@ -58,28 +53,26 @@ class AdultUsersContainer extends Component {
   }
   
   render() {
-    const isLoggedIn = this.props.loggedIn
-    
-    if (isLoggedIn)
-      return (
-        <div>
-          <AdultNavBar />
-        </div>
-      )
+    const {adultLoggedIn} = this.props
+
+    if (adultLoggedIn) return <AdultUserProfile />
+
+    else {
       return (
         <div id="adult-login-signup-container">
+          <IndexNavBar />
           <AdultLoginform />
           {this.renderLoginError()}
           {this.renderSignupErrors()}
           <AdultSignupForm />
         </div>
       )
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.adultUserReducer.currentUser.logged_in,
     errorMessage: state.adultUserReducer.errorMessage,
     errors: state.adultUserReducer.errors
   }

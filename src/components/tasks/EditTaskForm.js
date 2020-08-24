@@ -117,7 +117,8 @@ class EditTaskForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.editTask(this.state)
+    const history = this.props.history
+    this.props.editTask(this.state, history)
   }
 
   renderEditTaskErrors = () => {

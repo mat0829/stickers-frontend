@@ -1,4 +1,4 @@
-const editTask = task => {
+const editTask = (task, history) => {
   const {
     taskGiverId, 
     taskReceiverId, 
@@ -42,6 +42,7 @@ const editTask = task => {
           type: 'UPDATE_TASK',
           payload: updatedTaskData
         })
+        history.push(`/tasks/${updatedTaskData.id}`)
       }
     })
   }

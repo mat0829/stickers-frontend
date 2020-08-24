@@ -22,7 +22,6 @@ class TasksContainer extends Component {
 
   componentDidMount() {
     this.props.fetchTasks()
-    console.log('fetch tasks:', this.props.tasks)
   }
 
   scrollToTop = () => {
@@ -35,14 +34,6 @@ class TasksContainer extends Component {
     const foundTask = tasks.find(task => task.name === taskName)
     this.setState({
       selectedTask: foundTask
-    })
-  }
-
-  handleShowHideEditForm = () => {
-    const {showingTaskInfo, showingEditTaskForm} = this.state
-    this.setState({
-      showingTaskInfo: !showingTaskInfo,
-      showingEditTaskForm: !showingEditTaskForm
     })
   }
 

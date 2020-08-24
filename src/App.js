@@ -9,6 +9,7 @@ import ChildNavBar from './components/users/childUsers/ChildNavBar'
 import adultUserProfile from './actions/users/adultUsers/adultUserProfile'
 import childUserProfile from './actions/users/childUsers/childUserProfile'
 import markTaskComplete from './actions/tasks/markTaskComplete'
+import editTask from './actions/tasks/editTask'
 import deleteTask from './actions/tasks/deleteTask'
 import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
 import ChildUserProfile from './components/users/childUsers/ChildUserProfile'
@@ -127,13 +128,12 @@ class App extends Component {
           </Route>
 
           <Route
-            path='/tasks/:id/edit'
+            exact path='/tasks/:id/edit'
             render={props => {
               const task = tasks.find(task => task.id === parseInt(props.match.params.id))
               return (
                 <div className='center-content padding'>
-                  <EditTaskForm task={task} {...this.props}/>
-                  <TaskInfo task={task} {...this.props}/>
+                  <EditTaskForm task={task} editTask={this.props.editTask} {...props}/>
                 </div>
               )
             }}>
@@ -158,5 +158,6 @@ export default connect(mapStateToProps, {
   adultUserProfile,
   childUserProfile,
   markTaskComplete,
+  editTask,
   deleteTask
  })(App)

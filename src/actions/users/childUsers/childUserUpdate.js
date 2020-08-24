@@ -1,4 +1,4 @@
-const childUserUpdate = user => {
+const childUserUpdate = (user, history) => {
   const token = localStorage.token
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
@@ -38,6 +38,7 @@ const childUserUpdate = user => {
           type: 'UPDATE_CHILD_USER',
           payload: updatedUserData
         })
+        history.push(`/child/profile`)
       }
     })
   }

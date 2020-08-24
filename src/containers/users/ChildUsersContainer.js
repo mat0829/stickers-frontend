@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import ChildLoginform from '../../components/users/childUsers/ChildLoginForm'
 import ChildSignupForm from '../../components/users/childUsers/ChildSignupForm'
-import childUserProfile from '../../actions/users/childUsers/childUserProfile'
 import ErrorsContainer from '../ErrorsContainer'
 import IndexNavBar from '../../IndexNavBar'
-import ChildUserProfile from '../../components/users/childUsers/ChildUserProfile'
 
 class ChildUsersContainer extends Component {
 
@@ -55,7 +54,7 @@ class ChildUsersContainer extends Component {
   render() {
     const {childLoggedIn} = this.props
 
-    if (childLoggedIn) return <ChildUserProfile />
+    if (childLoggedIn) return <Redirect to='/child/profile'/>
 
     else {
       return ( 
@@ -78,4 +77,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { childUserProfile })(ChildUsersContainer)
+export default connect(mapStateToProps)(ChildUsersContainer)

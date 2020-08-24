@@ -5,9 +5,15 @@ import {connect} from 'react-redux'
 import MainHeader from './MainHeader'
 import Home from './components/Home'
 import AdultNavBar from './components/users/adultUsers/AdultNavBar'
+import AdultEditUserForm from './components/users/adultUsers/AdultEditUserForm'
 import ChildNavBar from './components/users/childUsers/ChildNavBar'
+import ChildEditUserForm from './components/users/childUsers/ChildEditUserForm'
 import adultUserProfile from './actions/users/adultUsers/adultUserProfile'
+import adultUserUpdate from './actions/users/adultUsers/adultUserUpdate'
+import adultUserDelete from './actions/users/adultUsers/adultUserDelete'
 import childUserProfile from './actions/users/childUsers/childUserProfile'
+import childUserUpdate from './actions/users/childUsers/childUserUpdate'
+import childUserDelete from './actions/users/childUsers/childUserDelete'
 import markTaskComplete from './actions/tasks/markTaskComplete'
 import editTask from './actions/tasks/editTask'
 import deleteTask from './actions/tasks/deleteTask'
@@ -38,7 +44,13 @@ class App extends Component {
       adultLoggedIn, 
       childLoggedIn,
       adultUser,
+      adultUserProfile,
+      adultUserUpdate,
+      adultUserDelete,
       childUser,
+      childUserProfile,
+      childUserUpdate,
+      childUserDelete,
       tasks
     } = this.props
 
@@ -48,25 +60,13 @@ class App extends Component {
 
           {(() => {
             if (adultLoggedIn === true) {
-              return (
-                <>
-                  <AdultNavBar />
-                </>
-              )
+              return <AdultNavBar />
             } 
             else if (childLoggedIn === true) {
-              return (
-                <>
-                  <ChildNavBar />
-                </>
-              )
+              return <ChildNavBar />
             }
             else {
-              return (
-                <div>
-                  <Redirect to='/'/>
-                </div>
-              )
+              return <Redirect to='/'/>
             }
           })()}
         
@@ -78,26 +78,68 @@ class App extends Component {
 
           <Route 
             exact path='/adult-homepage'
-            render={(props) => (
-              <AdultUsersContainer {...props} adultLoggedIn={adultLoggedIn} />
-            )}>
+            render={(props) =>
+              <AdultUsersContainer 
+                adultLoggedIn={adultLoggedIn} 
+                {...props}
+              />
+            }>
           </Route>
 
           <Route 
             exact path='/kid-homepage'
-            render={(props) => (
-              <ChildUsersContainer {...props} childLoggedIn={childLoggedIn} />
-            )}>
+            render={(props) => 
+              <ChildUsersContainer 
+                childLoggedIn={childLoggedIn} 
+                {...props}
+              />
+            }>
           </Route>
 
-          <Route 
-            exact path='/adult/profile' 
-            component={AdultUserProfile}>
+          <Route
+            exact path='/adult/profile'
+            render={props => 
+              <AdultUserProfile 
+                adultUser={adultUser} 
+                adultUserProfile={adultUserProfile} 
+                adultUserDelete={adultUserDelete} 
+                {...props}
+              />
+            }>
           </Route>
 
-          <Route 
-            exact path='/child/profile' 
-            component={ChildUserProfile}>
+          <Route
+            exact path='/adult/profile/edit'
+            render={props => 
+              <AdultEditUserForm 
+                adultUser={adultUser} 
+                adultUserUpdate={adultUserUpdate} 
+                {...props}
+              />
+            }>
+          </Route>
+
+          <Route
+            exact path='/child/profile'
+            render={props => 
+              <ChildUserProfile 
+                childUser={childUser} 
+                childUserProfile={childUserProfile} 
+                childUserDelete={childUserDelete} 
+                {...props}
+              />
+            }>
+          </Route>
+
+          <Route
+            exact path='/child/profile/edit'
+            render={props => 
+              <ChildEditUserForm 
+                childUser={childUser} 
+                childUserUpdate={childUserUpdate} 
+                {...props}
+              />
+            }>
           </Route>
 
           <Route 
@@ -156,7 +198,11 @@ const mapStateToProps = function(state) {
 
 export default connect(mapStateToProps, {
   adultUserProfile,
+  adultUserUpdate,
+  adultUserDelete,
   childUserProfile,
+  childUserUpdate,
+  childUserDelete,
   markTaskComplete,
   editTask,
   deleteTask

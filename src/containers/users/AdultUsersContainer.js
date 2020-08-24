@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import AdultLoginform from '../../components/users/adultUsers/AdultLoginForm'
 import AdultSignupForm from '../../components/users/adultUsers/AdultSignupForm'
-import adultUserProfile from '../../actions/users/adultUsers/adultUserProfile'
 import ErrorsContainer from '../ErrorsContainer'
 import IndexNavBar from '../../IndexNavBar'
-import AdultUserProfile from '../../components/users/adultUsers/AdultUserProfile'
 
 class AdultUsersContainer extends Component {
 
@@ -55,7 +54,7 @@ class AdultUsersContainer extends Component {
   render() {
     const {adultLoggedIn} = this.props
 
-    if (adultLoggedIn) return <AdultUserProfile />
+    if (adultLoggedIn) return <Redirect to='/adult/profile'/>
 
     else {
       return (
@@ -78,4 +77,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { adultUserProfile })(AdultUsersContainer)
+export default connect(mapStateToProps)(AdultUsersContainer)

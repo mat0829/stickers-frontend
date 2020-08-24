@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import adultUserUpdate from '../../../actions/users/adultUsers/adultUserUpdate'
 import AdultUserAvatar from '../../../components/users/adultUsers/AdultUserAvatar'
+import ErrorsContainer from '../../../containers/ErrorsContainer'
 
 const btnStyle = {
   color: 'white',
@@ -16,7 +16,8 @@ class AdultEditUserForm extends Component {
     name: '',
     email: '',
     password: '',
-    avatar: ''
+    avatar: '',
+    currentErrors: null
   } 
 
   componentDidMount() {
@@ -25,8 +26,18 @@ class AdultEditUserForm extends Component {
       name, 
       email, 
       avatar
-    } = this.props.currentUser
+    } = this.props.adultUser
     this.setState({id, name, email, avatar})
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      if (this.props.errors !== null) {
+        this.setState({
+          currentErrors: this.props.errors
+        })
+      }
+    }
   }
 
   avatarGenerator = () => {
@@ -62,17 +73,10 @@ class AdultEditUserForm extends Component {
     })
   }
 
-  handleClick = event => {
-    event.preventDefault()
-    this.setState({
-      avatar: this.avatarGenerator()
-    })
-  }
-
   handleSubmit = event => {
     event.preventDefault()
-    this.props.adultUserUpdate(this.state)
-    this.props.handleClick()
+    const history = this.props.history
+    this.props.adultUserUpdate(this.state, history)
   }
 
   renderAvatar(){
@@ -85,10 +89,22 @@ class AdultEditUserForm extends Component {
     )
   }
 
+  renderUpdateErrors = () => {
+    const currentErrors = this.state.currentErrors
+    if (currentErrors) {
+      return (
+        <ErrorsContainer
+          errors={this.props.errors}
+        />
+      )
+    }
+    else return null
+  }
+
   render() {
     return (
       <div>
-        <h2>Edit Adult User:</h2>
+        <h2>Edit User:</h2>
         <form 
           onSubmit={this.handleSubmit} 
           style={{paddingBottom: "2vw"}}>
@@ -142,7 +158,7 @@ class AdultEditUserForm extends Component {
               autoComplete="off">
             </input>
 
-            {this.props.renderUpdateErrors()}
+            {this.renderUpdateErrors()}
 
             {this.renderAvatar()}
           
@@ -166,8 +182,8 @@ class AdultEditUserForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.adultUserReducer.currentUser
+    errors: state.adultUserReducer.errors
   }
 }
 
-export default connect(mapStateToProps, { adultUserUpdate })(AdultEditUserForm)
+export default connect(mapStateToProps)(AdultEditUserForm)

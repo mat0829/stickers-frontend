@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import childUserUpdate from '../../../actions/users/childUsers/childUserUpdate'
-import ChildUserAvatar from './ChildUserAvatar'
+import ChildUserAvatar from '../../../components/users/childUsers/ChildUserAvatar'
+import ErrorsContainer from '../../../containers/ErrorsContainer'
 
 const btnStyle = {
   color: 'white',
@@ -16,7 +16,8 @@ class ChildEditUserForm extends Component {
     name: '',
     email: '',
     password: '',
-    avatar: ''
+    avatar: '',
+    currentErrors: null
   } 
 
   componentDidMount() {
@@ -25,9 +26,18 @@ class ChildEditUserForm extends Component {
       name, 
       email, 
       avatar
-    } = this.props.currentUser
-
+    } = this.props.childUser
     this.setState({id, name, email, avatar})
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      if (this.props.errors !== null) {
+        this.setState({
+          currentErrors: this.props.errors
+        })
+      }
+    }
   }
 
   avatarGenerator = () => {
@@ -63,17 +73,10 @@ class ChildEditUserForm extends Component {
     })
   }
 
-  handleClick = event => {
-    event.preventDefault()
-    this.setState({
-      avatar: this.avatarGenerator()
-    })
-  }
-
   handleSubmit = event => {
     event.preventDefault()
-    this.props.childUserUpdate(this.state)
-    this.props.handleClick()
+    const history = this.props.history
+    this.props.childUserUpdate(this.state, history)
   }
 
   renderAvatar(){
@@ -86,10 +89,22 @@ class ChildEditUserForm extends Component {
     )
   }
 
+  renderUpdateErrors = () => {
+    const currentErrors = this.state.currentErrors
+    if (currentErrors) {
+      return (
+        <ErrorsContainer
+          errors={this.props.errors}
+        />
+      )
+    }
+    else return null
+  }
+
   render() {
     return (
       <div>
-        <h2>Edit child User:</h2>
+        <h2>Edit User:</h2>
         <form 
           onSubmit={this.handleSubmit} 
           style={{paddingBottom: "2vw"}}>
@@ -143,10 +158,10 @@ class ChildEditUserForm extends Component {
               autoComplete="off">
             </input>
 
-            {this.props.renderUpdateErrors()}
+            {this.renderUpdateErrors()}
 
             {this.renderAvatar()}
-
+          
             <button
               type="button"
               onClick={this.handleClick}
@@ -167,8 +182,8 @@ class ChildEditUserForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.childUserReducer.currentUser
+    errors: state.childUserReducer.errors
   }
 }
 
-export default connect(mapStateToProps, { childUserUpdate })(ChildEditUserForm)
+export default connect(mapStateToProps)(ChildEditUserForm)

@@ -51,7 +51,7 @@ class ChildNavBar extends Component {
           </button>
         </NavLink>
   
-        <NavLink to="/child-tasks">
+        <NavLink to="/tasks">
           <button style={tasksBtnStyle}>
             Tasks Page
           </button>

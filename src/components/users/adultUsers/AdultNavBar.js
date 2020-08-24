@@ -51,25 +51,25 @@ class AdultNavBar extends Component {
           </button>
         </NavLink>
   
-        <NavLink to="/adult-tasks">
+        <NavLink to="/tasks">
           <button style={tasksBtnStyle}>
             Tasks Page
           </button>
         </NavLink>
               
-        <NavLink to="/adult-tasks/new">
+        <NavLink to="/tasks/new">
           <button style={addTaskBtnStyle}>
             Create a New Task
           </button>
         </NavLink>
   
-        <NavLink to="/adult-prizes">
+        <NavLink to="/prizes">
           <button style={prizesBtnStyle}>
             Prizes Page
           </button>
         </NavLink>
   
-        <NavLink to="/adult-prizes/new">
+        <NavLink to="/prizes/new">
           <button style={addPrizeBtnStyle}>
             Add a New Prize
           </button>

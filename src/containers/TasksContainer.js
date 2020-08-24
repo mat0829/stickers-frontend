@@ -4,11 +4,7 @@ import {connect} from 'react-redux'
 import fetchTasks from '../actions/tasks/fetchTasks'
 import sortTasks from '../actions/tasks/sortTasks'
 import editTask from '../actions/tasks/editTask'
-import markTaskComplete from '../actions/tasks/markTaskComplete'
-import deleteTask from '../actions/tasks/deleteTask'
 import TasksCollection from '../components/tasks/TasksCollection'
-import TaskInfo from '../components/tasks/TaskInfo'
-import EditTaskForm from '../components/tasks/EditTaskForm'
 
 const labelStyle = {
   fontSize: '35px'
@@ -21,28 +17,12 @@ const taskBarContainerStyle = {
 class TasksContainer extends Component {
 
   state = {
-    selectedTask: '',
-    showingTaskInfo: false,
-    showingEditTaskForm: false
+    selectedTask: ''
   }
 
   componentDidMount() {
     this.props.fetchTasks()
     console.log('fetch tasks:', this.props.tasks)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.tasks.length > 0 && prevProps.tasks !== this.props.tasks) {
-      if (this.state.selectedTask !== undefined) {
-        const taskId = this.state.selectedTask.id
-        const tasks = this.props.tasks
-        const newTask = tasks.find(task => task.id === taskId)
-        this.setState({
-          selectedTask: newTask
-        })
-      }
-    }
-    window.scrollTo({top: 1000, behavior: 'smooth'})
   }
 
   scrollToTop = () => {
@@ -54,9 +34,7 @@ class TasksContainer extends Component {
     const tasks = this.props.tasks
     const foundTask = tasks.find(task => task.name === taskName)
     this.setState({
-      selectedTask: foundTask,
-      showingTaskInfo: true,
-      showingEditTaskForm: false
+      selectedTask: foundTask
     })
   }
 
@@ -80,20 +58,7 @@ class TasksContainer extends Component {
     }
   }
 
-  handleMarkTaskComplete = task => {
-    task.completed = !task.completed
-    this.props.markTaskComplete(task)
-  }
-
-  handleDelete = taskId => {
-    this.props.deleteTask(taskId)
-    this.setState({
-      showingTaskInfo: false
-    })
-  }
-
   render() {
-    const { showingTaskInfo, showingEditTaskForm } = this.state
     const children = JSON.parse(localStorage.getItem("childNames"))
     return (
       <div 
@@ -107,10 +72,11 @@ class TasksContainer extends Component {
           </label>
 
           <TasksCollection
-            tasks={this.props.tasks} 
+            tasks={this.props.tasks}
             handleClick={this.handleClick}
             loading={this.props.loading}
             message={this.props.message}
+            history={this.props.history}
           />
           
           <label htmlFor="task-child">
@@ -124,34 +90,7 @@ class TasksContainer extends Component {
             {children.map(child =>
               <option key={child.id}>{child.name}</option>
             )}
-        </select><br/><br/>
-
-          {showingTaskInfo
-            ?  <TaskInfo
-                 path={`${this.props.match.url}/${this.state.selectedTask.id}`}
-                 adultUser={this.props.adultUser}
-                 childUser={this.props.childUser}
-                 handleShowHideEditForm={this.handleShowHideEditForm}
-                 handleMarkTaskComplete={this.handleMarkTaskComplete}
-                 handleDelete={this.handleDelete}
-                 task={this.state.selectedTask}
-                 scrollToTop={this.scrollToTop}
-               />
-            :  null
-          }
-
-          {showingEditTaskForm
-            ? <div>
-                <EditTaskForm
-                  editTask={this.props.editTask}
-                  handleShowHideEditForm={this.handleShowHideEditForm}
-                  task={this.state.selectedTask}
-                  errors={this.props.errors}
-                  tasks={this.props.tasks}
-                />
-              </div>
-            : null
-          }
+        </select>
       </div>
     )
   }
@@ -159,8 +98,6 @@ class TasksContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    adultUser: state.adultUserReducer.currentUser,
-    childUser: state.childUserReducer.currentUser,
     tasks: state.taskReducer.tasks,
     loading: state.taskReducer.loading,
     message: state.taskReducer.message,
@@ -171,7 +108,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   fetchTasks,
   sortTasks,
-  editTask,
-  markTaskComplete,
-  deleteTask
+  editTask
 })(TasksContainer)

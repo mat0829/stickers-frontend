@@ -1,4 +1,4 @@
-const deleteTask = taskId => {
+const deleteTask = (taskId, history) => {
   return dispatch => {
     const token = localStorage.token
     const result = window.confirm("Are you sure you want to delete this Task? Click ok to confirm.")
@@ -14,6 +14,7 @@ const deleteTask = taskId => {
         type: 'DELETE_TASK',
         payload: taskId
       }))
+      history.push('/tasks')
     }
   }
 }

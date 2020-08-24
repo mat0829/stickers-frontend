@@ -22,6 +22,7 @@ const TaskInfo = (props) => {
   task.completed === false ? taskStatusToggle = 'Completed' : taskStatusToggle = 'Not Completed'
   
   if (Object.keys(props.adultUser).length !== 0) {
+    const history = props.history
     return (
       <div id="adult-task-info">
         <h2 id="h2">{task.task_child.name} is currently working on: {task.name}</h2>
@@ -43,12 +44,13 @@ const TaskInfo = (props) => {
   
         <h2>Value: {task.value} Sticker Points!</h2>
   
-        <button
-          type="button"
-          onClick={props.handleShowHideEditForm}
-          style={btnStyle}>
-            Edit this Task
-        </button>
+        <NavLink to={`/tasks/${task.id}/edit`}>
+          <button
+            type="button"
+            style={btnStyle}>
+              Edit this Task
+          </button>
+        </NavLink>
 
         <button
           type="button"
@@ -59,12 +61,12 @@ const TaskInfo = (props) => {
   
         <button
           type="button"
-          onClick={() => props.handleDelete(props.task.id)}
+          onClick={() => props.deleteTask(props.task.id, history)}
           style={btnStyle}>
             Delete this Task
         </button><br/><br/>
   
-        <NavLink to="/adult-tasks/new">
+        <NavLink to="/tasks/new">
           <button
             type="button"
             style={btnStyle}>

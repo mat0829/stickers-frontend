@@ -1,5 +1,6 @@
 import React from 'react'
 import Error from '../errors/Error'
+import {Link } from 'react-router-dom'
 
 const taskBarStyle = {
   height: '25vh',
@@ -10,7 +11,7 @@ const taskBarStyle = {
   alignItems: 'center'
 }
 
-const spanStyle = {
+const linkStyle = {
   fontSize: '20px',
   height: '80%',
   width: '10vw',
@@ -19,7 +20,9 @@ const spanStyle = {
   margin: '5px',
   alignItems: 'center',
   borderRadius: '1rem',
-  border: '2px solid black'
+  border: '2px solid black',
+  textDecoration: 'none',
+  color: 'inherit'
 }
 
 const TasksCollection = (props) => {
@@ -28,13 +31,12 @@ const TasksCollection = (props) => {
       return <h2>You Currently have 0 Tasks.</h2>
     } else {
       return props.tasks.map(task => 
-        <span
-          key={task.id}
-          id={task.id}
-          onClick={props.handleClick}
-          style={spanStyle}>
-            {task.name}
-        </span>)
+
+        <Link key={task.id} to={`/tasks/${task.id}`} style={linkStyle}>
+          <span id={task.id}> 
+            {task.name} 
+          </span>
+        </Link>)
     }
   }
 

@@ -105,8 +105,8 @@ class App extends Component {
           </Route>
 
           <Route 
-            exact path='/tasks/new' 
-            component={NewTaskForm}>
+            exact path='/tasks/new'
+            render={props => <NewTaskForm {...props}/>}>
           </Route>
 
           <Route 
@@ -116,12 +116,11 @@ class App extends Component {
                 return (
                   <TaskInfo 
                     task={task}
-                    history={props.history}
+                    {...props}
                     adultUser={adultUser} 
                     childUser={childUser}
                     handleMarkTaskComplete={this.handleMarkTaskComplete}
                     deleteTask={this.props.deleteTask}
-                    {...this.props}
                   />
                 )
             }}>

@@ -106,7 +106,8 @@ class NewTaskForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.addNewTask(this.state)
+    const history = this.props.history
+    this.props.addNewTask(this.state, history)
   }
 
   renderCreateTaskErrors = () => {

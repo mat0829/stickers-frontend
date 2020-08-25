@@ -1,4 +1,12 @@
 const childUserUpdate = (user, history) => {
+  const {
+    name,
+    email,
+    avatar,
+    points,
+    stickers
+  } = user
+
   const token = localStorage.token
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
@@ -7,7 +15,13 @@ const childUserUpdate = (user, history) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({user})
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        avatar: avatar,
+        points: points,
+        stickers: stickers
+      })
     })
     .then(resp => resp.json())
     .then(updatedUserData => {
@@ -38,7 +52,9 @@ const childUserUpdate = (user, history) => {
           type: 'UPDATE_CHILD_USER',
           payload: updatedUserData
         })
-        history.push(`/child/profile`)
+        if (history) {
+          history.push(`/child/profile`)
+        }
       }
     })
   }

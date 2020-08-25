@@ -20,7 +20,7 @@ class EditTaskForm extends Component {
     taskReceiverId: '',
     name: '',
     image: '',
-    value: '',
+    value: '5',
     completed: '',
     stickerImage: '',
     showingTaskImageCollection: false,

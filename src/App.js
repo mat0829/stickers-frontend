@@ -13,6 +13,7 @@ import adultUserUpdate from './actions/users/adultUsers/adultUserUpdate'
 import adultUserDelete from './actions/users/adultUsers/adultUserDelete'
 import adultUserLogout from './actions/users/adultUsers/adultUserLogout'
 import childUserProfile from './actions/users/childUsers/childUserProfile'
+import collectStickerPoints from './actions/tasks/collectStickerPoints'
 import childUserUpdate from './actions/users/childUsers/childUserUpdate'
 import childUserDelete from './actions/users/childUsers/childUserDelete'
 import childUserLogout from './actions/users/childUsers/childUserLogout'
@@ -52,6 +53,7 @@ class App extends Component {
       adultUserLogout,
       childUser,
       childUserProfile,
+      collectStickerPoints,
       childUserUpdate,
       childUserDelete,
       childUserLogout,
@@ -166,6 +168,7 @@ class App extends Component {
                     {...props}
                     adultUser={adultUser} 
                     childUser={childUser}
+                    collectStickerPoints={collectStickerPoints}
                     handleMarkTaskComplete={this.handleMarkTaskComplete}
                     deleteTask={this.props.deleteTask}
                   />
@@ -206,6 +209,7 @@ export default connect(mapStateToProps, {
   adultUserDelete,
   adultUserLogout,
   childUserProfile,
+  collectStickerPoints,
   childUserUpdate,
   childUserDelete,
   childUserLogout,

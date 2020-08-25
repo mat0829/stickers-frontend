@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import ChildUserAvatar from '../users/childUsers/ChildUserAvatar'
 
 const imgStyle = {
   maxWidth: '250px',
@@ -18,11 +19,12 @@ const btnStyle = {
 
 const TaskInfo = (props) => {
   const task = props.task
+  const history = props.history
   let taskStatusToggle
+
   task.completed === false ? taskStatusToggle = 'Completed' : taskStatusToggle = 'Not Completed'
   
   if (Object.keys(props.adultUser).length !== 0) {
-    const history = props.history
 
     return (
       <div id="adult-task-info">
@@ -30,13 +32,15 @@ const TaskInfo = (props) => {
           if (task.completed && task.value === 0) {
             return (
               <>
-                <h2>{task.task_child.name} collected the Reward for: "${task.name}"!</h2>
+                <h2>{task.task_child.name} collected the Reward for: "{task.name}"!</h2>
 
                 <img 
                   src={task.image} 
                   alt="" 
                   style={imgStyle}
                 />
+
+                <h4>~ Created by: {task.task_parent.name}</h4>
               </>
             )
           } 
@@ -136,13 +140,20 @@ const TaskInfo = (props) => {
           if (task.completed && task.value === 0) {
             return (
               <>
-                <h2>You collected the Reward for: "${task.name}"!</h2>
+                <h1>Congratulations {task.task_child.name}!</h1>
+                <h2>You completed "{task.name}"!</h2>
+
+                <ChildUserAvatar imgURL={task.task_child.avatar}/>
+
+                <h2>You also added:</h2>
 
                 <img 
-                  src={task.image} 
+                  src={task.stickerImage} 
                   alt="" 
                   style={imgStyle}
                 />
+
+                <h2>to your Sticker Collection!</h2>
 
                 <h4>~ Created by: {task.task_parent.name}</h4>
               </>
@@ -172,8 +183,8 @@ const TaskInfo = (props) => {
 
                 <button
                   type="button"
-                  style={btnStyle}>
-                  {/* onClick={props.scrollToTop}> */}
+                  style={btnStyle}
+                  onClick={() => props.collectStickerPoints(task, props.childUser, history)}>
                     Collect your points
                 </button><br/><br/>
               </>

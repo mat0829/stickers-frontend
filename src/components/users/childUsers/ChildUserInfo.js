@@ -18,6 +18,7 @@ const ChildUserInfo = (props) => {
     <div id="child-user-info">
       <h1>{childUser.name}</h1>
       <ChildUserAvatar imgURL={childUser.avatar}/>
+      <h2>Sticker Points: {childUser.points}</h2>
 
       <NavLink to={`/child/profile/edit`}>
         <button 

@@ -24,10 +24,6 @@ class TasksContainer extends Component {
     this.props.fetchTasks()
   }
 
-  scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
-
   handleClick = event => {
     const taskName = event.target.innerText
     const tasks = this.props.tasks

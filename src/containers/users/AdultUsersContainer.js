@@ -9,13 +9,13 @@ import IndexNavBar from '../../IndexNavBar'
 
 class AdultUsersContainer extends Component {
 
-  scrollToTop = () => {
-    window.scrollTo({top: 520, behavior: 'smooth'})
+  componentDidMount() {
+    if (document.getElementById('adult-login-signup-container'))
+    this.props.scrollTo('adult-login-signup-container')
   }
 
-  scrollTo(id) {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' })
+  scrollToTop = () => {
+    window.scrollTo({top: 520, behavior: 'smooth'})
   }
 
   renderLoginError = () => {

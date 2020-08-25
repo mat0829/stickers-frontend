@@ -37,6 +37,15 @@ const appStyle = {
 
 class App extends Component {
 
+  scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+
+  scrollTo = id => {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+
   handleMarkTaskComplete = task => {
     task.completed = !task.completed
     this.props.markTaskComplete(task)
@@ -86,7 +95,8 @@ class App extends Component {
             exact path='/adult-homepage'
             render={(props) =>
               <AdultUsersContainer 
-                adultLoggedIn={adultLoggedIn} 
+                adultLoggedIn={adultLoggedIn}
+                scrollTo={this.scrollTo}
                 {...props}
               />
             }>
@@ -96,7 +106,8 @@ class App extends Component {
             exact path='/kid-homepage'
             render={(props) => 
               <ChildUsersContainer 
-                childLoggedIn={childLoggedIn} 
+                childLoggedIn={childLoggedIn}
+                scrollTo={this.scrollTo}
                 {...props}
               />
             }>
@@ -171,6 +182,7 @@ class App extends Component {
                     collectStickerPoints={collectStickerPoints}
                     handleMarkTaskComplete={this.handleMarkTaskComplete}
                     deleteTask={this.props.deleteTask}
+                    scrollToTop={this.scrollToTop}
                   />
                 )
             }}>

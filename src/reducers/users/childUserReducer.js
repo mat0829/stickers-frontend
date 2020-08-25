@@ -10,7 +10,8 @@ const childUserReducer = (state = initialState, action) => {
       return {
         ...state, 
         currentUser: action.payload,
-        errorMessage: null
+        errorMessage: null,
+        errors: null
       }
     case 'CHILD_LOGIN_FAILURE':
       return {

@@ -19,8 +19,7 @@ const stickerImageStyle = {
 
 const StickersCollection = (props) => {
 
-  const renderStickers = () => 
-  props.stickers.map(sticker => 
+  const renderStickers = () => props.stickers.map(sticker => 
     <span
       key={sticker.id}
       style={spanStyle}>

@@ -19,8 +19,7 @@ const taskImageStyle = {
 
 const TaskImagesCollection = (props) => {
 
-  const renderTaskImages = () => 
-  props.taskImages.map(taskImage => 
+  const renderTaskImages = () => props.taskImages.map(taskImage => 
     <span
       key={taskImage.id}
       style={spanStyle}>

@@ -20,8 +20,8 @@ const btnStyle = {
 const TaskInfo = (props) => {
   const task = props.task
   const history = props.history
+  
   let taskStatusToggle
-
   task.completed === false ? taskStatusToggle = 'Completed' : taskStatusToggle = 'Not Completed'
   
   if (Object.keys(props.adultUser).length !== 0) {
@@ -32,15 +32,18 @@ const TaskInfo = (props) => {
           if (task.completed && task.value === 0) {
             return (
               <>
-                <h2>{task.task_child.name} collected the Reward for: "{task.name}"!</h2>
+                <h2>{task.task_child.name} collected the Points for: "{task.name}"!</h2>
+                <ChildUserAvatar imgURL={task.task_child.avatar}/>
+
+                <h2>{task.task_child.name} also added:</h2>
 
                 <img 
-                  src={task.image} 
+                  src={task.stickerImage} 
                   alt="" 
                   style={imgStyle}
                 />
 
-                <h4>~ Created by: {task.task_parent.name}</h4>
+                <h2>to their Sticker Collection!</h2>
               </>
             )
           } 
@@ -127,7 +130,7 @@ const TaskInfo = (props) => {
         <button
           type="button"
           style={btnStyle}
-          onClick={props.scrollToTop}>
+          onClick={() => props.scrollToTop()}>
             Top of Page
         </button><br/><br/>
       </div>
@@ -219,7 +222,7 @@ const TaskInfo = (props) => {
         <button
           type="button"
           style={btnStyle}
-          onClick={props.scrollToTop}>
+          onClick={() => props.scrollToTop()}>
             Top of Page
         </button><br/><br/>
       </div>

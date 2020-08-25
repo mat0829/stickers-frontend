@@ -33,12 +33,6 @@ const logoutBtnStyle = {
 
 const ChildNavBar = (props) => {
 
-  const handleClick = event => {
-    event.preventDefault()
-    localStorage.removeItem("token")
-    props.childUserLogout()
-  }
-
   return (
     <div>
       <NavLink to="/child/profile">
@@ -72,8 +66,10 @@ const ChildNavBar = (props) => {
       </NavLink>
 
       <NavLink to="/">
-        <button style={logoutBtnStyle} onClick={handleClick}>
-          Logout
+        <button 
+          style={logoutBtnStyle} 
+          onClick={() => props.childUserLogout()}>
+            Logout
         </button>
       </NavLink>
     </div>

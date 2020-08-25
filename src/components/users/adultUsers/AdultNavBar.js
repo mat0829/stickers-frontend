@@ -34,12 +34,6 @@ const logoutBtnStyle = {
 
 const AdultNavBar = (props )=> {
 
-  const handleClick = event => {
-    event.preventDefault()
-    localStorage.removeItem("token")
-    props.adultUserLogout()
-  }
-
   return (
     <div>
       <NavLink to="/adult/profile">
@@ -75,7 +69,7 @@ const AdultNavBar = (props )=> {
       <NavLink to="/">
         <button 
           style={logoutBtnStyle} 
-          onClick={handleClick}>
+          onClick={() => props.adultUserLogout()}>
             Logout
         </button>
       </NavLink>

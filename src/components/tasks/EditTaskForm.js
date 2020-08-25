@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 import TaskImagesContainer from '../../containers/TaskImagesContainer'
 import TaskImageInfo from '../taskImages/TaskImageInfo'
@@ -259,4 +260,10 @@ class EditTaskForm extends Component {
   }
 }
 
-export default EditTaskForm
+const mapStateToProps = state => {
+  return {
+    errors: state.taskReducer.errors
+  }
+}
+
+export default connect(mapStateToProps)(EditTaskForm)

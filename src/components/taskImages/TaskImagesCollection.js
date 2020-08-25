@@ -19,19 +19,19 @@ const taskImageStyle = {
 
 const TaskImagesCollection = (props) => {
 
-  const renderTaskImages = () => {
-    return props.taskImages.map(taskImage => 
-      <span 
-        key={taskImage.id} 
-        style={spanStyle}>
-          <img 
-            src={taskImage.imageUrl} 
-            alt={`taskImage ${taskImage.id}`}
-            onClick={props.handleTaskClick}
-            style={taskImageStyle}>
-          </img>
-      </span>)
-  }
+  const renderTaskImages = () => 
+  props.taskImages.map(taskImage => 
+    <span
+      key={taskImage.id}
+      style={spanStyle}>
+        <img
+          src={taskImage.imageUrl}
+          alt={`taskImage ${taskImage.id}`}
+          onClick={props.handleTaskClick}
+          style={taskImageStyle}>
+        </img>
+    </span>
+  )
 
   return (
     <div 

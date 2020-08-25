@@ -10,24 +10,21 @@ const btnStyle = {
   backgroundImage: 'linear-gradient(to right, blue, red)'
 }
 
-const TaskImageInfo = (props) => {
+const TaskImageInfo = (props) => (
+  <div id="adult-task-image-info">
+    <img
+      style={imgStyle}
+      src={props.imgURL}
+      alt='taskImage'>
+    </img><br />
 
-  return (
-    <div id="adult-task-image-info">
-      <img
-        style={imgStyle}
-        src={props.imgURL}
-        alt='taskImage' >
-      </img><br/>
-
-      <button
-        type="button"
-        style={btnStyle}
-        onClick={props.handleShowHideTaskImage}>
-          Select a Different Task Image
-      </button>
-    </div>
-  )
-}
+    <button
+      type="button"
+      style={btnStyle}
+      onClick={props.handleShowHideTaskImage}>
+      Select a Different Task Image
+    </button>
+  </div>
+)
 
 export default TaskImageInfo

@@ -11,9 +11,11 @@ import ChildEditUserForm from './components/users/childUsers/ChildEditUserForm'
 import adultUserProfile from './actions/users/adultUsers/adultUserProfile'
 import adultUserUpdate from './actions/users/adultUsers/adultUserUpdate'
 import adultUserDelete from './actions/users/adultUsers/adultUserDelete'
+import adultUserLogout from './actions/users/adultUsers/adultUserLogout'
 import childUserProfile from './actions/users/childUsers/childUserProfile'
 import childUserUpdate from './actions/users/childUsers/childUserUpdate'
 import childUserDelete from './actions/users/childUsers/childUserDelete'
+import childUserLogout from './actions/users/childUsers/childUserLogout'
 import markTaskComplete from './actions/tasks/markTaskComplete'
 import editTask from './actions/tasks/editTask'
 import deleteTask from './actions/tasks/deleteTask'
@@ -47,10 +49,12 @@ class App extends Component {
       adultUserProfile,
       adultUserUpdate,
       adultUserDelete,
+      adultUserLogout,
       childUser,
       childUserProfile,
       childUserUpdate,
       childUserDelete,
+      childUserLogout,
       tasks
     } = this.props
 
@@ -60,10 +64,10 @@ class App extends Component {
 
           {(() => {
             if (adultLoggedIn === true) {
-              return <AdultNavBar />
+              return <AdultNavBar adultUserLogout={adultUserLogout} />
             } 
             else if (childLoggedIn === true) {
-              return <ChildNavBar />
+              return <ChildNavBar childUserLogout={childUserLogout} />
             }
             else {
               return <Redirect to='/'/>
@@ -200,9 +204,11 @@ export default connect(mapStateToProps, {
   adultUserProfile,
   adultUserUpdate,
   adultUserDelete,
+  adultUserLogout,
   childUserProfile,
   childUserUpdate,
   childUserDelete,
+  childUserLogout,
   markTaskComplete,
   editTask,
   deleteTask

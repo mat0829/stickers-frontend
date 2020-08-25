@@ -19,19 +19,19 @@ const stickerImageStyle = {
 
 const StickersCollection = (props) => {
 
-  const renderStickers = () => {
-    return props.stickers.map(sticker => 
-      <span 
-        key ={sticker.id} 
-        style={spanStyle}>
-          <img 
-            src={sticker.image} 
-            alt={`sticker ${sticker.id}`}
-            onClick={props.handleStickerClick}
-            style={stickerImageStyle}>
-          </img>
-      </span>)
-  }
+  const renderStickers = () => 
+  props.stickers.map(sticker => 
+    <span
+      key={sticker.id}
+      style={spanStyle}>
+        <img
+          src={sticker.image}
+          alt={`sticker ${sticker.id}`}
+          onClick={props.handleStickerClick}
+          style={stickerImageStyle}>
+        </img>
+    </span>
+  )
 
   return (
     <div 

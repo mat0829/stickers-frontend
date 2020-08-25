@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-import adultUserLogout from '../../../actions/users/adultUsers/adultUserLogout'
 
 const profileBtnStyle = {
   color: 'white',
@@ -34,57 +32,55 @@ const logoutBtnStyle = {
   backgroundImage: 'linear-gradient(to right, gold, green)'
 }
 
-class AdultNavBar extends Component {
+const AdultNavBar = (props )=> {
 
-  handleClick = event => {
+  const handleClick = event => {
     event.preventDefault()
     localStorage.removeItem("token")
-    this.props.adultUserLogout()
+    props.adultUserLogout()
   }
 
-  render() {
-    return (
-      <div>
-        <NavLink to="/adult/profile">
-          <button style={profileBtnStyle}>
-            User Profile
-          </button>
-        </NavLink>
-  
-        <NavLink to="/tasks">
-          <button style={tasksBtnStyle}>
-            Tasks Page
-          </button>
-        </NavLink>
-              
-        <NavLink to="/tasks/new">
-          <button style={addTaskBtnStyle}>
-            Create a New Task
-          </button>
-        </NavLink>
-  
-        <NavLink to="/prizes">
-          <button style={prizesBtnStyle}>
-            Prizes Page
-          </button>
-        </NavLink>
-  
-        <NavLink to="/prizes/new">
-          <button style={addPrizeBtnStyle}>
-            Add a New Prize
-          </button>
-        </NavLink>
-  
-        <NavLink to="/">
-          <button 
-            style={logoutBtnStyle} 
-            onClick={this.handleClick}>
-              Logout
-          </button>
-        </NavLink>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <NavLink to="/adult/profile">
+        <button style={profileBtnStyle}>
+          User Profile
+        </button>
+      </NavLink>
+
+      <NavLink to="/tasks">
+        <button style={tasksBtnStyle}>
+          Tasks Page
+        </button>
+      </NavLink>
+            
+      <NavLink to="/tasks/new">
+        <button style={addTaskBtnStyle}>
+          Create a New Task
+        </button>
+      </NavLink>
+
+      <NavLink to="/prizes">
+        <button style={prizesBtnStyle}>
+          Prizes Page
+        </button>
+      </NavLink>
+
+      <NavLink to="/prizes/new">
+        <button style={addPrizeBtnStyle}>
+          Add a New Prize
+        </button>
+      </NavLink>
+
+      <NavLink to="/">
+        <button 
+          style={logoutBtnStyle} 
+          onClick={handleClick}>
+            Logout
+        </button>
+      </NavLink>
+    </div>
+  )
 }
 
-export default connect(null, { adultUserLogout })(AdultNavBar)
+export default AdultNavBar

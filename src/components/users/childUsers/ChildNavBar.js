@@ -1,8 +1,5 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
 import {NavLink} from 'react-router-dom'
-
-import childUserLogout from '../../../actions/users/childUsers/childUserLogout'
 
 const profileBtnStyle = {
   color: 'white',
@@ -34,55 +31,53 @@ const logoutBtnStyle = {
   backgroundImage: 'linear-gradient(to right, gold, green)'
 }
 
-class ChildNavBar extends Component {
+const ChildNavBar = (props) => {
 
-  handleClick = event => {
+  const handleClick = event => {
     event.preventDefault()
     localStorage.removeItem("token")
-    this.props.childUserLogout()
+    props.childUserLogout()
   }
 
-  render() {
-    return (
-      <div>
-        <NavLink to="/child/profile">
-          <button style={profileBtnStyle}>
-            User Profile
-          </button>
-        </NavLink>
-  
-        <NavLink to="/tasks">
-          <button style={tasksBtnStyle}>
-            Tasks Page
-          </button>
-        </NavLink>
-              
-        <NavLink to="/stickers-collection">
-          <button style={stickersBtnStyle}>
-            Stickers Collection
-          </button>
-        </NavLink>
-  
-        <NavLink to="/child-prizes">
-          <button style={prizesBtnStyle}>
-            Prizes Page
-          </button>
-        </NavLink>
-  
-        <NavLink to="/prizes-collection">
-          <button style={prizesCollectionBtnStyle}>
-            Prizes Collection
-          </button>
-        </NavLink>
-  
-        <NavLink to="/">
-          <button style={logoutBtnStyle} onClick={this.handleClick}>
-            Logout
-          </button>
-        </NavLink>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <NavLink to="/child/profile">
+        <button style={profileBtnStyle}>
+          User Profile
+        </button>
+      </NavLink>
+
+      <NavLink to="/tasks">
+        <button style={tasksBtnStyle}>
+          Tasks Page
+        </button>
+      </NavLink>
+            
+      <NavLink to="/stickers-collection">
+        <button style={stickersBtnStyle}>
+          Stickers Collection
+        </button>
+      </NavLink>
+
+      <NavLink to="/child-prizes">
+        <button style={prizesBtnStyle}>
+          Prizes Page
+        </button>
+      </NavLink>
+
+      <NavLink to="/prizes-collection">
+        <button style={prizesCollectionBtnStyle}>
+          Prizes Collection
+        </button>
+      </NavLink>
+
+      <NavLink to="/">
+        <button style={logoutBtnStyle} onClick={handleClick}>
+          Logout
+        </button>
+      </NavLink>
+    </div>
+  )
 }
 
-export default connect(null, { childUserLogout })(ChildNavBar)
+export default ChildNavBar

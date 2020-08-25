@@ -10,24 +10,21 @@ const btnStyle = {
   backgroundImage: 'linear-gradient(to right, blue, red)'
 }
 
-const StickerInfo = (props) => {
+const StickerInfo = (props) => (
+  <div id="adult-sticker-info">
+    <img
+      style={imgStyle}
+      src={props.imgURL}
+      alt='sticker'>
+    </img><br />
 
-  return (
-    <div id="adult-sticker-info">
-      <img
-        style={imgStyle}
-        src={props.imgURL}
-        alt='sticker' >
-      </img><br/>
-      
-      <button
-        type="button"
-        style={btnStyle}
-        onClick={props.handleShowHideSticker}>
-          Select a Different Sticker
-      </button>
-    </div>
-  )
-}
+    <button
+      type="button"
+      style={btnStyle}
+      onClick={props.handleShowHideSticker}>
+      Select a Different Sticker
+    </button>
+  </div>
+)
 
 export default StickerInfo

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Route, Switch, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
+import Fade from 'react-reveal/Fade'
 
 import MainHeader from './MainHeader'
 import Home from './components/Home'
@@ -182,16 +183,19 @@ class App extends Component {
             render={props => {
               const task = tasks.find(task => task.id === parseInt(props.match.params.id))
                 return (
-                  <TaskInfo 
-                    task={task}
-                    {...props}
-                    adultUser={adultUser} 
-                    childUser={childUser}
-                    collectStickerPoints={collectStickerPoints}
-                    handleMarkTaskComplete={this.handleMarkTaskComplete}
-                    deleteTask={this.props.deleteTask}
-                    scrollToTop={this.scrollToTop}
-                  />
+                  <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                    <TaskInfo 
+                      task={task}
+                      {...props}
+                      adultUser={adultUser} 
+                      childUser={childUser}
+                      collectStickerPoints={collectStickerPoints}
+                      handleMarkTaskComplete={this.handleMarkTaskComplete}
+                      deleteTask={this.props.deleteTask}
+                      scrollToTop={this.scrollToTop}
+                      refProp={this.myRef}
+                    />
+                  </Fade>
                 )
             }}>
           </Route>

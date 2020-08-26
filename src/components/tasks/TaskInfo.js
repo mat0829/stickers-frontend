@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+
 import ChildUserAvatar from '../users/childUsers/ChildUserAvatar'
 
 const imgStyle = {
@@ -27,7 +28,7 @@ const TaskInfo = (props) => {
   if (Object.keys(props.adultUser).length !== 0) {
 
     return (
-      <div id="adult-task-info">
+      <div ref={props.refProp} id="adult-task-info">
         {(() => {
           if (task.completed && task.value === 0) {
             return (
@@ -138,7 +139,7 @@ const TaskInfo = (props) => {
   } 
   else if (Object.keys(props.childUser).length !== 0) {
     return (
-      <div id="child-task-info">
+      <div ref={props.refProp} id="child-task-info">
         {(() => {
           if (task.completed && task.value === 0) {
             return (

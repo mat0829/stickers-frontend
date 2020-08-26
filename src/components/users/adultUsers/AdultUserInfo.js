@@ -12,7 +12,7 @@ const AdultUserInfo = (props) => {
   const adultUser = props.adultUser
 
   return (
-    <div id="adult-user-info">
+    <div ref={props.refProp} id="adult-user-info">
       <h1>{adultUser.name}</h1>
       <AdultUserAvatar imgURL={adultUser.avatar}/>
 

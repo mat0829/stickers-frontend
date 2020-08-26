@@ -12,7 +12,7 @@ const ChildUserInfo = (props) => {
   const childUser = props.childUser
 
   return (
-    <div id="child-user-info">
+    <div ref={props.refProp} id="child-user-info">
       <h1>{childUser.name}</h1>
       <ChildUserAvatar imgURL={childUser.avatar}/>
       <h2>Sticker Points: {childUser.points}</h2>

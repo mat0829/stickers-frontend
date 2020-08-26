@@ -17,12 +17,13 @@ class StickersContainer extends Component {
 
   componentDidMount() {
     this.props.fetchStickers()
-    this.props.scrollTo('adult-sticker-bar-container')
+    this.props.scrollToMyRef()
   }
 
   render() {
     return (
-      <div 
+      <div
+        ref={this.props.refProp}
         id='adult-sticker-bar-container' 
         style={stickerBarContainerStyle}>
 

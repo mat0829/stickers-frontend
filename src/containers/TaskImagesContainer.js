@@ -19,12 +19,13 @@ class TaskImagesContainer extends Component {
 
   componentDidMount() {
     this.props.fetchTaskImages()
-    this.props.scrollTo('adult-task-image-bar-container')
+    this.props.scrollToMyRef()
   }
 
   render() {
     return (
-      <div 
+      <div
+        ref={this.props.refProp}
         id='adult-task-image-bar-container' 
         style={taskImageBarContainerStyle}>
           

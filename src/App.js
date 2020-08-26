@@ -21,8 +21,8 @@ import childUserLogout from './actions/users/childUsers/childUserLogout'
 import markTaskComplete from './actions/tasks/markTaskComplete'
 import editTask from './actions/tasks/editTask'
 import deleteTask from './actions/tasks/deleteTask'
-import AdultUserProfile from './components/users/adultUsers/AdultUserProfile'
-import ChildUserProfile from './components/users/childUsers/ChildUserProfile'
+import AdultUserInfo from './components/users/adultUsers/AdultUserInfo'
+import ChildUserInfo from './components/users/childUsers/ChildUserInfo'
 import AdultUsersContainer from './containers/users/AdultUsersContainer'
 import ChildUsersContainer from './containers/users/ChildUsersContainer'
 import TasksContainer from './containers/TasksContainer'
@@ -122,14 +122,17 @@ class App extends Component {
 
           <Route
             exact path='/adult/profile'
-            render={props => 
-              <AdultUserProfile 
-                adultUser={adultUser} 
-                adultUserProfile={adultUserProfile} 
-                adultUserDelete={adultUserDelete}
-                scrollToTop={this.scrollToTop}
-                {...props}
-              />
+            render={props =>
+              <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                <AdultUserInfo
+                  adultUser={adultUser} 
+                  adultUserProfile={adultUserProfile} 
+                  adultUserDelete={adultUserDelete}
+                  scrollToTop={this.scrollToTop}
+                  refProp={this.myRef}
+                  {...props}
+                />
+              </Fade>
             }>
           </Route>
 
@@ -146,14 +149,17 @@ class App extends Component {
 
           <Route
             exact path='/child/profile'
-            render={props => 
-              <ChildUserProfile 
-                childUser={childUser} 
-                childUserProfile={childUserProfile} 
-                childUserDelete={childUserDelete}
-                scrollToTop={this.scrollToTop}
-                {...props}
-              />
+            render={props =>
+              <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                <ChildUserInfo
+                  childUser={childUser} 
+                  childUserProfile={childUserProfile} 
+                  childUserDelete={childUserDelete}
+                  scrollToTop={this.scrollToTop}
+                  refProp={this.myRef}
+                  {...props}
+                />
+              </Fade>
             }>
           </Route>
 
@@ -175,7 +181,13 @@ class App extends Component {
 
           <Route 
             exact path='/tasks/new'
-            render={props => <NewTaskForm {...props}/>}>
+            render={props => 
+              <NewTaskForm
+                refProp={this.myRef}
+                scrollToMyRef={this.scrollToMyRef}
+                {...props}
+              />
+            }>
           </Route>
 
           <Route 

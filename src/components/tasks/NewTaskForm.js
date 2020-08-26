@@ -33,7 +33,7 @@ class NewTaskForm extends Component {
   }
 
   componentDidMount() {
-    this.scrollTo('new-task-form-container')
+    this.props.scrollToMyRef()
     this.setState({
       showingTaskImageCollection: true, 
       showingStickerCollection: true
@@ -53,11 +53,6 @@ class NewTaskForm extends Component {
         redirect: true
       })
     }
-  }
-
-  scrollTo = id => {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' })
   }
 
   handleChange = event => {
@@ -136,7 +131,7 @@ class NewTaskForm extends Component {
     if (redirect) return <Redirect to='/adult-tasks'/>
 
     else return (
-      <div id="new-task-form-container">
+      <div ref={this.props.refProp} id="new-task-form-container">
         <h1>Create a new Task</h1>
         <form onSubmit={this.handleSubmit}>
        
@@ -181,8 +176,9 @@ class NewTaskForm extends Component {
           </input><br/><br/>
 
           {showingTaskImageCollection
-            ?  <TaskImagesContainer 
-                 scrollTo={this.scrollTo} 
+            ?  <TaskImagesContainer
+                 refProp={this.props.refProp}
+                 scrollToMyRef={this.props.scrollToMyRef}
                  handleTaskClick={this.handleTaskClick}
                />
             :  null
@@ -202,7 +198,8 @@ class NewTaskForm extends Component {
 
           {showingStickerCollection
             ?  <StickersContainer
-                 scrollTo={this.scrollTo}
+                 refProp={this.props.refProp}
+                 scrollToMyRef={this.props.scrollToMyRef}
                  handleStickerClick={this.handleStickerClick}
                />
             :  null

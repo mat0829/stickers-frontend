@@ -7,6 +7,10 @@ body {
   font-family: 'Salsa', cursive;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 input {
   font-family: 'Salsa', cursive;
   font-size: 20px;

@@ -10,8 +10,7 @@ import IndexNavBar from '../../IndexNavBar'
 class ChildUsersContainer extends Component {
 
   componentDidMount() {
-    if (document.getElementById('child-login-signup-container'))
-    this.props.scrollTo('child-login-signup-container')
+    this.props.scrollToMyRef()
   }
 
   scrollToTop = () => {
@@ -58,7 +57,7 @@ class ChildUsersContainer extends Component {
 
     else {
       return ( 
-        <div id="child-login-signup-container">
+        <div ref={this.props.refProp} id="child-login-signup-container">
           <IndexNavBar />
           <ChildLoginform />
           {this.renderLoginError()}

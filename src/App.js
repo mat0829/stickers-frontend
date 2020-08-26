@@ -37,13 +37,17 @@ const appStyle = {
 
 class App extends Component {
 
-  scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()  
   }
 
-  scrollTo = id => {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' })
+  scrollToMyRef = () => {
+    window.scrollTo(0, this.myRef.current.offsetTop)
+  }
+
+  scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   handleMarkTaskComplete = task => {
@@ -96,7 +100,8 @@ class App extends Component {
             render={(props) =>
               <AdultUsersContainer 
                 adultLoggedIn={adultLoggedIn}
-                scrollTo={this.scrollTo}
+                refProp={this.myRef}
+                scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
             }>
@@ -107,7 +112,8 @@ class App extends Component {
             render={(props) => 
               <ChildUsersContainer 
                 childLoggedIn={childLoggedIn}
-                scrollTo={this.scrollTo}
+                refProp={this.myRef}
+                scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
             }>

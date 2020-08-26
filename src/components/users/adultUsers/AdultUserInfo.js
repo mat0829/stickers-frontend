@@ -10,10 +10,6 @@ const btnStyle = {
 
 const AdultUserInfo = (props) => {
   const adultUser = props.adultUser
-  
-  const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
 
   return (
     <div id="adult-user-info">
@@ -35,7 +31,7 @@ const AdultUserInfo = (props) => {
 
       <button 
         style={btnStyle} 
-        onClick={scrollToTop}>
+        onClick={() => props.scrollToTop()}>
           Top of Page 
       </button>
     </div>

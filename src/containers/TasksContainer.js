@@ -16,21 +16,8 @@ const taskBarContainerStyle = {
 
 class TasksContainer extends Component {
 
-  state = {
-    selectedTask: ''
-  }
-
   componentDidMount() {
     this.props.fetchTasks()
-  }
-
-  handleClick = event => {
-    const taskName = event.target.innerText
-    const tasks = this.props.tasks
-    const foundTask = tasks.find(task => task.name === taskName)
-    this.setState({
-      selectedTask: foundTask
-    })
   }
 
   handleTaskSorting = (event) => {
@@ -60,10 +47,8 @@ class TasksContainer extends Component {
 
           <TasksCollection
             tasks={this.props.tasks}
-            handleClick={this.handleClick}
             loading={this.props.loading}
             message={this.props.message}
-            history={this.props.history}
           />
           
           <label htmlFor="task-child">

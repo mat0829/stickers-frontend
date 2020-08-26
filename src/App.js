@@ -119,7 +119,8 @@ class App extends Component {
               <AdultUserProfile 
                 adultUser={adultUser} 
                 adultUserProfile={adultUserProfile} 
-                adultUserDelete={adultUserDelete} 
+                adultUserDelete={adultUserDelete}
+                scrollToTop={this.scrollToTop}
                 {...props}
               />
             }>
@@ -142,7 +143,8 @@ class App extends Component {
               <ChildUserProfile 
                 childUser={childUser} 
                 childUserProfile={childUserProfile} 
-                childUserDelete={childUserDelete} 
+                childUserDelete={childUserDelete}
+                scrollToTop={this.scrollToTop}
                 {...props}
               />
             }>

@@ -40,7 +40,7 @@ const TaskInfo = (props) => {
 
                 <img 
                   src={task.stickerImage} 
-                  alt="" 
+                  alt="sticker" 
                   style={imgStyle}
                 />
 
@@ -55,7 +55,7 @@ const TaskInfo = (props) => {
 
                 <img 
                   src={task.image} 
-                  alt="" 
+                  alt="task img" 
                   style={imgStyle}
                 />
 
@@ -79,7 +79,7 @@ const TaskInfo = (props) => {
   
                 <img 
                   src={task.image} 
-                  alt="" 
+                  alt="task img" 
                   style={imgStyle}
                 />
 
@@ -153,7 +153,7 @@ const TaskInfo = (props) => {
 
                 <img 
                   src={task.stickerImage} 
-                  alt="" 
+                  alt="sticker" 
                   style={imgStyle}
                 />
 
@@ -170,7 +170,7 @@ const TaskInfo = (props) => {
 
                 <img 
                   src={task.image} 
-                  alt="" 
+                  alt="task img" 
                   style={imgStyle}
                 />
                 

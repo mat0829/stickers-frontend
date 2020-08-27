@@ -29,11 +29,11 @@ const fetchTasks = () => {
           localStorage.removeItem("token")
         } 
         else {
-          let TasksSortedByName = tasksData.sort((a, b) => (a.name > b.name) ? 1 : -1)
-          console.log('tasks sorted by name:', TasksSortedByName)
+          let tasksSortedByName = tasksData.sort((a, b) => (a.name > b.name) ? 1 : -1)
+          console.log('tasks sorted by name:', tasksSortedByName)
           dispatch({
             type: 'FETCH_TASKS',
-            payload: TasksSortedByName
+            payload: tasksSortedByName
           })
         }
       })

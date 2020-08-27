@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
-import addNewTask from '../../actions/tasks/addNewTask'
-import TaskImagesContainer from '../../containers/TaskImagesContainer'
-import TaskImageInfo from '../taskImages/TaskImageInfo'
-import StickersContainer from '../../containers/StickersContainer'
-import StickerInfo from '../stickers/StickerInfo'
+import addNewPrize from '../../actions/prizes/addNewPrize'
+import PrizeImagesContainer from '../../containers/PrizeImagesContainer'
+import PrizeImageInfo from '../prizeImages/PrizeImageInfo'
 import ErrorsContainer from '../../containers/ErrorsContainer'
 
 const submitBtnStyle = {
@@ -14,20 +12,17 @@ const submitBtnStyle = {
   backgroundImage: 'linear-gradient(to right, blue, red)'
 }
 
-class NewTaskForm extends Component {
+class NewPrizeForm extends Component {
 
   state = {
-    taskGiverId: `${this.props.currentUser.id}`,
-    taskReceiverId: '',
+    prizeGiverId: `${this.props.currentUser.id}`,
+    prizeReceiverId: '',
     name: '',
     image: '',
-    value: '5',
-    completed: false,
-    stickerImage: '',
-    showingTaskImageCollection: true,
-    showingTaskImageInfo: false,
-    showingStickerCollection: true,
-    showingStickerInfo: false,
+    cost: '5',
+    purchased: false,
+    showingPrizeImageCollection: true,
+    showingPrizeImageInfo: false,
     redirect: false,
     currentErrors: null,
   }
@@ -35,8 +30,7 @@ class NewTaskForm extends Component {
   componentDidMount() {
     this.props.scrollToMyRef()
     this.setState({
-      showingTaskImageCollection: true, 
-      showingStickerCollection: true
+      showingPrizeImageCollection: true
     })
   }
 
@@ -48,7 +42,7 @@ class NewTaskForm extends Component {
         })
       }
     }
-    if (prevProps.tasks !== this.props.tasks) {
+    if (prevProps.prizes !== this.props.prizes) {
       this.setState({
         redirect: true
       })
@@ -61,52 +55,34 @@ class NewTaskForm extends Component {
     })
   }
 
-  handleTaskClick = event => {
+  handlePrizeClick = event => {
     event.preventDefault()
-    debugger
-    const taskImage = event.target.src
+    const prizeImage = event.target.src
     this.setState({
-      image: taskImage
+      image: prizeImage
     })
-    this.handleShowHideTaskImage()
+    this.handleShowHidePrizeImage()
   }
 
-  handleShowHideTaskImage = () => {
+  handleShowHidePrizeImage = () => {
     const {
-      showingTaskImageCollection, 
-      showingTaskImageInfo
+      showingPrizeImageCollection, 
+      showingPrizeImageInfo
     } = this.state
     
     this.setState({
-      showingTaskImageCollection: !showingTaskImageCollection, 
-      showingTaskImageInfo: !showingTaskImageInfo
-    })
-  }
-
-  handleStickerClick = event => {
-    event.preventDefault()
-    const sticker = event.target.src
-    this.setState({
-      stickerImage: sticker
-    })
-    this.handleShowHideSticker()
-  }
-
-  handleShowHideSticker = () => {
-    const {showingStickerCollection, showingStickerInfo} = this.state
-    this.setState({
-      showingStickerCollection: !showingStickerCollection, 
-      showingStickerInfo: !showingStickerInfo
+      showingPrizeImageCollection: !showingPrizeImageCollection, 
+      showingPrizeImageInfo: !showingPrizeImageInfo
     })
   }
 
   handleSubmit = event => {
     event.preventDefault()
     const history = this.props.history
-    this.props.addNewTask(this.state, history)
+    this.props.addNewPrize(this.state, history)
   }
 
-  renderCreateTaskErrors = () => {
+  renderCreatePrizeErrors = () => {
     const currentErrors = this.state.currentErrors
     if (currentErrors) {
       return (
@@ -120,29 +96,27 @@ class NewTaskForm extends Component {
 
   render() {
     const {
-      showingTaskImageCollection, 
-      showingTaskImageInfo,
-      showingStickerCollection,
-      showingStickerInfo,
+      showingPrizeImageCollection, 
+      showingPrizeImageInfo,
       redirect
     } = this.state
 
     const children = JSON.parse(localStorage.getItem("childNames"))
     
-    if (redirect) return <Redirect to='/adult-tasks'/>
+    if (redirect) return <Redirect to='/adult-prizes'/>
 
     else return (
-      <div ref={this.props.refProp} id="new-task-form-container">
-        <h1>Create a new Task</h1>
+      <div ref={this.props.refProp} id="new-prize-form-container">
+        <h1>Create a new Prize</h1>
         <form onSubmit={this.handleSubmit}>
        
-        <label htmlFor="new-task-child">
-          Choose the Child the Task is for:
+        <label htmlFor="new-prize-child">
+          Choose the Child the Prize is for:
         </label>
 
         <select
-          id="new-task-child"
-          name="taskReceiverId"
+          id="new-prize-child"
+          name="prizeReceiverId"
           onChange={this.handleChange}>
             <option>Select Name Here</option>
             {children.map(child =>
@@ -150,25 +124,25 @@ class NewTaskForm extends Component {
             )}
         </select><br/><br/>
 
-          <label htmlFor="new-task-name">
-            Task Name:
+          <label htmlFor="new-prize-name">
+            Prize Name:
           </label>
 
           <input
-            id="new-task-name"
+            id="new-prize-name"
             name="name" 
-            placeholder="Name Your Task Here"
+            placeholder="Name Your Prize Here"
             value={this.state.name}
             onChange={this.handleChange}
             autoComplete="off">
           </input><br/><br/>
 
-          <label htmlFor="new-task-image">
-            Task Image URL:
+          <label htmlFor="new-prize-image">
+            Prize Image URL:
           </label>
 
           <input
-            id="new-task-image"
+            id="new-prize-image"
             name="image" 
             placeholder="Manually Add Image Url"
             value={this.state.image}
@@ -176,53 +150,34 @@ class NewTaskForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          {showingTaskImageCollection
-            ?  <TaskImagesContainer
+          {showingPrizeImageCollection
+            ?  <PrizeImagesContainer
                  refProp={this.props.refProp}
                  scrollToMyRef={this.props.scrollToMyRef}
-                 handleTaskClick={this.handleTaskClick}
+                 handlePrizeClick={this.handlePrizeClick}
                />
             :  null
           }
 
-          {showingTaskImageInfo
+          {showingPrizeImageInfo
             ?  <>
-                <TaskImageInfo
+                <PrizeImageInfo
                   imgURL={this.state.image}
-                  handleShowHideTaskImage={this.handleShowHideTaskImage}
+                  handleShowHidePrizeImage={this.handleShowHidePrizeImage}
                 /><br/>
               </>
             :  null
           }
 
-          {this.renderCreateTaskErrors()}
+          {this.renderCreatePrizeErrors()}
 
-          {showingStickerCollection
-            ?  <StickersContainer
-                 refProp={this.props.refProp}
-                 scrollToMyRef={this.props.scrollToMyRef}
-                 handleStickerClick={this.handleStickerClick}
-               />
-            :  null
-          }
-
-          {showingStickerInfo
-            ?  <>
-                 <StickerInfo
-                   imgURL={this.state.stickerImage} 
-                   handleShowHideSticker={this.handleShowHideSticker}
-                 /><br/>
-               </>
-            :  null
-          }
-
-          <label htmlFor="new-task-value">
-            Choose Task Sticker Value:
+          <label htmlFor="new-prize-cost">
+            Choose Prize Cost:
           </label>
 
           <select 
-            id="new-task-value" 
-            name="value" 
+            id="new-prize-cost" 
+            name="cost" 
             onChange={this.handleChange}>
               <option value="5">5 Sticker Points</option>
               <option value="10">10 Sticker Points</option>
@@ -240,7 +195,7 @@ class NewTaskForm extends Component {
           <input
             style={submitBtnStyle}
             type="submit" 
-            value="Create Task">
+            value="Create Prize">
           </input>
         </form>
       </div>
@@ -251,9 +206,9 @@ class NewTaskForm extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.adultUserReducer.currentUser,
-    tasks: state.taskReducer.tasks,
-    errors: state.taskReducer.errors
+    prizes: state.prizeReducer.prizes,
+    errors: state.prizeReducer.errors
   }
 }
 
-export default connect(mapStateToProps, { addNewTask })(NewTaskForm)
+export default connect(mapStateToProps, { addNewPrize })(NewPrizeForm)

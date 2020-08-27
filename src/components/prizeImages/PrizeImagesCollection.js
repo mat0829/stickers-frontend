@@ -18,7 +18,6 @@ const prizeImageStyle = {
 }
 
 const PrizeImagesCollection = (props) => {
-
   const renderPrizeImages = () => props.prizeImages.map(prizeImage => 
     <span
       key={prizeImage.id}
@@ -26,7 +25,7 @@ const PrizeImagesCollection = (props) => {
         <img
           src={prizeImage.imageUrl}
           alt={`prizeImage ${prizeImage.id}`}
-          onClick={props.handleprizeClick}
+          onClick={props.handlePrizeClick}
           style={prizeImageStyle}>
         </img>
     </span>

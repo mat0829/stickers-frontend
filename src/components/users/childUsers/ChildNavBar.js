@@ -53,7 +53,7 @@ const ChildNavBar = (props) => {
         </button>
       </NavLink>
 
-      <NavLink to="/child-prizes">
+      <NavLink to="/prizes">
         <button style={prizesBtnStyle}>
           Prizes Page
         </button>

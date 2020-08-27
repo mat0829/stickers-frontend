@@ -6,6 +6,7 @@ import childUserReducer from './reducers/users/childUserReducer'
 import taskReducer from './reducers/taskReducer'
 import taskImageReducer from './reducers/taskImageReducer'
 import stickerReducer from './reducers/stickerReducer'
+import prizeReducer from './reducers/prizeReducer'
 import prizeImageReducer from './reducers/prizeImageReducer'
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   taskReducer,
   taskImageReducer,
   stickerReducer,
+  prizeReducer,
   prizeImageReducer
 })
 

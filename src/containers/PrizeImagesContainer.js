@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 import PrizeImagesCollection from '../components/prizeImages/PrizeImagesCollection'
-import fetchTaskImages from '../actions/taskImages/fetchTaskImages'
+import fetchPrizeImages from '../actions/prizeImages/fetchPrizeImages'
 
 const labelStyle = {
   fontSize: '35px'
 }
 
-const taskPrizeBarContainerStyle = {
+const prizeImageBarContainerStyle = {
   height: 'auto',
   width: 'auto',
   textAlign: 'center',
@@ -47,9 +47,9 @@ class PrizeImagesContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    prizezImages: state.prizeImageReducer.prizeImages,
+    prizeImages: state.prizeImageReducer.prizeImages,
     loading: state.prizeImageReducer.loading
   }
 }
 
-export default connect(mapStateToProps, { fetchTaskImages })(PrizeImagesContainer)
+export default connect(mapStateToProps, { fetchPrizeImages })(PrizeImagesContainer)

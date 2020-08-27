@@ -15,12 +15,16 @@ import adultUserDelete from './actions/users/adultUsers/adultUserDelete'
 import adultUserLogout from './actions/users/adultUsers/adultUserLogout'
 import childUserProfile from './actions/users/childUsers/childUserProfile'
 import collectStickerPoints from './actions/tasks/collectStickerPoints'
+import purchasePrize from './actions/prizes/purchasePrize'
 import childUserUpdate from './actions/users/childUsers/childUserUpdate'
 import childUserDelete from './actions/users/childUsers/childUserDelete'
 import childUserLogout from './actions/users/childUsers/childUserLogout'
 import markTaskComplete from './actions/tasks/markTaskComplete'
 import editTask from './actions/tasks/editTask'
 import deleteTask from './actions/tasks/deleteTask'
+
+import editPrize from './actions/prizes/editPrize'
+import deletePrize from './actions/prizes/deletePrize'
 import AdultUserInfo from './components/users/adultUsers/AdultUserInfo'
 import ChildUserInfo from './components/users/childUsers/ChildUserInfo'
 import AdultUsersContainer from './containers/users/AdultUsersContainer'
@@ -29,6 +33,11 @@ import TasksContainer from './containers/TasksContainer'
 import NewTaskForm from './components/tasks/NewTaskForm'
 import TaskInfo from './components/tasks/TaskInfo'
 import EditTaskForm from './components/tasks/EditTaskForm'
+
+import PrizesContainer from './containers/PrizesContainer'
+import NewPrizeForm from './components/prizes/NewPrizeForm'
+import PrizeInfo from './components/prizes/PrizeInfo'
+import EditPrizeForm from './components/prizes/EditPrizeForm'
 
 const appStyle = {
   display: "block",
@@ -68,10 +77,12 @@ class App extends Component {
       childUser,
       childUserProfile,
       collectStickerPoints,
+      purchasePrize,
       childUserUpdate,
       childUserDelete,
       childUserLogout,
-      tasks
+      tasks,
+      prizes
     } = this.props
 
     return (
@@ -227,6 +238,59 @@ class App extends Component {
               )
             }}>
           </Route>
+
+          <Route 
+            exact path='/prizes' 
+            component={PrizesContainer}>
+          </Route>
+
+          <Route 
+            exact path='/prizes/new'
+            render={props => 
+              <NewPrizeForm
+                refProp={this.myRef}
+                scrollToMyRef={this.scrollToMyRef}
+                {...props}
+              />
+            }>
+          </Route>
+
+          <Route 
+            exact path='/prizes/:id'
+            render={props => {
+              const prize = prizes.find(prize => prize.id === parseInt(props.match.params.id))
+                return (
+                  <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                    <PrizeInfo 
+                      prize={prize}
+                      {...props}
+                      adultUser={adultUser} 
+                      childUser={childUser}
+                      purchasePrize={purchasePrize}
+                      deletePrize={this.props.deletePrize}
+                      scrollToTop={this.scrollToTop}
+                      refProp={this.myRef}
+                    />
+                  </Fade>
+                )
+            }}>
+          </Route>
+
+          <Route
+            exact path='/prizes/:id/edit'
+            render={props => {
+              const prize = prizes.find(prize => prize.id === parseInt(props.match.params.id))
+              return (
+                  <EditPrizeForm
+                    prize={prize} 
+                    editPrize={this.props.editPrize}
+                    refProp={this.myRef}
+                    scrollToMyRef={this.scrollToMyRef}
+                    {...props}
+                  />
+              )
+            }}>
+          </Route>
         </Switch>
       </div>
     )
@@ -239,7 +303,8 @@ const mapStateToProps = function(state) {
     childLoggedIn: state.childUserReducer.currentUser.logged_in,
     adultUser: state.adultUserReducer.currentUser,
     childUser: state.childUserReducer.currentUser,
-    tasks: state.taskReducer.tasks
+    tasks: state.taskReducer.tasks,
+    prizes: state.prizeReducer.prizes
   }
 }
 
@@ -250,10 +315,13 @@ export default connect(mapStateToProps, {
   adultUserLogout,
   childUserProfile,
   collectStickerPoints,
+  purchasePrize,
   childUserUpdate,
   childUserDelete,
   childUserLogout,
   markTaskComplete,
   editTask,
-  deleteTask
+  deleteTask,
+  editPrize,
+  deletePrize
  })(App)

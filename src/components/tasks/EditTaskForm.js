@@ -67,11 +67,6 @@ class EditTaskForm extends Component {
     }
   }
 
-  scrollTo = id => {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: 'smooth' })
-  }
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -192,7 +187,8 @@ class EditTaskForm extends Component {
 
           {showingTaskImageCollection
             ?  <TaskImagesContainer 
-                 scrollTo={this.scrollTo} 
+                 refProp={this.props.refProp}
+                 scrollToMyRef={this.props.scrollToMyRef} 
                  handleTaskClick={this.handleTaskClick}
                />
             :  null
@@ -212,7 +208,8 @@ class EditTaskForm extends Component {
 
           {showingStickerCollection
             ?  <StickersContainer
-                 scrollTo={this.scrollTo}
+                 refProp={this.props.refProp}
+                 scrollToMyRef={this.props.scrollToMyRef}
                  handleStickerClick={this.handleStickerClick}
                />
             :  null

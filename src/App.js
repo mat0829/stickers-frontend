@@ -217,9 +217,13 @@ class App extends Component {
             render={props => {
               const task = tasks.find(task => task.id === parseInt(props.match.params.id))
               return (
-                <div className='center-content padding'>
-                  <EditTaskForm task={task} editTask={this.props.editTask} {...props}/>
-                </div>
+                  <EditTaskForm
+                    task={task} 
+                    editTask={this.props.editTask}
+                    refProp={this.myRef}
+                    scrollToMyRef={this.scrollToMyRef}
+                    {...props}
+                  />
               )
             }}>
           </Route>

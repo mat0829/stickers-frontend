@@ -6,13 +6,15 @@ import childUserReducer from './reducers/users/childUserReducer'
 import taskReducer from './reducers/taskReducer'
 import taskImageReducer from './reducers/taskImageReducer'
 import stickerReducer from './reducers/stickerReducer'
+import prizeImageReducer from './reducers/prizeImageReducer'
 
 const rootReducer = combineReducers({
   adultUserReducer,
   childUserReducer,
   taskReducer,
   taskImageReducer,
-  stickerReducer
+  stickerReducer,
+  prizeImageReducer
 })
 
 const store = createStore(

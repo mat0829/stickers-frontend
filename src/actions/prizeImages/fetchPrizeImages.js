@@ -1,11 +1,11 @@
-const fetchTaskImages = () => {
+const fetchPrizeImages = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
       dispatch({ 
-        type: 'LOADING_TASK_IMAGES'
+        type: 'LOADING_PRIZE_IMAGES'
       })
-      fetch("http://localhost:3000/api/v1/task_images", {
+      fetch("http://localhost:3000/api/v1/prize_images", {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -14,16 +14,16 @@ const fetchTaskImages = () => {
         }
       })
       .then(resp => resp.json())
-      .then(taskImagesData => {
-        if (taskImagesData.errors !== undefined) {
-          alert(taskImagesData.errors)
+      .then(prizeImagesData => {
+        if (prizeImagesData.errors !== undefined) {
+          alert(prizeImagesData.errors)
           localStorage.removeItem("token")
         } 
         else {
-          console.log('taskImages:', taskImagesData)
+          console.log('prizeImages:', prizeImagesData)
           dispatch({
-            type: 'FETCH_TASK_IMAGES',
-            payload: taskImagesData
+            type: 'FETCH_PRIZE_IMAGES',
+            payload: prizeImagesData
           })
         }
       })
@@ -31,4 +31,4 @@ const fetchTaskImages = () => {
   }
 }
 
-export default fetchTaskImages
+export default fetchPrizeImages

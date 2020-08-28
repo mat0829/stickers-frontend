@@ -189,8 +189,9 @@ class App extends Component {
           </Route>
 
           <Route 
-            exact path='/tasks' 
-            component={TasksContainer}>
+            exact path='/tasks'
+            render={() => 
+              <TasksContainer adultLoggedIn={adultLoggedIn}/>}>
           </Route>
 
           <Route 
@@ -248,8 +249,8 @@ class App extends Component {
           </Route>
 
           <Route 
-            exact path='/prizes' 
-            component={PrizesContainer}>
+            exact path='/prizes'
+            render={() => <PrizesContainer adultLoggedIn={adultLoggedIn}/>}>
           </Route>
 
           <Route 

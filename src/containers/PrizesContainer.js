@@ -33,11 +33,49 @@ class PrizesContainer extends Component {
   }
 
   render() {
-    const children = JSON.parse(localStorage.getItem("childNames"))
-    if (children !== null) {
+    const adultLoggedIn = this.props.adultLoggedIn
+    if (adultLoggedIn) {
+      const children = JSON.parse(localStorage.getItem("childNames"))
+
+      if (children !== null) {
+        return (
+          <div 
+            id='adult-prizes-container' 
+            style={prizeBarContainerStyle}>
+              
+              <label 
+                htmlFor="prize-bar" 
+                style={labelStyle}>
+                  Click on a Prize to see more details:
+              </label>
+    
+              <Prizes
+                prizes={this.props.prizes}
+                loading={this.props.loading}
+                message={this.props.message}
+              />
+              
+              <label htmlFor="prize-child">
+                Sort by a Child:
+              </label>
+    
+            <select
+              id="prize-child"
+              onChange={this.handlePrizeSorting}>
+                <option>Show all Prizes</option>
+                {children.map(child =>
+                  <option key={child.id}>{child.name}</option>
+                )}
+            </select>
+          </div>
+        )
+      }
+      else return <h2>Help your Child(ren) make a User(s) to start making Prizes.</h2>
+    }
+    else {
       return (
         <div 
-          id='prizes-container' 
+          id='child-prizes-container' 
           style={prizeBarContainerStyle}>
             
             <label 
@@ -51,23 +89,9 @@ class PrizesContainer extends Component {
               loading={this.props.loading}
               message={this.props.message}
             />
-            
-            <label htmlFor="prize-child">
-              Sort by a Child:
-            </label>
-  
-          <select
-            id="prize-child"
-            onChange={this.handlePrizeSorting}>
-              <option>Show all Prizes</option>
-              {children.map(child =>
-                <option key={child.id}>{child.name}</option>
-              )}
-          </select>
         </div>
       )
     }
-    else return <h2>Help your Child(ren) make a User(s) to start making Prizes.</h2>
   }
 }
 

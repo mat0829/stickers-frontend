@@ -33,11 +33,49 @@ class TasksContainer extends Component {
   }
 
   render() {
-    const children = JSON.parse(localStorage.getItem("childNames"))
-    if (children !== null) {
+    const adultLoggedIn = this.props.adultLoggedIn
+    if (adultLoggedIn) {
+      const children = JSON.parse(localStorage.getItem("childNames"))
+
+      if (children !== null) {
+        return (
+          <div 
+            id='adult-tasks-container' 
+            style={taskBarContainerStyle}>
+              
+              <label 
+                htmlFor="task-bar" 
+                style={labelStyle}>
+                  Click on a Task to see more details:
+              </label>
+    
+              <Tasks
+                tasks={this.props.tasks}
+                loading={this.props.loading}
+                message={this.props.message}
+              />
+              
+              <label htmlFor="task-child">
+                Sort by a Child:
+              </label>
+    
+            <select
+              id="task-child"
+              onChange={this.handleTaskSorting}>
+                <option>Show all Tasks</option>
+                {children.map(child =>
+                  <option key={child.id}>{child.name}</option>
+                )}
+            </select>
+          </div>
+        )
+      }
+      else return <h2>Help your Child(ren) make a User(s) to start making Tasks.</h2>
+    }
+    else {
       return (
         <div 
-          id='tasks-container' 
+          id='child-tasks-container' 
           style={taskBarContainerStyle}>
             
             <label 
@@ -51,23 +89,9 @@ class TasksContainer extends Component {
               loading={this.props.loading}
               message={this.props.message}
             />
-            
-            <label htmlFor="task-child">
-              Sort by a Child:
-            </label>
-  
-          <select
-            id="task-child"
-            onChange={this.handleTaskSorting}>
-              <option>Show all Tasks</option>
-              {children.map(child =>
-                <option key={child.id}>{child.name}</option>
-              )}
-          </select>
         </div>
       )
     }
-    else return <h2>Help your Child(ren) make a User(s) to start making Tasks.</h2>
   }
 }
 

@@ -18,10 +18,9 @@ const getOccurrence = (array, value) => {
 }
 
 const PrizesCollection = (props) => {
-
   const childUser = props.childUser
-
-  if (props.childUser.prizes !== 0) {
+  
+  if (props.childUser.prizes.length !== 0) {
     const arrayWithoutDuplicates = [...new Set(childUser.prizes)]
     const prizesCollection = arrayWithoutDuplicates.map( (prize, id) => (
       <div key={id}>

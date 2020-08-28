@@ -26,21 +26,20 @@ const linkStyle = {
 }
 
 const Tasks = (props) => {
-  const renderTasks = () => {
-    if (props.tasks.length === 0) {
-      return <h2>You Currently have 0 Tasks.</h2>
-    } else {
-      return props.tasks.map(task => 
 
+  const renderTasks = () => {
+    if (props.tasks.length !== 0) {
+      return props.tasks.map(task => 
         <Link key={task.id} to={`/tasks/${task.id}`} style={linkStyle}>
           <span id={task.id}> 
             {task.name} 
           </span>
         </Link>)
-    }
+    } 
+    else return <h2>You Currently have 0 Tasks.</h2>
   }
 
-   return (
+  return (
     <div 
       id='task-bar' 
       style={taskBarStyle}>
@@ -53,7 +52,7 @@ const Tasks = (props) => {
           : null
         }
     </div>
-  )
+ )
 }
 
 export default Tasks

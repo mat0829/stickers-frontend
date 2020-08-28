@@ -18,9 +18,9 @@ const getOccurrence = (array, value) => {
 }
 
 const StickersCollection = (props) => {
-
   const childUser = props.childUser
-  if (props.childUser.stickers !== 0) {
+  
+  if (props.childUser.stickers.length !== 0) {
     const arrayWithoutDuplicates = [...new Set(childUser.stickers)]
     const stickersCollection = arrayWithoutDuplicates.map( (sticker, id) => (
       <div key={id}>

@@ -1,8 +1,8 @@
 import React from 'react'
 
 const imgStyle = {
-  maxWidth: '300px',
-  maxHeight: '150px'
+  maxWidth: '400px',
+  maxHeight: '200px'
 }
 
 const btnStyle = {

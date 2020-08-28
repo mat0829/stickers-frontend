@@ -1,8 +1,8 @@
 import React from 'react'
 
 const avatarStyle = {
-  maxWidth: '20vw',
-  maxHeight: '20vw'
+  maxWidth: '15vw',
+  maxHeight: '15vw'
 }
 
 const ChildUserAvatar = (props) => (

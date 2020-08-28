@@ -4,7 +4,8 @@ const childUserUpdate = (user, history) => {
     email,
     avatar,
     points,
-    stickers
+    stickers,
+    prizes
   } = user
 
   const token = localStorage.token
@@ -20,7 +21,8 @@ const childUserUpdate = (user, history) => {
         email: email,
         avatar: avatar,
         points: points,
-        stickers: stickers
+        stickers: stickers,
+        prizes: prizes
       })
     })
     .then(resp => resp.json())

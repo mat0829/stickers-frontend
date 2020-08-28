@@ -12,6 +12,7 @@ const purchasePrize = (prize, childUser, history) => {
     else {
       childUser.points -= prize.cost
       childUser.prizes.push(prize.image)
+      prize.purchased = true
       prize.cost = 0
       
       dispatch(childUserUpdate(childUser))

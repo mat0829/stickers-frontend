@@ -8,7 +8,7 @@ const imgStyle = {
 const spanStyle = {
   display: 'flex',
   justifyContent: 'space-evenly',
-  alignItems: 'center'
+  alignItems: 'flex-end'
 }
 
 const getOccurrence = (array, value) => {

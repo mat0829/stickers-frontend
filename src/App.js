@@ -36,6 +36,7 @@ import EditTaskForm from './components/tasks/EditTaskForm'
 import StickersCollection from './components/stickers/StickersCollection'
 
 import PrizesContainer from './containers/PrizesContainer'
+import PrizesCollection from './components/prizes/PrizesCollection'
 import NewPrizeForm from './components/prizes/NewPrizeForm'
 import PrizeInfo from './components/prizes/PrizeInfo'
 import EditPrizeForm from './components/prizes/EditPrizeForm'
@@ -297,6 +298,11 @@ class App extends Component {
                   />
               )
             }}>
+          </Route>
+
+          <Route
+            exact path='/prizes-collection'
+            render={() => <PrizesCollection childUser={childUser}/>}>
           </Route>
         </Switch>
       </div>

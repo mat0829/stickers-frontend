@@ -3,9 +3,9 @@ import {NavLink} from 'react-router-dom'
 
 import ChildUserAvatar from '../users/childUsers/ChildUserAvatar'
 
-const imgStyle = {
-  maxWidth: '300px',
-  maxHeight: '150px'
+const prizeImgStyle = {
+  maxWidth: '400px',
+  maxHeight: '200px'
 }
 
 const btnStyle = {
@@ -33,7 +33,7 @@ const PrizeInfo = (props) => {
                 <img 
                   src={prize.image} 
                   alt="prize img" 
-                  style={imgStyle}
+                  style={prizeImgStyle}
                 />
 
                 <h2>to their Prize Collection!</h2>
@@ -44,12 +44,12 @@ const PrizeInfo = (props) => {
             return (
               <>
                 <h2 id="h2">{prize.name} has not been purchased yet.</h2>
-                <h3>~ Created for: ${prize.prize_child.name}</h3>
+                <h3>~ Created for: {prize.prize_child.name}</h3>
   
                 <img 
                   src={prize.image} 
                   alt="prize img" 
-                  style={imgStyle}
+                  style={prizeImgStyle}
                 />
 
                 <h2>Cost: {prize.cost} Points!</h2>
@@ -98,16 +98,16 @@ const PrizeInfo = (props) => {
             return (
               <>
                 <h1>Congratulations {prize.prize_child.name}!</h1>
-                <h2>You purchased "{prize.name}"!</h2>
-
                 <ChildUserAvatar imgURL={prize.prize_child.avatar}/>
+
+                <h2>You purchased "{prize.name}"!</h2>
 
                 <h2>You also added:</h2>
 
                 <img 
                   src={prize.image} 
                   alt="prize img" 
-                  style={imgStyle}
+                  style={prizeImgStyle}
                 />
 
                 <h2>to your Prize Collection!</h2>
@@ -124,7 +124,7 @@ const PrizeInfo = (props) => {
                 <img 
                   src={prize.image} 
                   alt="prize img"
-                  style={imgStyle}
+                  style={prizeImgStyle}
                 />
 
                 <h2>Cost: {prize.cost} Points!</h2>

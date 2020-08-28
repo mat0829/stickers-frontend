@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 
 import addNewPrize from '../../actions/prizes/addNewPrize'
 import PrizeImagesContainer from '../../containers/PrizeImagesContainer'
@@ -21,16 +20,15 @@ class NewPrizeForm extends Component {
     image: '',
     cost: '5',
     purchased: false,
-    showingPrizeImageCollection: true,
+    showingPrizeImages: true,
     showingPrizeImageInfo: false,
-    redirect: false,
     currentErrors: null,
   }
 
   componentDidMount() {
     this.props.scrollToMyRef()
     this.setState({
-      showingPrizeImageCollection: true
+      showingPrizeImages: true
     })
   }
 
@@ -41,11 +39,6 @@ class NewPrizeForm extends Component {
           currentErrors: this.props.errors
         })
       }
-    }
-    if (prevProps.prizes !== this.props.prizes) {
-      this.setState({
-        redirect: true
-      })
     }
   }
 
@@ -66,12 +59,12 @@ class NewPrizeForm extends Component {
 
   handleShowHidePrizeImage = () => {
     const {
-      showingPrizeImageCollection, 
+      showingPrizeImages, 
       showingPrizeImageInfo
     } = this.state
     
     this.setState({
-      showingPrizeImageCollection: !showingPrizeImageCollection, 
+      showingPrizeImages: !showingPrizeImages, 
       showingPrizeImageInfo: !showingPrizeImageInfo
     })
   }
@@ -96,110 +89,110 @@ class NewPrizeForm extends Component {
 
   render() {
     const {
-      showingPrizeImageCollection, 
-      showingPrizeImageInfo,
-      redirect
+      showingPrizeImages, 
+      showingPrizeImageInfo
     } = this.state
 
     const children = JSON.parse(localStorage.getItem("childNames"))
     
-    if (redirect) return <Redirect to='/adult-prizes'/>
-
-    else return (
-      <div ref={this.props.refProp} id="new-prize-form-container">
-        <h1>Create a new Prize</h1>
-        <form onSubmit={this.handleSubmit}>
-       
-        <label htmlFor="new-prize-child">
-          Choose the Child the Prize is for:
-        </label>
-
-        <select
-          id="new-prize-child"
-          name="prizeReceiverId"
-          onChange={this.handleChange}>
-            <option>Select Name Here</option>
-            {children.map(child =>
-              <option key={child.id} value={child.id}>{child.name}</option>
-            )}
-        </select><br/><br/>
-
-          <label htmlFor="new-prize-name">
-            Prize Name:
+    if (children !== null) {
+      return (
+        <div ref={this.props.refProp} id="new-prize-form-container">
+          <h1>Create a new Prize</h1>
+          <form onSubmit={this.handleSubmit}>
+         
+          <label htmlFor="new-prize-child">
+            Choose the Child the Prize is for:
           </label>
-
-          <input
-            id="new-prize-name"
-            name="name" 
-            placeholder="Name Your Prize Here"
-            value={this.state.name}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
-
-          <label htmlFor="new-prize-image">
-            Prize Image URL:
-          </label>
-
-          <input
-            id="new-prize-image"
-            name="image" 
-            placeholder="Manually Add Image Url"
-            value={this.state.image}
-            onChange={this.handleChange}
-            autoComplete="off">
-          </input><br/><br/>
-
-          {showingPrizeImageCollection
-            ?  <PrizeImagesContainer
-                 refProp={this.props.refProp}
-                 scrollToMyRef={this.props.scrollToMyRef}
-                 handlePrizeClick={this.handlePrizeClick}
-               />
-            :  null
-          }
-
-          {showingPrizeImageInfo
-            ?  <>
-                <PrizeImageInfo
-                  imgURL={this.state.image}
-                  handleShowHidePrizeImage={this.handleShowHidePrizeImage}
-                /><br/>
-              </>
-            :  null
-          }
-
-          {this.renderCreatePrizeErrors()}
-
-          <label htmlFor="new-prize-cost">
-            Choose Prize Cost:
-          </label>
-
-          <select 
-            id="new-prize-cost" 
-            name="cost" 
+  
+          <select
+            id="new-prize-child"
+            name="prizeReceiverId"
             onChange={this.handleChange}>
-              <option value="5">5 Sticker Points</option>
-              <option value="10">10 Sticker Points</option>
-              <option value="20">20 Sticker Points</option>
-              <option value="25">25 Sticker Points</option>
-              <option value="50">50 Sticker Points</option>
-              <option value="75">75 Sticker Points</option>
-              <option value="100">100 Sticker Points</option>
-              <option value="250">250 Sticker Points</option>
-              <option value="500">500 Sticker Points</option>
-              <option value="750">750 Sticker Points</option>
-              <option value="1000">1000 Sticker Points</option>
+              <option>Select Name Here</option>
+              {children.map(child =>
+                <option key={child.id} value={child.id}>{child.name}</option>
+              )}
           </select><br/><br/>
-
-          <input
-            style={submitBtnStyle}
-            type="submit" 
-            value="Create Prize">
-          </input>
-        </form>
-      </div>
-    )
+  
+            <label htmlFor="new-prize-name">
+              Prize Name:
+            </label>
+  
+            <input
+              id="new-prize-name"
+              name="name" 
+              placeholder="Name Your Prize Here"
+              value={this.state.name}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
+  
+            <label htmlFor="new-prize-image">
+              Prize Image URL:
+            </label>
+  
+            <input
+              id="new-prize-image"
+              name="image" 
+              placeholder="Manually Add Image Url"
+              value={this.state.image}
+              onChange={this.handleChange}
+              autoComplete="off">
+            </input><br/><br/>
+  
+            {showingPrizeImages
+              ?  <PrizeImagesContainer
+                   refProp={this.props.refProp}
+                   scrollToMyRef={this.props.scrollToMyRef}
+                   handlePrizeClick={this.handlePrizeClick}
+                 />
+              :  null
+            }
+  
+            {showingPrizeImageInfo
+              ?  <>
+                  <PrizeImageInfo
+                    imgURL={this.state.image}
+                    handleShowHidePrizeImage={this.handleShowHidePrizeImage}
+                  /><br/>
+                </>
+              :  null
+            }
+  
+            {this.renderCreatePrizeErrors()}
+  
+            <label htmlFor="new-prize-cost">
+              Choose Prize Cost:
+            </label>
+  
+            <select 
+              id="new-prize-cost" 
+              name="cost" 
+              onChange={this.handleChange}>
+                <option value="5">5 Sticker Points</option>
+                <option value="10">10 Sticker Points</option>
+                <option value="20">20 Sticker Points</option>
+                <option value="25">25 Sticker Points</option>
+                <option value="50">50 Sticker Points</option>
+                <option value="75">75 Sticker Points</option>
+                <option value="100">100 Sticker Points</option>
+                <option value="250">250 Sticker Points</option>
+                <option value="500">500 Sticker Points</option>
+                <option value="750">750 Sticker Points</option>
+                <option value="1000">1000 Sticker Points</option>
+            </select><br/><br/>
+  
+            <input
+              style={submitBtnStyle}
+              type="submit" 
+              value="Create Prize">
+            </input>
+          </form>
+        </div>
+      )
+    }
+    else return <h2>Help your Child(ren) make a User(s) to start making Prizes.</h2>
   }
 }
 

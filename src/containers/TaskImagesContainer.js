@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import TaskImagesCollection from '../components/taskImages/TaskImagesCollection'
+import TaskImages from '../components/taskImages/TaskImages'
 import fetchTaskImages from '../actions/taskImages/fetchTaskImages'
 
 const labelStyle = {
@@ -35,7 +35,7 @@ class TaskImagesContainer extends Component {
               Click to Select a Task Image:
           </label>
 
-          <TaskImagesCollection 
+          <TaskImages
             taskImages={this.props.taskImages} 
             handleTaskClick={this.props.handleTaskClick}
             loading={this.props.loading}

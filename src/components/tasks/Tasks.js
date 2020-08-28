@@ -25,7 +25,7 @@ const linkStyle = {
   color: 'inherit'
 }
 
-const TasksCollection = (props) => {
+const Tasks = (props) => {
   const renderTasks = () => {
     if (props.tasks.length === 0) {
       return <h2>You Currently have 0 Tasks.</h2>
@@ -56,4 +56,4 @@ const TasksCollection = (props) => {
   )
 }
 
-export default TasksCollection
+export default Tasks

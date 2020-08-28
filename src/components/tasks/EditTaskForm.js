@@ -23,9 +23,9 @@ class EditTaskForm extends Component {
     value: '5',
     completed: '',
     stickerImage: '',
-    showingTaskImageCollection: false,
+    showingTaskImages: false,
     showingTaskImageInfo: true,
-    showingStickerCollection: false,
+    showingStickers: false,
     showingStickerInfo: true,
     currentErrors: null
   }
@@ -84,12 +84,12 @@ class EditTaskForm extends Component {
 
   handleShowHideTaskImage = () => {
     const {
-      showingTaskImageCollection, 
+      showingTaskImages, 
       showingTaskImageInfo
     } = this.state
     
     this.setState({
-      showingTaskImageCollection: !showingTaskImageCollection, 
+      showingTaskImages: !showingTaskImages, 
       showingTaskImageInfo: !showingTaskImageInfo
     })
   }
@@ -104,9 +104,9 @@ class EditTaskForm extends Component {
   }
 
   handleShowHideSticker = () => {
-    const {showingStickerCollection, showingStickerInfo} = this.state
+    const {showingStickers, showingStickerInfo} = this.state
     this.setState({
-      showingStickerCollection: !showingStickerCollection, 
+      showingStickers: !showingStickers, 
       showingStickerInfo: !showingStickerInfo
     })
   }
@@ -131,9 +131,9 @@ class EditTaskForm extends Component {
 
   render() {
     const {
-      showingTaskImageCollection, 
+      showingTaskImages, 
       showingTaskImageInfo,
-      showingStickerCollection,
+      showingStickers,
       showingStickerInfo
     } = this.state
 
@@ -185,7 +185,7 @@ class EditTaskForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          {showingTaskImageCollection
+          {showingTaskImages
             ?  <TaskImagesContainer 
                  refProp={this.props.refProp}
                  scrollToMyRef={this.props.scrollToMyRef} 
@@ -206,7 +206,7 @@ class EditTaskForm extends Component {
 
           {this.renderEditTaskErrors()}
 
-          {showingStickerCollection
+          {showingStickers
             ?  <StickersContainer
                  refProp={this.props.refProp}
                  scrollToMyRef={this.props.scrollToMyRef}

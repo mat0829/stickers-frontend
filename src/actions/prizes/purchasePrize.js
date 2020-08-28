@@ -3,7 +3,6 @@ import editPrize from '../prizes/editPrize'
 
 const purchasePrize = (prize, childUser, history) => {
   return dispatch => {
-    debugger
     if (childUser.points < prize.cost) {
       dispatch({
         type: 'PRIZE_ERROR',
@@ -14,7 +13,7 @@ const purchasePrize = (prize, childUser, history) => {
       childUser.points -= prize.cost
       childUser.prizes.push(prize.image)
       prize.cost = 0
-
+      
       dispatch(childUserUpdate(childUser))
       dispatch(editPrize(prize, history))
     }

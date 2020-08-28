@@ -20,7 +20,7 @@ class EditPrizeForm extends Component {
     image: '',
     cost: '5',
     purchased: '',
-    showingPrizeImageCollection: false,
+    showingPrizeImages: false,
     showingPrizeImageInfo: true,
     currentErrors: null
   }
@@ -77,12 +77,12 @@ class EditPrizeForm extends Component {
 
   handleShowHidePrizeImage = () => {
     const {
-      showingPrizeImageCollection, 
+      showingPrizeImages, 
       showingPrizeImageInfo
     } = this.state
     
     this.setState({
-      showingPrizeImageCollection: !showingPrizeImageCollection, 
+      showingPrizeImages: !showingPrizeImages, 
       showingPrizeImageInfo: !showingPrizeImageInfo
     })
   }
@@ -107,7 +107,7 @@ class EditPrizeForm extends Component {
 
   render() {
     const {
-      showingPrizeImageCollection, 
+      showingPrizeImages, 
       showingPrizeImageInfo,
     } = this.state
 
@@ -159,7 +159,7 @@ class EditPrizeForm extends Component {
             autoComplete="off">
           </input><br/><br/>
 
-          {showingPrizeImageCollection
+          {showingPrizeImages
             ?  <PrizeImagesContainer 
                  refProp={this.props.refProp}
                  scrollToMyRef={this.props.scrollToMyRef} 

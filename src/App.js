@@ -33,6 +33,7 @@ import TasksContainer from './containers/TasksContainer'
 import NewTaskForm from './components/tasks/NewTaskForm'
 import TaskInfo from './components/tasks/TaskInfo'
 import EditTaskForm from './components/tasks/EditTaskForm'
+import StickersCollection from './components/stickers/StickersCollection'
 
 import PrizesContainer from './containers/PrizesContainer'
 import NewPrizeForm from './components/prizes/NewPrizeForm'
@@ -47,13 +48,14 @@ const appStyle = {
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-    this.myRef = React.createRef()  
+  state = {
+    myRef: React.createRef()
   }
 
   scrollToMyRef = () => {
-    window.scrollTo(0, this.myRef.current.offsetTop)
+    if (this.state.myRef.current) {
+      window.scrollTo(0, this.state.myRef.current.offsetTop)
+    }
   }
 
   scrollToTop = () => {
@@ -112,7 +114,7 @@ class App extends Component {
             render={(props) =>
               <AdultUsersContainer 
                 adultLoggedIn={adultLoggedIn}
-                refProp={this.myRef}
+                refProp={this.state.myRef}
                 scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
@@ -124,7 +126,7 @@ class App extends Component {
             render={(props) => 
               <ChildUsersContainer 
                 childLoggedIn={childLoggedIn}
-                refProp={this.myRef}
+                refProp={this.state.myRef}
                 scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
@@ -140,7 +142,7 @@ class App extends Component {
                   adultUserProfile={adultUserProfile} 
                   adultUserDelete={adultUserDelete}
                   scrollToTop={this.scrollToTop}
-                  refProp={this.myRef}
+                  refProp={this.state.myRef}
                   {...props}
                 />
               </Fade>
@@ -167,7 +169,7 @@ class App extends Component {
                   childUserProfile={childUserProfile} 
                   childUserDelete={childUserDelete}
                   scrollToTop={this.scrollToTop}
-                  refProp={this.myRef}
+                  refProp={this.state.myRef}
                   {...props}
                 />
               </Fade>
@@ -194,7 +196,7 @@ class App extends Component {
             exact path='/tasks/new'
             render={props => 
               <NewTaskForm
-                refProp={this.myRef}
+                refProp={this.state.myRef}
                 scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
@@ -216,7 +218,7 @@ class App extends Component {
                       handleMarkTaskComplete={this.handleMarkTaskComplete}
                       deleteTask={this.props.deleteTask}
                       scrollToTop={this.scrollToTop}
-                      refProp={this.myRef}
+                      refProp={this.state.myRef}
                     />
                   </Fade>
                 )
@@ -231,12 +233,17 @@ class App extends Component {
                   <EditTaskForm
                     task={task} 
                     editTask={this.props.editTask}
-                    refProp={this.myRef}
+                    refProp={this.state.myRef}
                     scrollToMyRef={this.scrollToMyRef}
                     {...props}
                   />
               )
             }}>
+          </Route>
+
+          <Route
+            exact path='/stickers-collection'
+            render={() => <StickersCollection childUser={childUser}/>}>
           </Route>
 
           <Route 
@@ -248,7 +255,7 @@ class App extends Component {
             exact path='/prizes/new'
             render={props => 
               <NewPrizeForm
-                refProp={this.myRef}
+                refProp={this.state.myRef}
                 scrollToMyRef={this.scrollToMyRef}
                 {...props}
               />
@@ -269,7 +276,7 @@ class App extends Component {
                       purchasePrize={purchasePrize}
                       deletePrize={this.props.deletePrize}
                       scrollToTop={this.scrollToTop}
-                      refProp={this.myRef}
+                      refProp={this.state.myRef}
                     />
                   </Fade>
                 )
@@ -284,7 +291,7 @@ class App extends Component {
                   <EditPrizeForm
                     prize={prize} 
                     editPrize={this.props.editPrize}
-                    refProp={this.myRef}
+                    refProp={this.state.myRef}
                     scrollToMyRef={this.scrollToMyRef}
                     {...props}
                   />

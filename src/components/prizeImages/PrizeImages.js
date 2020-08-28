@@ -17,7 +17,7 @@ const prizeImageStyle = {
   height: '150px'
 }
 
-const PrizeImagesCollection = (props) => {
+const PrizeImages = (props) => {
   const renderPrizeImages = () => props.prizeImages.map(prizeImage => 
     <span
       key={prizeImage.id}
@@ -43,4 +43,4 @@ const PrizeImagesCollection = (props) => {
   )
 }
 
-export default PrizeImagesCollection
+export default PrizeImages

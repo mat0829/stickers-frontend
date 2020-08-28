@@ -1,47 +1,51 @@
 import React from 'react'
 
-const stickerBarStyle = {
-  background: 'black',
-  display: 'block',
-  justifyContent: 'space-around',
-  alignItems: 'center'
+const imgStyle = {
+  maxWidth: '125px',
+  maxHeight: '125px'
 }
 
 const spanStyle = {
-  padding: '1vw',
-  display: 'inline-block'
+  display: 'flex',
+  justifyContent: 'space-evenly',
+  alignItems: 'center'
 }
 
-const stickerImageStyle = {
-  width:  '75px',
-  height: '75px'
+const getOccurrence = (array, value) => {
+  let count = 0
+  array.forEach((v) => (v === value && count++))
+  return count
 }
 
 const StickersCollection = (props) => {
 
-  const renderStickers = () => props.stickers.map(sticker => 
-    <span
-      key={sticker.id}
-      style={spanStyle}>
-        <img
-          src={sticker.image}
-          alt={`sticker ${sticker.id}`}
-          onClick={props.handleStickerClick}
-          style={stickerImageStyle}>
-        </img>
-    </span>
-  )
-
-  return (
-    <div 
-      id='adult-sticker-bar' 
-      style={stickerBarStyle}>
-        {props.loading 
-          ?  <h1>"Loading..."</h1> 
-          :  renderStickers()
+  const childUser = props.childUser
+  if (props.childUser.stickers !== 0) {
+    const arrayWithoutDuplicates = [...new Set(childUser.stickers)]
+    const stickersCollection = arrayWithoutDuplicates.map( (sticker, id) => (
+      <div key={id}>
+        {
+          <>
+            <img 
+              src={sticker} 
+              alt="sticker img" 
+              style={imgStyle}
+            /><br/>
+            ( {getOccurrence(childUser.stickers, sticker)} collected )
+          </>
         }
-    </div>
-  )
+      </div>
+    ))
+    
+    return (
+      <div>
+        <h1>Your Stickers Collection:</h1>
+        <h2>Total Stickers = {childUser.stickers.length}</h2>
+        <span style={spanStyle}>{stickersCollection}</span>
+      </div>
+    )
+  }
+  else return <h2>You currently have 0 Stickers. Complete Tasks to get Stickers.</h2>
 }
 
 export default StickersCollection

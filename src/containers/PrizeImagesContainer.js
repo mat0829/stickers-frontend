@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import PrizeImagesCollection from '../components/prizeImages/PrizeImagesCollection'
+import PrizeImages from '../components/prizeImages/PrizeImages'
 import fetchPrizeImages from '../actions/prizeImages/fetchPrizeImages'
 
 const labelStyle = {
@@ -35,7 +35,7 @@ class PrizeImagesContainer extends Component {
               Click to Select a Prize Image:
           </label>
 
-          <PrizeImagesCollection 
+          <PrizeImages
             prizeImages={this.props.prizeImages} 
             handlePrizeClick={this.props.handlePrizeClick}
             loading={this.props.loading}

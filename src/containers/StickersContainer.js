@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import StickersCollection from '../components/stickers/StickersCollection'
+import Stickers from '../components/stickers/Stickers'
 import fetchStickers from '../actions/stickers/fetchStickers'
 
 const labelStyle = {
@@ -33,7 +33,7 @@ class StickersContainer extends Component {
               Click to Select a Sticker:
           </label>
 
-          <StickersCollection 
+          <Stickers
             stickers={this.props.stickers}
             handleStickerClick={this.props.handleStickerClick}
             loading={this.props.loading}

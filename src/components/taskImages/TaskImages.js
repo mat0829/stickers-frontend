@@ -17,7 +17,7 @@ const taskImageStyle = {
   height: '75px'
 }
 
-const TaskImagesCollection = (props) => {
+const TaskImages = (props) => {
 
   const renderTaskImages = () => props.taskImages.map(taskImage => 
     <span
@@ -44,4 +44,4 @@ const TaskImagesCollection = (props) => {
   )
 }
 
-export default TaskImagesCollection
+export default TaskImages

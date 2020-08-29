@@ -17,7 +17,7 @@ const Errors = (props) => {
       </h2>
   ))
     
-      return errorsList
+  return errorsList
 }
 
 export default Errors

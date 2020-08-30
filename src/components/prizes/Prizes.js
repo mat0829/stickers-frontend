@@ -26,6 +26,7 @@ const linkStyle = {
 }
 
 const Prizes = (props) => {
+  
   const renderPrizes = () => {
     if (props.prizes.length === 0) {
       return <h2>You Currently have 0 prizes.</h2>

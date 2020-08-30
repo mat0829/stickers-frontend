@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Route, Switch, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
+import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
 
 import MainHeader from './MainHeader'
@@ -90,7 +91,9 @@ class App extends Component {
 
     return (
       <div className="App" style={appStyle}>
-        <MainHeader />
+        <Zoom>
+          <MainHeader />
+        </Zoom>
 
           {(() => {
             if (adultLoggedIn === true) {
@@ -245,7 +248,11 @@ class App extends Component {
 
           <Route
             exact path='/stickers-collection'
-            render={() => <StickersCollection childUser={childUser}/>}>
+            render={() =>
+              <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                <StickersCollection childUser={childUser} refProp={this.state.myRef}/>
+              </Fade>
+              }>
           </Route>
 
           <Route 
@@ -303,7 +310,11 @@ class App extends Component {
 
           <Route
             exact path='/prizes-collection'
-            render={() => <PrizesCollection childUser={childUser}/>}>
+            render={() =>
+              <Fade bottom onReveal={ () => this.scrollToMyRef()}>
+                <PrizesCollection childUser={childUser} refProp={this.state.myRef}/>
+              </Fade>
+            }>
           </Route>
         </Switch>
       </div>

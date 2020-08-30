@@ -38,7 +38,7 @@ const StickersCollection = (props) => {
     ))
     
     return (
-      <div>
+      <div ref={props.refProp}>
         <h1>Your Stickers Collection:</h1>
         <h2>Total Stickers = {childUser.stickers.length}</h2>
         <span style={spanStyle}>{stickersCollection}</span>

@@ -22,7 +22,7 @@ const PrizeImageInfo = (props) => (
       type="button"
       style={btnStyle}
       onClick={props.handleShowHidePrizeImage}>
-      Select a Different Prize Image
+        Select a Different Prize Image
     </button>
   </div>
 )

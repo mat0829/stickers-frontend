@@ -14,11 +14,9 @@ const btnStyle = {
 }
 
 const PrizeInfo = (props) => {
-  const prize = props.prize
-  const history = props.history
+  const {prize, history} = props
   
   if (Object.keys(props.adultUser).length !== 0) {
-
     return (
       <div ref={props.refProp} id="adult-prize-info">
         {(() => {

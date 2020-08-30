@@ -1,8 +1,8 @@
 import React from 'react'
 
 const imgStyle = {
-  maxWidth: '400px',
-  maxHeight: '200px'
+  maxWidth: '300px',
+  maxHeight: '150px'
 }
 
 const spanStyle = {
@@ -38,7 +38,7 @@ const PrizesCollection = (props) => {
     ))
     
     return (
-      <div>
+      <div ref={props.refProp}>
         <h1>Your Prizes Collection:</h1>
         <h2>Total Prizes = {childUser.prizes.length}</h2>
         <span style={spanStyle}>{prizesCollection}</span>

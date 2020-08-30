@@ -26,7 +26,7 @@ const linkStyle = {
 }
 
 const Tasks = (props) => {
-
+  
   const renderTasks = () => {
     if (props.tasks.length !== 0) {
       return props.tasks.map(task => 

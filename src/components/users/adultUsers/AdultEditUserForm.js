@@ -73,6 +73,13 @@ class AdultEditUserForm extends Component {
     })
   }
 
+  handleClick = event => {
+    event.preventDefault()
+    this.setState({
+      avatar: this.avatarGenerator()
+    })
+  }
+
   handleSubmit = event => {
     event.preventDefault()
     const history = this.props.history

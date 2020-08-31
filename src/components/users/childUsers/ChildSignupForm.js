@@ -13,10 +13,10 @@ const btnStyle = {
 class ChildSignupForm extends Component {
 
   state = {
-    name: 'Meeyu',
-    email: 'email@email.com',
-    password: 'password',
-    avatar: 'https://cataas.com/cat/595f280e557291a9750ebfa9'
+    name: '',
+    email: '',
+    password: '',
+    avatar: ''
   }
 
   componentDidUpdate(prevProps) {

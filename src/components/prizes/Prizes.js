@@ -3,12 +3,18 @@ import Error from '../errors/Error'
 import {Link } from 'react-router-dom'
 
 const prizeBarStyle = {
-  height: '25vh',
+  height: 'auto',
   background: 'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
   display: 'flex',
+  flexWrap: 'wrap',
   width: 'auto',
   justifyContent: 'space-around',
   alignItems: 'center'
+}
+
+const prizeImgStyle = {
+  maxWidth: '200px',
+  maxHeight: '100px'
 }
 
 const linkStyle = {
@@ -34,8 +40,14 @@ const Prizes = (props) => {
       return props.prizes.map(prize => 
 
         <Link key={prize.id} to={`/prizes/${prize.id}`} style={linkStyle}>
-          <span id={prize.id}> 
-            {prize.name} 
+          <span id={prize.id}>
+            {prize.name}
+            <img 
+              src={prize.image} 
+              alt="prize img"
+              style={prizeImgStyle}
+            />
+            {prize.prize_child.name}
           </span>
         </Link>)
     }

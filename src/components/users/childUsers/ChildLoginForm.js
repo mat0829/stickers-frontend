@@ -11,8 +11,8 @@ const submitBtnStyle = {
 class ChildLoginForm extends Component {
   
   state = {
-    name: 'Meeyu',
-    password: 'password'
+    name: '',
+    password: 'Cold0829'
   }
 
   handleChange = event => {

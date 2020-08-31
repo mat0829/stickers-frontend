@@ -18,6 +18,7 @@ class TasksContainer extends Component {
 
   componentDidMount() {
     this.props.fetchTasks()
+    this.props.scrollToMyRef()
   }
 
   handleTaskSorting = (event) => {
@@ -39,7 +40,8 @@ class TasksContainer extends Component {
 
       if (children !== null) {
         return (
-          <div 
+          <div
+            ref={this.props.refProp}
             id='adult-tasks-container' 
             style={taskBarContainerStyle}>
               
@@ -74,7 +76,8 @@ class TasksContainer extends Component {
     }
     else {
       return (
-        <div 
+        <div
+          ref={this.props.refProp}
           id='child-tasks-container' 
           style={taskBarContainerStyle}>
             

@@ -194,7 +194,12 @@ class App extends Component {
           <Route 
             exact path='/tasks'
             render={() => 
-              <TasksContainer adultLoggedIn={adultLoggedIn}/>}>
+              <TasksContainer 
+                adultLoggedIn={adultLoggedIn}
+                refProp={this.state.myRef}
+                scrollToMyRef={this.scrollToMyRef}
+              />
+            }>
           </Route>
 
           <Route 
@@ -257,7 +262,13 @@ class App extends Component {
 
           <Route 
             exact path='/prizes'
-            render={() => <PrizesContainer adultLoggedIn={adultLoggedIn}/>}>
+            render={() => 
+              <PrizesContainer 
+                adultLoggedIn={adultLoggedIn}
+                refProp={this.state.myRef}
+                scrollToMyRef={this.scrollToMyRef}
+              />
+            }>
           </Route>
 
           <Route 

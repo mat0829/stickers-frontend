@@ -18,6 +18,7 @@ class PrizesContainer extends Component {
 
   componentDidMount() {
     this.props.fetchPrizes()
+    this.props.scrollToMyRef()
   }
 
   handlePrizeSorting = (event) => {
@@ -39,7 +40,8 @@ class PrizesContainer extends Component {
 
       if (children !== null) {
         return (
-          <div 
+          <div
+            ref={this.props.refProp}
             id='adult-prizes-container' 
             style={prizeBarContainerStyle}>
               
@@ -74,7 +76,8 @@ class PrizesContainer extends Component {
     }
     else {
       return (
-        <div 
+        <div
+          ref={this.props.refProp}
           id='child-prizes-container' 
           style={prizeBarContainerStyle}>
             

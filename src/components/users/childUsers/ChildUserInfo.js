@@ -3,6 +3,11 @@ import React from 'react'
 import ChildUserAvatar from './ChildUserAvatar'
 import { NavLink } from 'react-router-dom'
 
+const imgStyle = {
+  maxWidth: '250px',
+  maxHeight: '125px'
+}
+
 const btnStyle = {
   color: 'white',
   backgroundImage: 'linear-gradient(to right, blue, purple, teal)'
@@ -19,6 +24,7 @@ const liStyle = {
 const ChildUserInfo = (props) => {
   const childUser = props.childUser
   const tasks = props.childUser.child_tasks
+  const prizes = props.childUser.child_prizes
 
   let currentTasks = tasks.filter(task => task.completed !== true).map(filteredTask => (
     <li key={filteredTask.id} style={liStyle}>
@@ -33,6 +39,16 @@ const ChildUserInfo = (props) => {
     <li key={filteredTask.id} style={liStyle}>
       {filteredTask.name}
     </li>
+  ))
+
+  const purchasedPrizes = prizes.filter(prize => prize.purchased === true).map(filteredPrize => (
+    <div key={filteredPrize.id} style={liStyle}>
+      <img
+        style={imgStyle}
+        src={filteredPrize.image}
+        alt='prize'>
+      </img>
+    </div>
   ))
 
 
@@ -62,6 +78,9 @@ const ChildUserInfo = (props) => {
 
       <h2>Completed Tasks:</h2>
       <ul>{completedTasks}</ul>
+
+      <h2>Purchased Prizes:</h2>
+      <span>{purchasedPrizes}</span>
 
       <button 
         style={btnStyle} 

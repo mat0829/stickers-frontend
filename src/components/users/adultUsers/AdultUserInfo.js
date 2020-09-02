@@ -56,6 +56,14 @@ const AdultUserInfo = (props) => {
     )
   )
 
+  const purchasedPrizes = (array, childId) => 
+    array.filter(prize => prize.prizeReceiverId === childId && prize.purchased === true).map(filteredPrize => (
+      <li key={filteredPrize.id} style={liStyle}>
+        {filteredPrize.name}
+      </li>
+    )
+  )
+
   const childrenDetails = uniqueChildren.map( (child, id) => (
     <div style={divStyle} key={id}>
       {
@@ -69,6 +77,8 @@ const AdultUserInfo = (props) => {
           {currentTasks(adultUser.parent_tasks, child.id)}
           <h2>Completed Tasks:</h2>
           {completedTasks(adultUser.parent_tasks, child.id)}
+          <h2>Purchased Prizes:</h2>
+          {purchasedPrizes(adultUser.parent_prizes, child.id)}
         </>
       }
     </div>

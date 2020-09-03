@@ -12,7 +12,7 @@ class ChildLoginForm extends Component {
   
   state = {
     name: '',
-    password: 'Cold0829'
+    password: ''
   }
 
   handleChange = event => {

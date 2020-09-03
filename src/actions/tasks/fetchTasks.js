@@ -16,26 +16,24 @@ const fetchTasks = () => {
       .then(resp => resp.json())
       .then(tasksData => {
         if (tasksData === null) {
-          dispatch({
+          return dispatch({
             type: 'TASK_ERROR',
             payload: "You Currently have 0 Tasks."
           })
         }
-        else if (tasksData.errors !== undefined) {
-          dispatch({
+        if (tasksData.errors !== undefined) {
+          localStorage.removeItem("token")
+          return dispatch({
             type: 'TASKS_ERRORS',
             payload: tasksData.errors
           })
-          localStorage.removeItem("token")
         } 
-        else {
-          let tasksSortedByName = tasksData.sort((a, b) => (a.name > b.name) ? 1 : -1)
-          console.log('tasks sorted by name:', tasksSortedByName)
-          dispatch({
-            type: 'FETCH_TASKS',
-            payload: tasksSortedByName
-          })
-        }
+        let tasksSortedByName = tasksData.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        console.log('tasks sorted by name:', tasksSortedByName)
+        dispatch({
+          type: 'FETCH_TASKS',
+          payload: tasksSortedByName
+        })
       })
     }
   }

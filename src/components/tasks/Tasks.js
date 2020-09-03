@@ -1,6 +1,7 @@
 import React from 'react'
 import Error from '../errors/Error'
 import {Link } from 'react-router-dom'
+import TaskVoteButton from './TaskVoteButton'
 
 const taskBarStyle = {
   height: 'auto',
@@ -36,6 +37,7 @@ const Tasks = (props) => {
   const renderTasks = () => {
     if (props.tasks.length !== 0) {
       return props.tasks.map(task =>
+        <div key={task.id}>
         <Link key={task.id} to={`/tasks/${task.id}`} style={linkStyle}>
           <span id={task.id}>
             {task.name}
@@ -46,7 +48,9 @@ const Tasks = (props) => {
             />
             {task.task_child.name}
           </span>
-        </Link>)
+        </Link>
+        <TaskVoteButton />
+        </div>)
     } 
     else return <h2>You Currently have 0 Tasks.</h2>
   }
